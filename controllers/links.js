@@ -1,0 +1,1 @@
+import link from "../models/link"
