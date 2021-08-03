@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const playlistSchema = new Schema({
-  title: { type: String, require: true },
-  imgURL: { type: String, require: false },
-  description: { type: String, require: true },
-  category: { type: Array, require: true },
+  title: { type: String, required: true },
+  imgURL: { type: String, required: false },
+  description: { type: String, required: true },
+  category: { type: Array, required: true },
   link: [{ type: Schema.Types.ObjectId, ref: "Link" }],
-  user: [ {type: Schema.Types.ObjectId, ref: "User"}],
+  // user: [ {type: Schema.Types.ObjectId, ref: "User"}],
 
 },
 {timestamps: false}
