@@ -1,5 +1,5 @@
-import { Router } from "express"
-import { createLink, updateLink,getAllLinks,getLink, deleteLink} from "../controllers/links.js"
+import { Router } from "express";
+import { createLink, updateLink, getAllLinks, getLink, deleteLink } from "../controllers/links.js";
 
 const router = Router();
 

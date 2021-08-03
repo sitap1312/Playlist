@@ -24,7 +24,7 @@ export const SignUp = async (req, res) => {
 
     await user.save()
     const payload = {
-      id: user_id,
+      id: user._id,
       username: user.username,
       email: user.email,
       exp: parseInt(exp.getTime() / 1000)
@@ -50,7 +50,7 @@ export const signIn = async (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
-        exp: parseInt(exp.getTiime() / 1000)
+        exp: parseInt(exp.getTime() / 1000)
       };
       const token = jwt.sign(payload, TOKEN_KEY);
       res.status(201).json({ token });
