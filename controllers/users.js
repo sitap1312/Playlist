@@ -74,27 +74,31 @@ export const verify = async (req, res) => {
     console.log(e.message);
     res.status(401).json({ error: "Not Authorized" })
   }
-};
+// <<<<<<< userSita
+// };
 
-//User Update
-export const updateUser = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
-    res.status(200).json(updatedUser);
-  } catch (e) {
-    res.status(500).json({ error: e.message });
-  }
-};
+// //User Update
+// export const updateUser = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
+//     res.status(200).json(updatedUser);
+//   } catch (e) {
+//     res.status(500).json({ error: e.message });
+//   }
+// };
 
-//User Delete
-export const deleteUser = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedUser = await User.findByIdAndDelete(id);
-    res.status(200).json({ message: `Deleted ${deletedUser.username}` });
-  } catch (err) {
-    res.status(500).json({ error: "Error deleting task" });
-  }
-};
+// //User Delete
+// export const deleteUser = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const deletedUser = await User.findByIdAndDelete(id);
+//     res.status(200).json({ message: `Deleted ${deletedUser.username}` });
+//   } catch (err) {
+//     res.status(500).json({ error: "Error deleting task" });
+//   }
+// };
+// =======
+// }
+// >>>>>>> userDivine
 
