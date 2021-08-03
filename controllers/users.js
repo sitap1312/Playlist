@@ -11,7 +11,7 @@ const exp = new Date(today);
 exp.setDate(today.getDate() + 14);
 
 //User SignUp
-export const SignUp = async (req, res) => {
+export const signUp = async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const password_digest = await bcrypt.hash(password, SALT_ROUNDS)

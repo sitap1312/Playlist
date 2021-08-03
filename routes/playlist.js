@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { getAllPlaylists,getPlaylist,updatePlaylist,createPlaylist,deletePlaylist} from "../controllers/playlists.js"
+import restrict from "../helpers/restrict.js";
 
 
 const router = Router()

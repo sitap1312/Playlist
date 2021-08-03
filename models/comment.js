@@ -8,4 +8,4 @@ const commentSchema = new Schema({
 {timestamps:false}
 )
 
-module.exports = mongoose.model("Comment" , commentSchema)
+export default mongoose.model("Comment" , commentSchema)

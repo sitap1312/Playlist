@@ -11,4 +11,4 @@ const linkSchema = new Schema({
 },
 {timestamps:true}
 )
-module.exports = mongoose.model("Link", linkSchema)
+export default mongoose.model("Link", linkSchema)
