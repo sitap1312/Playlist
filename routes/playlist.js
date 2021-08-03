@@ -12,14 +12,14 @@ router.get("/playlist", getAllPlaylists)
 router.get("/playlist/:id", getPlaylist)
 
 // update/edit a playlist
-router.put("/playlist/id", restrict,  updatePlaylist)
+router.put("/playlist/id",   updatePlaylist)
 
 
 // create a playlist
-router.post("/playlist", restrict, createPlaylist)
+router.post("/playlist",  createPlaylist)
 
 // delete a playlist
-router.delete("/playlist/:id", restrict, deletePlaylist)
+router.delete("/playlist/:id",  deletePlaylist)
 
 
 export default router;
