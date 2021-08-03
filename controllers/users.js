@@ -10,6 +10,7 @@ const today = new Date();
 const exp = new Date(today);
 exp.setDate(today.getDate() + 14);
 
+//User SingUp
 export const SignUp = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -29,14 +30,14 @@ export const SignUp = async (req, res) => {
       exp: parseInt(exp.getTime() / 1000)
     }
     const token = jwt.sign(payload, TOKEN_KEY);
-    res.status(201).json({token})
+    res.status(201).json({ token })
   } catch (e) {
-    res.status(400).json({error: e.message})
+    res.status(400).json({ error: e.message })
   }
-}
+};
+
+//User SignIn
 export const signIn = async (req, res) => {
-
-
   try {
     
     const { email, password } = req.body
@@ -54,12 +55,14 @@ export const signIn = async (req, res) => {
       const token = jwt.sign(payload, TOKEN_KEY);
       res.status(201).json({ token });
     } else {
-      res.status(401).json({error: "Invalid Credentials"})
-      }
+      res.status(401).json({ error: "Invalid Credentials" })
+    }
   } catch (e) {
-    res.status(500).json({error: e.message})
+    res.status(500).json({ error: e.message })
   }
-}
+};
+
+//Verify user info
 export const verify = async (req, res) => {
   try {
     const token = req.headers.authorization.split(" ")[1]
@@ -69,7 +72,33 @@ export const verify = async (req, res) => {
     }
   } catch (e) {
     console.log(e.message);
-    res.status(401).json({error: "Not Authorized"})
+    res.status(401).json({ error: "Not Authorized" })
   }
-}
+// <<<<<<< userSita
+// };
+
+// //User Update
+// export const updateUser = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
+//     res.status(200).json(updatedUser);
+//   } catch (e) {
+//     res.status(500).json({ error: e.message });
+//   }
+// };
+
+// //User Delete
+// export const deleteUser = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const deletedUser = await User.findByIdAndDelete(id);
+//     res.status(200).json({ message: `Deleted ${deletedUser.username}` });
+//   } catch (err) {
+//     res.status(500).json({ error: "Error deleting task" });
+//   }
+// };
+// =======
+// }
+// >>>>>>> userDivine
 
