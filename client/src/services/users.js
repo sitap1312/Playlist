@@ -1,6 +1,7 @@
 import api from "./apiConfig";
 import jwtDecode from "jwt-decode";
 
+//User SignUp
 export const signUp = async (credentials) => {
   try {
     const res = await api.post("/sign-up", credentials)
@@ -12,6 +13,7 @@ export const signUp = async (credentials) => {
   };
 };
 
+//User SignIn
 export const signIn = async (credentials) => {
   try {
     const res = await api.post("/sign-in", credentials)

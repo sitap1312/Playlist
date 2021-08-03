@@ -7,8 +7,6 @@ const UserSchema = new Schema(
     email: { type: String, required: true , unique:true},
     password_digest: { type: String, required: true },
     playlist: [{ type: Schema.Types.ObjectId, ref: "Playlist" }],
-    
-
   },
   { timestamps: true }
 );

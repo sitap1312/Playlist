@@ -5,21 +5,21 @@ const router = Router();
 
 
 // get all links
-router.get("/link" , getAllLinks)
+router.get("/link", getAllLinks);
 
 // get link by id
-router.get("/link/:id", getLink)
+router.get("/link/:id", getLink);
 
 
 // create a link
-router.post("/link", createLink)
+router.post("/link", createLink);
 
 // update/edit link
-router.put("/link/:id", updateLink)
+router.put("/link/:id", updateLink);
 
 
 // delete link
-router.delete("/link/:id" , deleteLink)
+router.delete("/link/:id", deleteLink);
 
 
 
