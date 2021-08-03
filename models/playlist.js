@@ -6,7 +6,9 @@ const playlistSchema = new Schema({
   imgURL: { type: String, require: false },
   description: { type: String, require: true },
   category: { type: Array, require: true },
-  link: [{type: Schema.Types.ObjectId, ref: "Link"}]
+  link: [{ type: Schema.Types.ObjectId, ref: "Link" }],
+  user: [ {type: Schema.Types.ObjectId, ref: "User"}],
+
 },
 {timestamps: false}
 )
