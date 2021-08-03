@@ -12,4 +12,11 @@ const restrict = (req, res, next) => {
     res.status(403).json({ error: "Unauthroized" })
   }
 };
+
+
+
+
+
+
+
 export default restrict

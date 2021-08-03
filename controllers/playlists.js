@@ -42,7 +42,7 @@ export const updatePlaylist = async (req, res) => {
   try {
     let { id } = req.params;
     const updatedPlaylist = await Playlist.findByIdAndUpdate(id, req.body, { new: true });
-    res.status(200).json(updtedPlaylist);
+    res.status(200).json(updatedPlaylist);
   } catch (e) {
     res.status(500).json({ error: "Error Updating Playlist" });
   }

@@ -19,6 +19,6 @@ router.post("/change-password")
 router.put("/user/:id", updateUser)
 
 // delete user
-router.get("/user/:id", deleteUser)
+router.delete("/user/:id", deleteUser)
 
 export default router;

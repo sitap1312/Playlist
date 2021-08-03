@@ -18,7 +18,7 @@ router.put("/playlist/id", restrict,  updatePlaylist)
 router.post("/playlist", restrict, createPlaylist)
 
 // delete a playlist
-router.get("/playlist/:id", restrict, deletePlaylist)
+router.delete("/playlist/:id", restrict, deletePlaylist)
 
 
 export default router;
