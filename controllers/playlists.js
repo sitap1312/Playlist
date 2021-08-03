@@ -1,1 +1,1 @@
-import playlist from "../models/playlist.js"
+import Playlist from "../models/playlist.js"

@@ -1,1 +1,1 @@
-import comment from "../models/comment.js"
+import Comment from "../models/comment.js"
