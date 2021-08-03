@@ -19,7 +19,7 @@ router.put("/link/:id", updateLink)
 
 
 // delete link
-router.get("/link/:id" , deleteLink)
+router.delete("/link/:id" , deleteLink)
 
 
 

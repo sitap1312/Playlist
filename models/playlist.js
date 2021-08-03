@@ -7,7 +7,7 @@ const playlistSchema = new Schema({
   description: { type: String, required: true },
   category: { type: Array, required: true },
   link: [{ type: Schema.Types.ObjectId, ref: "Link" }],
-  // user: [ {type: Schema.Types.ObjectId, ref: "User"}],
+  userId: [ {type: Schema.Types.ObjectId, ref: "User"}],
 
 },
 {timestamps: false}
