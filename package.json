@@ -1,7 +1,7 @@
 {
   "name": "playlist",
   "version": "1.0.0",
-  "description": "Team Memebers: Shahroze Divine Stephen Elijah  Sita",
+  "description": "# Overview",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/EliCruz99/Playlist.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -26,5 +27,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.5",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
