@@ -11,7 +11,7 @@ router.get("/link" , getAllLinks)
 router.get("/link/:id", getLink)
 
 
-// create a playlist
+// create a link
 router.post("/link", createLink)
 
 // update/edit link
@@ -19,7 +19,7 @@ router.put("/link/:id", updateLink)
 
 
 // delete link
-router.get("/link/:id" , deleteLink)
+router.delete("/link/:id" , deleteLink)
 
 
 

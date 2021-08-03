@@ -14,12 +14,12 @@ exp.setDate(today.getDate() + 14);
 export const SignUp = async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const password = await bcrypt.hash(password, SALT_ROUNDS)
+    const password_digest = await bcrypt.hash(password, SALT_ROUNDS)
 
     const user = new User({
       username,
       email,
-      password
+      password_digest,
     });
 
     await user.save()
@@ -42,10 +42,10 @@ export const signIn = async (req, res) => {
     
     const { email, password } = req.body
     const user = await User.findOne({ email }).select(
-      "email username password"
+      "email username password_digest"
     );
 
-    if (await bcrypt.compare(password, user.password)) {
+    if (await bcrypt.compare(password, user.password_digest)) {
       const payload = {
         id: user._id,
         username: user.username,
