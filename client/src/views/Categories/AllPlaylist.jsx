@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
-import { useParams } from 'react-router';
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -19,20 +18,15 @@ let data = [
   category: "Sports" }
 ] 
 
-export default function Categories() {
+export default function AllPlaylist() {
   const [playlist, setPlaylist] = useState(data)
-  const { id } = useParams()
 
-  const filterByCategory = (category) => {
-    const filtered = playlist.filter((cat) => cat.category === category)
-    return filtered
-  }
   
   return (
     <Layout>
-     <h2>{id}</h2>
-      <div className="categoryPlaylist">
-      {filterByCategory(id).map((playlist) => {
+      <h2>Discover</h2>
+     <div className="discoverPlaylist">
+      {playlist.map((playlist) => {
         return (
           <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
