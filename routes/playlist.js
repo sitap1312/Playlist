@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getAllPlaylists,getPlaylist,updatePlaylist,createPlaylist,deletePlaylist} from "../controllers/playlists.js"
-import restrict from "../helpers/restrict.js";
+// import restrict from "../helpers/restrict.js";
 
 
 const router = Router()
@@ -12,14 +12,13 @@ router.get("/playlist", getAllPlaylists)
 router.get("/playlist/:id", getPlaylist)
 
 // update/edit a playlist
-router.put("/playlist/id",   updatePlaylist)
-
+router.put("/playlist/:id", updatePlaylist)
 
 // create a playlist
-router.post("/playlist",  createPlaylist)
+router.post("/playlist", createPlaylist)
 
 // delete a playlist
-router.delete("/playlist/:id",  deletePlaylist)
+router.delete("/playlist/:id", deletePlaylist)
 
 
 export default router;

@@ -10,6 +10,6 @@ router.get("/", (req, res) => res.send("This is api root"));
 router.use("/", userRoutes)
 router.use("/", playlistRoutes)
 router.use("/", linkRoutes)
-// router.use("/", commentRoutes)
+router.use("/", commentRoutes)
 
 export default router;
