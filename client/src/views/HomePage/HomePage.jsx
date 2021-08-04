@@ -17,7 +17,7 @@ let data = [
   category: "Sports" }
 ]  
 
-export default function HomePage() {
+export default function HomePage(props) {
   const [playlist, setPlaylist] = useState(data)
   
   
@@ -28,7 +28,7 @@ export default function HomePage() {
   
 
   return (
-    <Layout >
+    <Layout user={props.user} setUser={props.setUser} >
       <h1>PLAYLISTIFY</h1> 
       <Link to="/preview/:id"><button>PREVIEW</button></Link>
       <h2>Discover</h2> <Link to="/Discover-all">See more</Link>

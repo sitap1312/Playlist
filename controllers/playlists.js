@@ -1,5 +1,6 @@
 import db from '../db/connection.js';
 import Playlist from "../models/playlist.js";
+import User from "../models/user.js"
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
@@ -27,30 +28,25 @@ export const getPlaylist = async (req, res) => {
 };
 
 //Create New Playlist
-// export const createPlaylist = async (req, res) => {
-//   try {
-//     const newPlaylist = new Playlist(req.body);
-//     await newPlaylist.save();
-//     res.status(201).json(newPlaylist);
-//   } catch (e) {
-//     res.status(500).json({ error: "Error Creating Playlist" });
-//   }
-// };
-
 export const createPlaylist = async (req,res) => {
   try {
-      let {title, imgURL, description,category } = req.body
+    let { title, imgURL, description, category } = req.body
+    let { userId } = req.params
+    console.log(req.params)
       let newPlaylist = {
           title, 
           imgURL,
         description,
-          category
+        category,
+          userId
       }
-      const playlist = await Playlist.create(newPlaylist)
-      // await User.findByIdAndUpdate({_id: req.user}, {$push: {playlist: playlist._id}})
+      // playlist.userId = req.user._id
+      const playlist = new Playlist(newPlaylist)
+      await playlist.save()
+      await User.findByIdAndUpdate({_id: userId}, {$push: {playlist: playlist._id}})
       res.status(201).json(playlist)
   } catch(err) {
-       res.status(500).json({error: err.message})
+    res.status(500).json({error: err.message})
   }
 }
 
