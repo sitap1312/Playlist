@@ -27,15 +27,32 @@ export const getPlaylist = async (req, res) => {
 };
 
 //Create New Playlist
-export const createPlaylist = async (req, res) => {
+// export const createPlaylist = async (req, res) => {
+//   try {
+//     const newPlaylist = new Playlist(req.body);
+//     await newPlaylist.save();
+//     res.status(201).json(newPlaylist);
+//   } catch (e) {
+//     res.status(500).json({ error: "Error Creating Playlist" });
+//   }
+// };
+
+export const createPlaylist = async (req,res) => {
   try {
-    const newPlaylist = new Playlist(req.body);
-    await newPlaylist.save();
-    res.status(201).json(newPlaylist);
-  } catch (e) {
-    res.status(500).json({ error: "Error Creating Playlist" });
+      let {title, imgURL, description,category } = req.body
+      let newPlaylist = {
+          title, 
+          imgURL,
+        description,
+          category
+      }
+      const playlist = await Playlist.create(newPlaylist)
+      // await User.findByIdAndUpdate({_id: req.user}, {$push: {playlist: playlist._id}})
+      res.status(201).json(playlist)
+  } catch(err) {
+       res.status(500).json({error: err.message})
   }
-};
+}
 
 //Update Playlist
 export const updatePlaylist = async (req, res) => {
