@@ -85,9 +85,24 @@ https://docs.google.com/document/d/1usB3FPzxP9AYy3LVok_fQy4C9ttfAyAEXWSlZwC2sFs/
 
 https://github.com/EliCruz99/Playlist/projects/1
 
+- Create a Whimsical document to convey the data flow between your front-end and back-end, with component hierarchy included
+- Have a working, interactive React app
+- Have at least 6 rendered components 
+- Use only React DOM Manipulation
+- Consume data from your own API
+- Authentication on front-end
+- Have working genereic controller actions for full-CRUD using Express, Mongoose, and MongoDB
+- Authentication on back-end
+- Styled with CSS
+- Use flexbox or CSS Grid
+- implement responsive deign on 2 screen sizes
+- Deploy the back-end via Heroku
+- Deploy the MongoDB database to MongoDB Atlas
+- Use effective and safe brancing and merging processes
 - Users can create accounts
 - Users can create, edit and delete  playlists
 - Users can play their own and user created playlists in the app
+
 
 # Post-MVPs
 
@@ -95,3 +110,4 @@ https://github.com/EliCruz99/Playlist/projects/1
 - Advance CSS
 - Like/Dislike buttons
 - Carousel Feature for the video player
+- Users can comment on each others playlist
