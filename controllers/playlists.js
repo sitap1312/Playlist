@@ -47,7 +47,7 @@ export const createPlaylist = async (req,res) => {
           category
       }
       const playlist = await Playlist.create(newPlaylist)
-      // await User.findByIdAndUpdate({_id: req.user}, {$push: {playlist: playlist._id}})
+      await User.findByIdAndUpdate({_id: req.user}, {$push: {playlist: playlist._id}})
       res.status(201).json(playlist)
   } catch(err) {
        res.status(500).json({error: err.message})
