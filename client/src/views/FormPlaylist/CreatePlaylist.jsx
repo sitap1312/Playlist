@@ -42,7 +42,7 @@ export default function CreatePlaylist(props) {
                 <br />
                 <label>Description</label>
                 <br />
-                <input type="text" name="content" value={input.content} onChange={handleChange}  />      
+                <input type="text" name="description" value={input.description} onChange={handleChange}  />      
                 <br />
                 <label>Category</label>
                 <br />      

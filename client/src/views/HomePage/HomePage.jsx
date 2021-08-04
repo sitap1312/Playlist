@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Layout from "../../components/Layout/Layout"
 import { Link } from "react-router-dom"
+import { getPlaylist } from "../../services/playlists.js"
 
 let data = [
   {
@@ -20,6 +21,8 @@ let data = [
 export default function HomePage(props) {
   const [playlist, setPlaylist] = useState(data)
   
+
+
   
   const filterByCategory = (category) => {
     const filtered = playlist.filter((cat) => cat.category === category)
