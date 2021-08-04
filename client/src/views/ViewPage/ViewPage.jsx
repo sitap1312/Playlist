@@ -26,14 +26,6 @@ export default function ViewPage() {
   const playlistItems = data.map((link, index) =>
   <div key={index}> 
       <h3>{index}. {link}</h3>
-      {/* <ReactPlayer
-      className='react-player'
-      controls={true}
-      playing url = {link}
-      loop={true}
-      width='100%'
-      height='50vh'
-    /> */}
   </div>
   );
 
@@ -74,7 +66,7 @@ export default function ViewPage() {
         <Layout>
           <h1>PLAYLIST NAME</h1>
           {/* <img src="https://wallpaperaccess.com/full/39608.jpg" width='500px' height="500px" /> */}
-        <h3>USERNAME</h3>
+        <h3>SHAHROZE</h3>
             <ReactPlayer
               className='react-player'
               controls={true}
