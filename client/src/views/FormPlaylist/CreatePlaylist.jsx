@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { createPlaylist } from "../../services/playlists";
+import Layout from "../../components/Layout/Layout";
+// import { createPlaylist } from "../../services/playlists";
 import { useHistory } from "react-router-dom";
 
-export default function CreatePlaylist() {
+export default function CreatePlaylist(props) {
     let history = useHistory()
     let defaultInput = {
         title: "",
@@ -22,12 +23,12 @@ export default function CreatePlaylist() {
     }
     async function handleSubmit(event) {
         event.preventDefault()
-        await createPlaylist(input)
+        // await createPlaylist(input)
         history.push("/")
     }
   
     return (
-        <div>
+        <Layout>
             <h1>Create Playlist</h1>
             <form onSubmit={handleSubmit}>
                 <label>Playlist Title</label>
@@ -53,6 +54,6 @@ export default function CreatePlaylist() {
           <img src={input.imgURL} alt={input.title} />
           <p>{props.username}</p>
         </div>
-        </div>
+        </Layout>
     )
 } 
