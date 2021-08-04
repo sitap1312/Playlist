@@ -30,21 +30,34 @@ export const getPlaylist = async (req, res) => {
 //Create New Playlist
 export const createPlaylist = async (req,res) => {
   try {
-    let playList = new Playlist(req.body)
-    let { userId } = req.params
-    console.log(playList)
-      // let newPlaylist = {
-      //     title, 
-      //     imgURL,
-      //   description,
-      //   category,
-      //     userId
-      // }
-      // playlist.userId = req.user._id
-      // const playlist = new Playlist(newPlaylist)
-      // await playList.save()
-      // await User.findByIdAndUpdate({_id: userId}, {$push: {playlist: playlist._id}})
-      res.status(201).json(playList)
+// <<<<<<< test
+//     let playList = new Playlist(req.body)
+//     let { userId } = req.params
+//     console.log(playList)
+//       // let newPlaylist = {
+//       //     title, 
+//       //     imgURL,
+//       //   description,
+//       //   category,
+//       //     userId
+//       // }
+//       // playlist.userId = req.user._id
+//       // const playlist = new Playlist(newPlaylist)
+//       // await playList.save()
+//       // await User.findByIdAndUpdate({_id: userId}, {$push: {playlist: playlist._id}})
+//       res.status(201).json(playList)
+// =======
+//       let {title, imgURL, description,category } = req.body
+//       let newPlaylist = {
+//           title, 
+//           imgURL,
+//         description,
+//           category
+//       }
+//       const playlist = await Playlist.create(newPlaylist)
+//       await User.findByIdAndUpdate({_id: req.user}, {$push: {playlist: playlist._id}})
+//       res.status(201).json(playlist)
+// >>>>>>> userSita
   } catch(err) {
     res.status(500).json({error: err.message})
   }
