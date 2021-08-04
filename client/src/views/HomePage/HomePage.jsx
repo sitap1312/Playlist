@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 let data = [
   {
     imgURL: "https://ninjatune.net/images/artists/thundercat-main.jpg",
-    name: "THUNDERCAT",
+    name: "THUNDERCAT", 
     category: "Music",
   },
   {
