@@ -7,7 +7,7 @@ const router = Router()
 router.post("/sign-up", signUp);
 
 // to sign in
-router.post("sign-in", signIn);
+router.post("/sign-in", signIn);
 
 // verify a user
 router.get("/verify", verify);

@@ -8,13 +8,7 @@ const linkSchema = new Schema({
   linkURL: { type: String, required: true },
   playlistId: [{ type: Schema.Types.ObjectId, ref: "Playlist" }],
 },
-// <<<<<<< userDivine
-// {timestamps:true}
-// )
-// export default mongoose.model("Link", linkSchema)
-// =======
   { timestamps: true }
 );
 
 export default mongoose.model("Link", linkSchema);
->>>>>>> userSita

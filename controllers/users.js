@@ -10,11 +10,8 @@ const today = new Date();
 const exp = new Date(today);
 exp.setDate(today.getDate() + 14);
 
-// <<<<<<< userDivine
-// //User SignUp
-// =======
-User SingUp
->>>>>>> userSita
+
+// User SignUp
 export const signUp = async (req, res) => {
   try {
     const { username, email, password } = req.body;
