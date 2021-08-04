@@ -29,9 +29,9 @@ export default function HomePage() {
 
   return (
     <Layout >
-      <h1>PLAYLISTIFY</h1>
+      <h1>PLAYLISTIFY</h1> 
       <Link to="/preview"><button>PREVIEW</button></Link>
-      <h2>Discover</h2>
+      <h2>Discover</h2> <Link to="/categories/Discover">See more</Link>
       <div className="discoverPlaylist">
       {playlist.map((playlist) => {
         return (
@@ -39,7 +39,7 @@ export default function HomePage() {
         )
       })}
       </div>
-      <h2>Music</h2>
+      <h2>Music</h2> <Link to="/categories/Music">See more</Link>
       <div className="musicPlaylist">
       {filterByCategory("Music").map((playlist) => {
         return (
@@ -47,15 +47,15 @@ export default function HomePage() {
         )
       })}
       </div>
-      <h2>Videos</h2>
+      <h2>Videos</h2> <Link to="/categories/Videos">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Music").map((playlist) => {
+      {filterByCategory("Videos").map((playlist) => {
         return (
           <img src={playlist?.imgURL} alt={playlist.name} />
         )
       })}
       </div>
-      <h2>Gaming</h2>
+      <h2>Gaming</h2> <Link to="/categories/Gaming">See more</Link>
       <div className="videoPlaylist">
       {filterByCategory("Gaming").map((playlist) => {
         return (
@@ -63,33 +63,33 @@ export default function HomePage() {
         )
       })}
       </div>
-      <h2>Education</h2>
+      <h2>Education</h2> <Link to="/categories/Education">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Music").map((playlist) => {
+      {filterByCategory("Education").map((playlist) => {
         return (
           <img src={playlist?.imgURL} alt={playlist.name} />
         )
       })}
       </div>
-      <h2>Sports</h2>
+      <h2>Sports</h2> <Link to="/categories/Sports">See more</Link>
       <div className="videoPlaylist">
-      {playlist.map((playlist) => {
+      {filterByCategory("Sports").map((playlist) => {
         return (
           <img src={playlist?.imgURL} alt={playlist.name} />
         )
       })}
       </div>
-      <h2>Entertainment</h2>
+      <h2>Entertainment</h2> <Link to="/categories/Entertainment">See more</Link>
       <div className="videoPlaylist">
-      {playlist.map((playlist) => {
+      {filterByCategory("Entertainment").map((playlist) => {
         return (
           <img src={playlist?.imgURL} alt={playlist.name} />
         )
       })}
       </div>
-      <h2>Family</h2>
+      <h2>Family</h2> <Link to="/categories/Family">See more</Link>
       <div className="videoPlaylist">
-      {playlist.map((playlist) => {
+      {filterByCategory("Family").map((playlist) => {
         return (
           <img src={playlist?.imgURL} alt={playlist.name} />
         )

@@ -8,6 +8,7 @@ import { verify } from './services/users';
 import ViewPage from './views/ViewPage/ViewPage';
 import CreatePlaylist from './views/FormPlaylist/CreatePlaylist';
 import EditUser from './views/EditUser/EditUser';
+import Categories from './views/Categories/Categories';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,6 +24,9 @@ function App() {
     <div className="App">
       <Route exact path="/">
         <HomePage user={user} setUser={setUser} />
+      </Route>
+      <Route exact path="/categories/:id">
+        <Categories user={user} setUser={setUser} />
       </Route>
       <Route exact path="/preview">
         <ViewPage user={user} setUser={setUser} />
