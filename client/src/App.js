@@ -35,6 +35,17 @@ function App() {
       <Route exact path="/preview/:id">
         <ViewPage user={user} setUser={setUser} />
       </Route>
+// <<<<<<< test
+//       {user && (<>
+//         <Route exact path="/edit-user">
+//           <EditUser setUser={setUser} user={user} />
+//         </Route>
+//         <Route exact path="/create-playlist">
+//           <CreatePlaylist setUser={setUser} user={user} />
+//         </Route>
+//       </>)}
+// =======
+// >>>>>>> userSita
       {!user && (<>
         <Route path="/sign-in">
           <SignIn setUser={setUser} user={user} />
@@ -42,13 +53,17 @@ function App() {
         <Route path="/sign-up">
           <SignUp setUser={setUser} user={user} />
         </Route>
-        <Route exact path="/edit-user">
-          <EditUser setUser={setUser} user={user} />
-        </Route>
-        <Route exact path="/create-playlist">
-          <CreatePlaylist setUser={setUser} user={user} />
-        </Route>
-        </>)}
+// <<<<<<< test
+//       </>)}
+// =======
+//         <Route exact path="/edit-user">
+//           <EditUser setUser={setUser} user={user} />
+//         </Route>
+//         <Route exact path="/create-playlist">
+//           <CreatePlaylist setUser={setUser} user={user} />
+//         </Route>
+//         </>)}
+// >>>>>>> userSita
     </div>
   );
 }

@@ -14,7 +14,7 @@ export default function Nav(props) {
       {props.user ? (
         <>
           <div>{props.user?.username}</div>
-          <Link to="new-playlist">CREATE PLAYLIST</Link>
+          <Link to="/create-playlist">CREATE PLAYLIST</Link>
           <button onClick={handleSignOut}>Sign Out</button>
         </>
       ) : (

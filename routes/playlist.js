@@ -13,7 +13,7 @@ router.get("/playlist", getAllPlaylists);
 router.get("/playlist/:id", getPlaylist);
 
 // create a playlist
-router.post("/playlist", restrict, createPlaylist);
+router.post("/playlist", createPlaylist);
 
 // update/edit a playlist
 router.put("/playlist/:id", restrict, updatePlaylist);
