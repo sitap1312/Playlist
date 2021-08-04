@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Layout from "../../components/Layout/Layout"
 import { Link } from "react-router-dom"
 
@@ -30,6 +31,70 @@ export default function HomePage() {
     <Layout >
       <h1>PLAYLISTIFY</h1>
       <Link to="/preview"><button>PREVIEW</button></Link>
+      <h2>Discover</h2>
+      <div className="discoverPlaylist">
+      {playlist.map((playlist) => {
+        return (
+          <img src={playlist?.imgURL} alt={playlist.name} />
+        )
+      })}
+      </div>
+      <h2>Music</h2>
+      <div className="musicPlaylist">
+      {filterByCategory("Music").map((playlist) => {
+        return (
+          <img src={playlist?.imgURL} alt={playlist.name} />
+        )
+      })}
+      </div>
+      <h2>Videos</h2>
+      <div className="videoPlaylist">
+      {filterByCategory("Music").map((playlist) => {
+        return (
+          <img src={playlist?.imgURL} alt={playlist.name} />
+        )
+      })}
+      </div>
+      <h2>Gaming</h2>
+      <div className="videoPlaylist">
+      {filterByCategory("Gaming").map((playlist) => {
+        return (
+          <img src={playlist?.imgURL} alt={playlist.name} />
+        )
+      })}
+      </div>
+      <h2>Education</h2>
+      <div className="videoPlaylist">
+      {filterByCategory("Music").map((playlist) => {
+        return (
+          <img src={playlist?.imgURL} alt={playlist.name} />
+        )
+      })}
+      </div>
+      <h2>Sports</h2>
+      <div className="videoPlaylist">
+      {playlist.map((playlist) => {
+        return (
+          <img src={playlist?.imgURL} alt={playlist.name} />
+        )
+      })}
+      </div>
+      <h2>Entertainment</h2>
+      <div className="videoPlaylist">
+      {playlist.map((playlist) => {
+        return (
+          <img src={playlist?.imgURL} alt={playlist.name} />
+        )
+      })}
+      </div>
+      <h2>Family</h2>
+      <div className="videoPlaylist">
+      {playlist.map((playlist) => {
+        return (
+          <img src={playlist?.imgURL} alt={playlist.name} />
+        )
+      })}
+      </div>
     </Layout>
   );
 }
