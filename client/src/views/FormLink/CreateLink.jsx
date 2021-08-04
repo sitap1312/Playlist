@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { createLink } from "../../services/links";
+// import { createLink } from "../../services/links";
 import { useHistory } from "react-router-dom";
 
-export default function CreateLink() {
+export default function CreateLink(props) {
     let history = useHistory()
     let defaultInput = {
         title: "",
@@ -21,7 +21,7 @@ export default function CreateLink() {
     }
     async function handleSubmit(event) {
         event.preventDefault()
-        await createLink(input)
+        // await createLink(input)
         history.push("/")
     }
   
@@ -44,11 +44,11 @@ export default function CreateLink() {
                 <button type="submit">Add Link</button>
         </form>
         <div>
-          {props.playlists.map((playlist) => {
+          {/* {props.playlists.map((playlist) => {
             return (
               <p>{playlist.link.title}</p>
             )
-          })}
+          })} */}
         </div>
         </div>
     )

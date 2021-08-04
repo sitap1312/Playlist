@@ -2,6 +2,7 @@ import { useState } from "react"
 import Layout from "../../components/Layout/Layout";
 // import { createPlaylist } from "../../services/playlists";
 import { useHistory } from "react-router-dom";
+import CreateLink from "../FormLink/CreateLink";
 
 export default function CreatePlaylist(props) {
     let history = useHistory()
@@ -54,6 +55,7 @@ export default function CreatePlaylist(props) {
           <img src={input.imgURL} alt={input.title} />
           <p>{props.username}</p>
         </div>
+        <CreateLink/>
         </Layout>
     )
 } 
