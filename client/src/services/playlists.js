@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CreatePlaylist() {
+export default function playlists() {
   return (
     <div>
       

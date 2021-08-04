@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function UserPlaylist() {
+export default function links() {
   return (
     <div>
       
