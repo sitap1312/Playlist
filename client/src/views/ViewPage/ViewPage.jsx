@@ -62,6 +62,14 @@ export default function ViewPage() {
     setCurrentVideo(data[trackIndex])
   }
 
+  const handleWatchComplete = ({ played }) => {
+    console.log(played)
+    if (played >= 0.95) {
+      console.log("Done!")
+      toNextTrack()
+    } 
+  }
+  
     return (
         <Layout>
           <h1>PLAYLIST NAME</h1>
@@ -70,8 +78,8 @@ export default function ViewPage() {
             <ReactPlayer
               className='react-player'
               controls={true}
-              playing url = {currentVideo}
-              loop={true}
+              playing url={currentVideo}
+              onProgress={handleWatchComplete}
               width='100%'
               height='50vh'
         />
