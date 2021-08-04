@@ -9,6 +9,7 @@ import ViewPage from './views/ViewPage/ViewPage';
 import CreatePlaylist from './views/FormPlaylist/CreatePlaylist';
 import EditUser from './views/EditUser/EditUser';
 import Categories from './views/Categories/Categories';
+import AllPlaylist from './views/Categories/AllPlaylist';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,7 +29,10 @@ function App() {
       <Route exact path="/categories/:id">
         <Categories user={user} setUser={setUser} />
       </Route>
-      <Route exact path="/preview">
+      <Route exact path="/Discover-all">
+        <AllPlaylist user={user} setUser={setUser} />
+      </Route>
+      <Route exact path="/preview/:id">
         <ViewPage user={user} setUser={setUser} />
       </Route>
       {!user && (<>

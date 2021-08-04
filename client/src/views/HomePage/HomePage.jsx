@@ -30,12 +30,12 @@ export default function HomePage() {
   return (
     <Layout >
       <h1>PLAYLISTIFY</h1> 
-      <Link to="/preview"><button>PREVIEW</button></Link>
-      <h2>Discover</h2> <Link to="/categories/Discover">See more</Link>
+      <Link to="/preview/:id"><button>PREVIEW</button></Link>
+      <h2>Discover</h2> <Link to="/Discover-all">See more</Link>
       <div className="discoverPlaylist">
       {playlist.map((playlist) => {
         return (
-          <img src={playlist?.imgURL} alt={playlist.name} />
+          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -43,7 +43,7 @@ export default function HomePage() {
       <div className="musicPlaylist">
       {filterByCategory("Music").map((playlist) => {
         return (
-          <img src={playlist?.imgURL} alt={playlist.name} />
+          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -51,7 +51,7 @@ export default function HomePage() {
       <div className="videoPlaylist">
       {filterByCategory("Videos").map((playlist) => {
         return (
-          <img src={playlist?.imgURL} alt={playlist.name} />
+          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -59,7 +59,7 @@ export default function HomePage() {
       <div className="videoPlaylist">
       {filterByCategory("Gaming").map((playlist) => {
         return (
-          <img src={playlist?.imgURL} alt={playlist.name} />
+          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -67,7 +67,7 @@ export default function HomePage() {
       <div className="videoPlaylist">
       {filterByCategory("Education").map((playlist) => {
         return (
-          <img src={playlist?.imgURL} alt={playlist.name} />
+          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -75,7 +75,7 @@ export default function HomePage() {
       <div className="videoPlaylist">
       {filterByCategory("Sports").map((playlist) => {
         return (
-          <img src={playlist?.imgURL} alt={playlist.name} />
+          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -83,7 +83,7 @@ export default function HomePage() {
       <div className="videoPlaylist">
       {filterByCategory("Entertainment").map((playlist) => {
         return (
-          <img src={playlist?.imgURL} alt={playlist.name} />
+          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -91,7 +91,7 @@ export default function HomePage() {
       <div className="videoPlaylist">
       {filterByCategory("Family").map((playlist) => {
         return (
-          <img src={playlist?.imgURL} alt={playlist.name} />
+          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
