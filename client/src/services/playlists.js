@@ -3,6 +3,7 @@ import api from "./apiConfig";
 export const createPlaylist = async (input) => {
   try {
     const res = await api.post("/playlist", input)
+    console.log(res.data)
     return res.data
   } catch (error) {
     throw error
