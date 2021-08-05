@@ -4,20 +4,20 @@ import { createPlaylist } from "../../services/playlists";
 import CreateLink from "../FormLink/CreateLink";
 import { useHistory } from "react-router";
 
+let defaultInput = {
+  title: "",
+  imgURL: "",
+  description: "",
+  category: "",
+}
+
 export default function CreatePlaylist(props) {
   const [category, setCategory] = useState("Select a category below")
   const history = useHistory()
+  const [input, setInput] = useState(defaultInput)
 
-  let id = (props.user.id)
   
-    let defaultInput = {
-        title: "",
-        imgURL: "",
-        description: "",
-        category: "",
-        userId: id,
-    }
-    const [input, setInput] = useState(defaultInput)
+
 
     function handleChange(event) {
         let {name, value} = event.target
@@ -30,7 +30,7 @@ export default function CreatePlaylist(props) {
     async function handleSubmit(event) {
         event.preventDefault()
       await createPlaylist(input)
-      history.push(`/${id}`)
+      history.push(`/:id`)
     }
   
     return (
