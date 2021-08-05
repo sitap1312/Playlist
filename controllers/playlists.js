@@ -30,6 +30,7 @@ export const getPlaylist = async (req, res) => {
 //Create New Playlist
 export const createPlaylist = async (req, res) => {
   try {
+
     const playlist = new Playlist(req.body);
     const user = await User.findById(req.user);
 

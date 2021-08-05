@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Layout from "../../components/Layout/Layout";
 import { createPlaylist } from "../../services/playlists";
+
 import CreateLink from "../FormLink/CreateLink";
 import { useHistory } from "react-router";
 
@@ -29,12 +30,15 @@ export default function CreatePlaylist(props) {
     }
     async function handleSubmit(event) {
         event.preventDefault()
+
       await createPlaylist(input)
       history.push(`/:id`)
+
     }
   
     return (
       <Layout user={props.user} setUser={props.setUser}>
+
             <h1>Create Playlist</h1>
             <form onSubmit={handleSubmit}>
                 <label>Playlist Title</label>
@@ -48,6 +52,7 @@ export default function CreatePlaylist(props) {
                 <label>Description</label>
                 <br />
                 <input type="text" name="description" value={input.description} onChange={handleChange}  />      
+
                 <br />
                 <label>Category</label>
                 <br />      
