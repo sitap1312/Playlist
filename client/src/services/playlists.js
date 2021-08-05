@@ -1,4 +1,3 @@
-
 import api from "./apiConfig";
 
 
@@ -39,6 +38,7 @@ export const deletePlaylist = async (id) => {
     throw e;
   }
 };
+
 export const updatePlaylist = async (id) => {
   try {
     const res = await api.put(`/playlist/${id}`);
