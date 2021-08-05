@@ -21,6 +21,7 @@ export default function Nav(props) {
         <div>
           <Link to="/sign-up">Sign Up</Link>
           <Link to="/sign-in">Sign In</Link>
+          <Link to="/create-playlist">Create Playlist</Link>
         </div>
       )}
     </div>
