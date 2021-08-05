@@ -41,6 +41,23 @@ export const createPlaylist = async (req,res) => {
       const post = await Playlist.create(newPost)
       await User.findByIdAndUpdate({_id: post.user_id}, {$push: {links: playlist._id}})
       return res.status(200).json(post)
+
+    let playList = new Playlist(req.body)
+    let { userId } = req.params
+    console.log(playList)
+      // let newPlaylist = {
+      //     title, 
+      //     imgURL,
+      //   description,
+      //   category,
+      //     userId
+      // }
+      // playlist.userId = req.user._id
+      // const playlist = new Playlist(newPlaylist)
+      // await playList.save()
+      // await User.findByIdAndUpdate({_id: userId}, {$push: {playlist: playlist._id}})
+      res.status(201).json(playList)
+
   } catch(err) {
     return res.status(500).json({ error: err.message })
   }

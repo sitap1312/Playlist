@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Layout from "../../components/Layout/Layout";
 import { createPlaylist } from "../../services/playlists";
+
 import CreateLink from "../FormLink/CreateLink";
 
 export default function CreatePlaylist(props) {
@@ -25,10 +26,13 @@ export default function CreatePlaylist(props) {
         event.preventDefault()
         await createPlaylist(input)
       // console.log(input)
+
+        history.push("/")
     }
   
     return (
       <Layout user={props.user} setUser={props.setUser}>
+
             <h1>Create Playlist</h1>
             <form onSubmit={handleSubmit}>
                 <label>Playlist Title</label>
@@ -42,6 +46,7 @@ export default function CreatePlaylist(props) {
                 <label>Description</label>
                 <br />
                 <input type="text" name="description" value={input.description} onChange={handleChange}  />      
+
                 <br />
                 <label>Category</label>
                 <br />      
