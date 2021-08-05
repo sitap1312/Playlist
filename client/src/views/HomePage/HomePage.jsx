@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Layout from "../../components/Layout/Layout"
 import { Link } from "react-router-dom"
-import { getPlaylist } from "../../services/playlists.js"
+import { getAllPlaylist } from "../../services/playlists.js"
 
 let data = [
   {
@@ -19,13 +19,21 @@ let data = [
 ]  
 
 export default function HomePage(props) {
-  const [playlist, setPlaylist] = useState(data)
+  const [playlist, setPlaylist] = useState([])
   
 
-
+  useEffect(() => {
+    fetchData()
+  }, [])
+  
+  const fetchData = async () => {
+    const res = await getAllPlaylist()
+    console.log(res)
+    setPlaylist(res)
+  }
   
   const filterByCategory = (category) => {
-    const filtered = playlist.filter((cat) => cat.category === category)
+    const filtered = playlist.filter((cat) => cat.category[0] === category)
     return filtered
   }
   
@@ -52,7 +60,7 @@ export default function HomePage(props) {
       </div>
       <h2>Videos</h2> <Link to="/categories/Videos">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Videos").map((playlist) => {
+      {filterByCategory("QWERRTYUIPO").map((playlist) => {
         return (
           <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )

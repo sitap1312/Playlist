@@ -39,7 +39,7 @@ export default function ViewPage(props) {
   }
   const handleWatchComplete = ({ played }) => {
     // console.log(played)
-    if (played >= 0.95) {
+    if (played >= 0.99) {
       console.log("Done!")
       toNextTrack()
     } 
