@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import ReactPlayer from 'react-player'
 import { useState } from "react"
 import AllComments from '../AllComments/AllComments';
-export default function ViewPage() {
+export default function ViewPage(props) {
   const data = [
     "https://soundcloud.com/thekidlaroi/stay",
     "https://soundcloud.com/thekidlaroi/not-sober-feat-polo-g-stunna",
@@ -45,7 +45,7 @@ export default function ViewPage() {
     } 
   }
     return (
-        <Layout>
+        <Layout user={props.user} setUser={props.setUser}>
           <h1>PLAYLIST NAME</h1>
           {/* <img src="https://wallpaperaccess.com/full/39608.jpg" width='500px' height="500px" /> */}
         <h3>SHAHROZE</h3>
