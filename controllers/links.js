@@ -33,7 +33,6 @@ export const createLink = async (req, res) => {
     const newLink = new Link(req.body);
     const playlist = await Playlist.findById(newLink.playlistId)
     console.log(playlist)
-    playlist.links = newLink._id
     await newLink.save();
     playlist.links.push(newLink._id)
     await playlist.save()
