@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from "../../components/Layout/Layout";
 import ReactPlayer from 'react-player'
 import { useState } from "react"
-import AllComments from '../AllComments/AllComments';
+import NewComment from '../FormComment/NewComment';
 export default function ViewPage(props) {
   const data = [
     "https://soundcloud.com/thekidlaroi/stay",
@@ -62,7 +62,7 @@ export default function ViewPage(props) {
           <div>
           <h3>Playlist Items</h3>
           <div>{playlistItems}</div>
-          <AllComments />
+          <NewComment user={props.user} setUser={props.setUser}/>
           </div>
         </Layout>
   )
