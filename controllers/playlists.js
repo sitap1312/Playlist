@@ -28,40 +28,22 @@ export const getPlaylist = async (req, res) => {
 };
 
 //Create New Playlist
-export const createPlaylist = async (req,res) => {
+export const createPlaylist = async (req, res) => {
   try {
-      let {title, description, imgURL, category, userId} = req.body
-      let newPost = {
-          title, 
-          description,
-          imgURL,
-          category,
-          userId,
-      }
-      const post = await Playlist.create(newPost)
-      await User.findByIdAndUpdate({_id: post.user_id}, {$push: {links: playlist._id}})
-      return res.status(200).json(post)
 
-    let playList = new Playlist(req.body)
-    let { userId } = req.params
-    console.log(playList)
-      // let newPlaylist = {
-      //     title, 
-      //     imgURL,
-      //   description,
-      //   category,
-      //     userId
-      // }
-      // playlist.userId = req.user._id
-      // const playlist = new Playlist(newPlaylist)
-      // await playList.save()
-      // await User.findByIdAndUpdate({_id: userId}, {$push: {playlist: playlist._id}})
-      res.status(201).json(playList)
+    const playlist = new Playlist(req.body);
+    const user = await User.findById(req.user);
 
-  } catch(err) {
-    return res.status(500).json({ error: err.message })
+    console.log(user)
+    playlist.userId = user._id;
+    await playlist.save();
+    user.playlist.push(playlist._id);
+    await user.save();
+    res.status(201).json(playlist);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
-}
+};
 
 //Update Playlist
 export const updatePlaylist = async (req, res) => {

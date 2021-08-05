@@ -11,6 +11,16 @@ export const createPlaylist = async (input) => {
     throw error
   }
 }
+
+export const getAllPlaylist = async () => {
+  try {
+    const res = await api.get("/playlist")
+    return res.data
+  } catch (e) {
+    throw e
+  }
+}
+
 export const getPlaylist = async (id) => {
   try {
     const res = await api.get(`/playlist/${id}`);

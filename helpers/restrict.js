@@ -1,17 +1,19 @@
 import jwt from "jsonwebtoken";
-const TOKEN_KEY = process.env.TOKEN_KEY || "12345689";
+const TOKEN_KEY = process.env.TOKEN_KEY || "123456789";
 
 const restrict = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    if (jwt.verify(token, TOKEN_KEY)) {
+    let user = jwt.verify(token, TOKEN_KEY);
+    if (user) {
+      console.log(user)
+      req.user = user.id;
       next();
     }
   } catch (e) {
-    console.log(e.message)
-    res.status(403).json({ error: "Unauthroized" })
-  };
+    console.log(e.message);
+    res.status(403).json({ error: "Unauthorized" });
+  }
 };
 
-
-export default restrict
+export default restrict;

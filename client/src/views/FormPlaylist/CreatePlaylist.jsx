@@ -3,17 +3,22 @@ import Layout from "../../components/Layout/Layout";
 import { createPlaylist } from "../../services/playlists";
 
 import CreateLink from "../FormLink/CreateLink";
+import { useHistory } from "react-router";
+
+let defaultInput = {
+  title: "",
+  imgURL: "",
+  description: "",
+  category: "",
+}
 
 export default function CreatePlaylist(props) {
-    let id = (props.user.id)
-    let defaultInput = {
-        title: "",
-        imgURL: "",
-        description: "",
-        category: "",
-        userId: id,
-    }
-    const [input, setInput] = useState(defaultInput)
+  const [category, setCategory] = useState("Select a category below")
+  const history = useHistory()
+  const [input, setInput] = useState(defaultInput)
+
+  
+
 
     function handleChange(event) {
         let {name, value} = event.target
@@ -21,13 +26,14 @@ export default function CreatePlaylist(props) {
             ...prevState,
             [name]: value,
         }))
+      setCategory(event.target.value)
     }
     async function handleSubmit(event) {
         event.preventDefault()
-        await createPlaylist(input)
-      // console.log(input)
 
-        history.push("/")
+      await createPlaylist(input)
+      history.push(`/:id`)
+
     }
   
     return (
@@ -50,12 +56,16 @@ export default function CreatePlaylist(props) {
                 <br />
                 <label>Category</label>
                 <br />      
-                <input type="text" name="category" value={input.category} onChange={handleChange} />
+                <select type="text" name="category" value={input.category} onChange={handleChange}>
+                  <option value="Music">Music</option>
+                  <option value="Video">Video</option>
+                  <option value="Gaming">Gaming</option>
+                  <option value="Education">Education</option>
+                  <option value="Sport">Sport</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Family">Family</option>
+                </select>
                 <br />
-                {/* <label>{props.user.id}</label>
-                <br />      
-                <input type="text" name="userId" value={props.user.id} onChange={handleChange} />
-                <br /> */}
                 <button type="submit">Create Playlist</button>
         </form>
         <div>
