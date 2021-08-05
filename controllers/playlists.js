@@ -20,7 +20,7 @@ export const getPlaylist = async (req, res) => {
     let { id } = req.params;
     const playlist = await Playlist.findById(id);
     if (playlist) {
-      res.send(playlists);
+      res.send(playlist);
     }
   } catch (e) {
     res.status(500).json({ error: "Error displying Playlist" });

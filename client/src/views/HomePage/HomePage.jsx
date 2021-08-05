@@ -33,7 +33,7 @@ export default function HomePage(props) {
       <div className="discoverPlaylist">
       {playlist.map((playlist) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -41,7 +41,7 @@ export default function HomePage(props) {
       <div className="musicPlaylist">
       {filterByCategory("Music").map((playlist) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -49,7 +49,7 @@ export default function HomePage(props) {
       <div className="videoPlaylist">
       {filterByCategory("Video").map((playlist) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -57,7 +57,7 @@ export default function HomePage(props) {
       <div className="videoPlaylist">
       {filterByCategory("Gaming").map((playlist) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -65,7 +65,7 @@ export default function HomePage(props) {
       <div className="videoPlaylist">
       {filterByCategory("Education").map((playlist) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -73,7 +73,7 @@ export default function HomePage(props) {
       <div className="videoPlaylist">
       {filterByCategory("Sports").map((playlist) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -81,7 +81,7 @@ export default function HomePage(props) {
       <div className="videoPlaylist">
       {filterByCategory("Entertainment").map((playlist) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
@@ -89,7 +89,7 @@ export default function HomePage(props) {
       <div className="videoPlaylist">
       {filterByCategory("Family").map((playlist) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
