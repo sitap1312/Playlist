@@ -1,9 +1,10 @@
-import React from 'react'
+import api from "./apiConfig";
 
-export default function links() {
-  return (
-    <div>
-      
-    </div>
-  )
+const createLink = (input) => {
+  try {
+    const res = await api.post("/link", input)
+    return res.data
+  } catch (e) {
+    throw e
+  }
 }

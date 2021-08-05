@@ -1,53 +1,71 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
 import ReactPlayer from 'react-player'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import NewComment from '../FormComment/NewComment';
+import { getPlaylist } from '../../services/playlists';
+import { useParams } from 'react-router';
+
 export default function ViewPage(props) {
-  const data = [
-    "https://soundcloud.com/thekidlaroi/stay",
-    "https://soundcloud.com/thekidlaroi/not-sober-feat-polo-g-stunna",
-    "https://www.youtube.com/watch?v=RVPeTSUzZ9I",
-    "https://soundcloud.com/drokenji/drokenji-since-december-prod-census-cv?in=soundcloud-hustle/sets/the-lookout-tomorrows-rap-hits",
-    "https://www.youtube.com/watch?v=Zj35vRgeXLs&t=1s",
-  ]
-  const playlistItems = data.map((link, index) =>
-  <div key={index}> 
-      <h3>{index}. {link}</h3>
-  </div>
-  );
-  const [currentVideo, setCurrentVideo] = useState(data[0])
-  const [trackIndex, setTrackIndex] = useState(0);
-  const toPrevTrack = () => {
-    if (trackIndex - 1 < 0) {
-      setTrackIndex(data.length - 1);
-    } else {
-      setTrackIndex(trackIndex - 1);
+  const [playlist, setPlaylist] = useState({})
+  const { id } = useParams()
+  // const data = [
+  //   "https://soundcloud.com/thekidlaroi/stay",
+  //   "https://soundcloud.com/thekidlaroi/not-sober-feat-polo-g-stunna",
+  //   "https://www.youtube.com/watch?v=RVPeTSUzZ9I",
+  //   "https://soundcloud.com/drokenji/drokenji-since-december-prod-census-cv?in=soundcloud-hustle/sets/the-lookout-tomorrows-rap-hits",
+  //   "https://www.youtube.com/watch?v=Zj35vRgeXLs&t=1s",
+  // ]
+
+  useEffect(() => {
+  fetchPlaylist()
+  }, [])
+  
+  const fetchPlaylist = () => {
+    const res = getPlaylist(id)
+    console.log(id)
+    console.log(res)
+    if (res) {
+      setPlaylist(res)
     }
-    fetchVideo()
   }
-  const toNextTrack = () => {
-    if (trackIndex < data.length - 1) {
-      setTrackIndex(trackIndex + 1);
-    } else {
-      setTrackIndex(0);
-    }
-    fetchVideo()
-  }
-  const fetchVideo = () => {
-    setCurrentVideo(data[trackIndex])
-  }
-  const handleWatchComplete = ({ played }) => {
-    // console.log(played)
-    if (played >= 0.99) {
-      console.log("Done!")
-      toNextTrack()
-    } 
-  }
+
+  // const playlistItems = playlist.map((link, index) =>
+  // <div key={index}> 
+  //     <h3>{index}. {link}</h3>
+  // </div>
+  // );
+  // const [currentVideo, setCurrentVideo] = useState(playlist[0])
+  // const [trackIndex, setTrackIndex] = useState(0);
+  // const toPrevTrack = () => {
+  //   if (trackIndex - 1 < 0) {
+  //     setTrackIndex(playlist.length - 1);
+  //   } else {
+  //     setTrackIndex(trackIndex - 1);
+  //   }
+  //   fetchVideo()
+  // }
+  // const toNextTrack = () => {
+  //   if (trackIndex < playlist.length - 1) {
+  //     setTrackIndex(trackIndex + 1);
+  //   } else {
+  //     setTrackIndex(0);
+  //   }
+  //   fetchVideo()
+  // }
+  // const fetchVideo = () => {
+  //   setCurrentVideo(playlist[trackIndex])
+  // }
+  // const handleWatchComplete = ({ played }) => {
+  //   // console.log(played)
+  //   if (played >= 0.99) {
+  //     console.log("Done!")
+  //     toNextTrack()
+  //   } 
+  // }
     return (
         <Layout user={props.user} setUser={props.setUser}>
-          <h1>PLAYLIST NAME</h1>
-          {/* <img src="https://wallpaperaccess.com/full/39608.jpg" width='500px' height="500px" /> */}
+          {/* <h1>PLAYLIST NAME</h1>
         <h3>SHAHROZE</h3>
             <ReactPlayer
               className='react-player'
@@ -63,7 +81,8 @@ export default function ViewPage(props) {
           <h3>Playlist Items</h3>
           <div>{playlistItems}</div>
           <NewComment user={props.user} setUser={props.setUser}/>
-          </div>
+          </div> */}
+        {playlist.description}
         </Layout>
   )
 }

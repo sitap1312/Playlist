@@ -32,7 +32,8 @@ export default function CreatePlaylist(props) {
         event.preventDefault()
 
       await createPlaylist(input)
-      history.push(`/:id`)
+      // history.push(`/:id`)
+      console.log(input._id)
 
     }
   
