@@ -1,16 +1,16 @@
 import { useState } from "react"
-// import { createLink } from "../../services/links";
-import { useHistory } from "react-router-dom";
+import { createLink } from "../../services/links";
 
 export default function CreateLink(props) {
-    let history = useHistory()
+  const [song, setSong] = useState("")
+  const id = props.newlist._id
     let defaultInput = {
         title: "",
         artist: "",
         linkURL: "",
-        playlist_id: "",
+      playlistId: "",
     }
-    const [input, setInput] = useState(defaultInput)
+  const [input, setInput] = useState(defaultInput)
 
     function handleChange(event) {
         let {name, value} = event.target
@@ -20,16 +20,26 @@ export default function CreateLink(props) {
         }))
     }
     async function handleSubmit(event) {
-        event.preventDefault()
-        // await createLink(input)
-        history.push("/")
+      event.preventDefault()
+      console.log(id)
+      console.log(defaultInput)
+      console.log(input)
+      const fields = {
+        title: input.title,
+        artist: input.artist,
+        linkURL: input.linkURL,
+        playlistId: id,
+      };
+        let song = await createLink(fields)
+        setSong(song)
     }
   
     return (
-        <div>
+      <div>
             <h1>Add a Link</h1>
+            <h1>{props.newlist.title}</h1>
             <form onSubmit={handleSubmit}>
-                <label>URL Title</label>
+                <label>Link Title</label>
                 <br />
                 <input type="text" name="title" value={input.title} onChange={handleChange}  />
                 <br />
@@ -39,12 +49,17 @@ export default function CreateLink(props) {
                 <br />
                 <label>LinkURL</label>
                 <br />
-                <input type="text" name="imgURL" value={input.imgURL} onChange={handleChange}  />                
+                <input type="text" name="linkURL" value={input.imgURL} onChange={handleChange}  />                
                 <br />
                 <button type="submit">Add Link</button>
         </form>
         <div>
-          {/* {props.playlists.map((playlist) => {
+          {/* show the song that was just added */}
+          <h1>Title: {song.title}</h1>
+          <h1>Artist: {song.artist}</h1>
+          <h1>URL: {song.linkURL}</h1>
+          {/* show full list of all songs added to the playlist */}
+          {/* {props.newlist.link.map((playlist) => {
             return (
               <p>{playlist.link.title}</p>
             )

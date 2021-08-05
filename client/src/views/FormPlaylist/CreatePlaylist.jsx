@@ -1,24 +1,21 @@
 import { useState } from "react"
 import Layout from "../../components/Layout/Layout";
 import { createPlaylist } from "../../services/playlists";
-
 import CreateLink from "../FormLink/CreateLink";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 
 let defaultInput = {
   title: "",
   imgURL: "",
   description: "",
-  category: "",
+  category: "Music",
 }
 
 export default function CreatePlaylist(props) {
   const [category, setCategory] = useState("Select a category below")
-  const history = useHistory()
+  // const history = useHistory()
   const [input, setInput] = useState(defaultInput)
-
-  
-
+  const [newlist, setNewList] = useState({})
 
     function handleChange(event) {
         let {name, value} = event.target
@@ -30,15 +27,26 @@ export default function CreatePlaylist(props) {
     }
     async function handleSubmit(event) {
         event.preventDefault()
-
-      await createPlaylist(input)
-      history.push(`/:id`)
-
+      let newlist = await createPlaylist(input)
+      setNewList(newlist)
+      // history.push(`/`)
+      myFunction()
+    }
+  
+    function myFunction() {
+      var x = document.getElementById("myDIV");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
     }
   
     return (
       <Layout user={props.user} setUser={props.setUser}>
-
+        <br />
+        <button  onClick={myFunction}>Hide/Show Form</button>
+            <div id="myDIV">
             <h1>Create Playlist</h1>
             <form onSubmit={handleSubmit}>
                 <label>Playlist Title</label>
@@ -52,7 +60,6 @@ export default function CreatePlaylist(props) {
                 <label>Description</label>
                 <br />
                 <input type="text" name="description" value={input.description} onChange={handleChange}  />      
-
                 <br />
                 <label>Category</label>
                 <br />      
@@ -67,13 +74,14 @@ export default function CreatePlaylist(props) {
                 </select>
                 <br />
                 <button type="submit">Create Playlist</button>
-        </form>
+          </form>
+        </div>
         <div>
           <h1>{input.title}</h1>
           <img src={input.imgURL} alt={input.title} />
           <p>{props.username}</p>
         </div>
-        <CreateLink/>
+        <CreateLink newlist={newlist} />
         </Layout>
     )
 } 
