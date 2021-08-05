@@ -18,7 +18,7 @@ export const getAllPlaylists = async (req, res) => {
 export const getPlaylist = async (req, res) => {
   try {
     let { id } = req.params;
-    const playlist = await Playlist.findById(id);
+    const playlist = await Playlist.findById(id).populate("links");
     if (playlist) {
       res.send(playlist);
     }

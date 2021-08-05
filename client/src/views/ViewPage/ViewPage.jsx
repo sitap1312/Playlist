@@ -21,8 +21,8 @@ export default function ViewPage(props) {
   fetchPlaylist()
   }, [])
   
-  const fetchPlaylist = () => {
-    const res = getPlaylist(id)
+  const fetchPlaylist = async () => {
+    const res = await getPlaylist(id)
     console.log(id)
     console.log(res)
     if (res) {
@@ -82,7 +82,13 @@ export default function ViewPage(props) {
           <div>{playlistItems}</div>
           <NewComment user={props.user} setUser={props.setUser}/>
           </div> */}
-        {playlist.description}
+        {playlist?.title}
+        {playlist?.links?.map((link) => {
+          return (
+            <p>{link.linkURL}</p>
+          )
+          
+        })}
         </Layout>
   )
 }
