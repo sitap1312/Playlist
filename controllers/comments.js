@@ -1,12 +1,14 @@
-import db from '../db/connection.js';
+import db from "../db/connection.js";
 import Comment from "../models/comment.js";
+import Playlist from "../models/playlist.js";
+import User from "../models/user.js";
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 //Get all comments
 export const getAllComments = async (req, res) => {
   try {
-    const comments = await Comment.find({});
+    const comments = await Comment.find({}).populate("userId");
     res.send(comments);
   } catch (err) {
     res.status(500).json({ error: "Error displaying all comments" });
@@ -17,7 +19,7 @@ export const getAllComments = async (req, res) => {
 export const getComment = async (req, res) => {
   try {
     const { id } = req.params;
-    const comment = await Comment.findById(id);
+    const comment = await Comment.findById(id).populate("userId");
     if (comment) {
       res.send(comment);
     }
@@ -26,14 +28,17 @@ export const getComment = async (req, res) => {
   }
 };
 
-
 //Create a New comment
 export const createComment = async (req, res) => {
   try {
-
     const newComment = new Comment(req.body);
     const playlist = await Playlist.findById(newComment.playlistId);
     const user = await User.findById(req.user);
+
+    console.log(newComment);
+    console.log(playlist);
+    console.log(user);
+
     await newComment.save();
     playlist.comments.push(newComment._id);
     user.comments.push(newComment._id);
@@ -45,12 +50,13 @@ export const createComment = async (req, res) => {
   }
 };
 
-
 //Update a comment
 export const updateComment = async (req, res) => {
   try {
     let { id } = req.params;
-    const updatedComment = await Comment.findByIdAndUpdate(id, req.body, { new: true });
+    const updatedComment = await Comment.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     res.status(200).json(updatedComment);
   } catch (err) {
     res.status(500).json({ error: "Error updating comment" });
@@ -67,6 +73,3 @@ export const deleteComment = async (req, res) => {
     res.status(500).json({ error: "Error deleting comment" });
   }
 };
-
-
-

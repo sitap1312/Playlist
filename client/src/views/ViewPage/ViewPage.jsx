@@ -3,17 +3,19 @@ import Layout from "../../components/Layout/Layout";
 import ReactPlayer from 'react-player'
 import { useState, useEffect } from "react"
 import NewComment from '../FormComment/NewComment';
-import { getPlaylist } from '../../services/playlists';
+import { getPlaylist } from '../../services/playlists.js';
 import { useParams } from 'react-router';
 
 export default function ViewPage(props) {
-  const [playlist, setPlaylist] = useState({})
+  // const [comments, setComments] = useState([]);
+  const [playlist, setPlaylist] = useState({});
   const [loading, setLoading] = useState(false);
-  const { id } = useParams()
+  const { id } = useParams();
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     fetchPlaylist()
-  }, [])
+  }, [toggle]);
 
   useEffect(() => {
     setCurrentVideo(newArray[trackIndex]); // This is be executed when `loading` state changes
@@ -114,7 +116,22 @@ export default function ViewPage(props) {
           })}
           </div>
           <br />
-          <NewComment user={props.user} setUser={props.setUser}/>
+          <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+          <br />
+
+          <div>
+            {playlist?.comments?.map((comment) => {
+              return (
+                <div>
+                  {comment.userId?.username}
+                  {comment.content}
+                  <button>DELETE</button>
+                  <button>EDIT</button>
+                </div>
+              )
+            })}
+          </div>
+          
           </div>
         </Layout>
   )
