@@ -45,3 +45,28 @@ export const signOut = () => {
     throw e
   }
 }
+
+// getUser
+export const getUser = async (req,res) => {
+  try {
+      const user = await User.findById(req.params.id).populate("playlist")
+      if(user) {
+          return res.status(200).json(user)
+      } else {
+          return res.status(404).send("User Not Found")
+      }
+  } catch(err) {
+      return res.status(500).json({error: err.message})
+  }
+}
+
+// updating the user info
+export const createUser = async (req, res) => {
+  try {
+    const user = new User(req.body);
+    await user.save();
+    res.status(201).json(user);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+};

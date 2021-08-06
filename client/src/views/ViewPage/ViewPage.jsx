@@ -60,7 +60,7 @@ export default function ViewPage(props) {
     } else {
       setTrackIndex(0);
     }
-    console.log("back")
+    // console.log("back")
   }
   const toNextTrack = () => {
     if (trackIndex < newArray.length - 1) {
@@ -68,17 +68,17 @@ export default function ViewPage(props) {
     } else {
       setTrackIndex(0);
     }
-    console.log("forward")
+    // console.log("forward")
   }
   const fetchVideo = () => {
       setCurrentVideo(newArray[trackIndex])
-      console.log(newArray[trackIndex])
-      console.log(trackIndex)
+      // console.log(newArray[trackIndex])
+      // console.log(trackIndex)
   }
   const handleWatchComplete = ({ played }) => {
     // console.log(played)
     if (played >= 0.98) {
-      console.log("Done!")
+      // console.log("Done!")
       toNextTrack()
     } 
   }
@@ -86,7 +86,7 @@ export default function ViewPage(props) {
   const handlePlay = (index) => {
     setTrackIndex(index);
     // console.log(index)
-    console.log("selected")
+    // console.log("selected")
   }
 
     return (
@@ -94,6 +94,7 @@ export default function ViewPage(props) {
           <h1>{playlist?.title}</h1>
           <h3>{playlist.userId?.username}</h3>
           <p>{playlist?.description}</p>
+          <h3>{playlist?.category}</h3>
             <ReactPlayer
               className='react-player'
               controls={true}
@@ -122,3 +123,4 @@ export default function ViewPage(props) {
 }
 // for the yellow warning for dev tools: https://stackoverflow.com/questions/61339968/devtools-failed-to-load-sourcemap-could-not-load-content-for-chrome-extension
 // REACTPLAYER can take in an array of youtube videos but cannot take in an array of soundcloud songs
+// how to pass index prop through onClick = https://www.codegrepper.com/code-examples/javascript/how+to+pass+index+onClick+function+react+button

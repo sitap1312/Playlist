@@ -65,10 +65,10 @@ export default function CreatePlaylist(props) {
                 <br />      
                 <select type="text" name="category" value={input.category} onChange={handleChange}>
                   <option value="Music">Music</option>
-                  <option value="Video">Video</option>
+                  <option value="Videos">Video</option>
                   <option value="Gaming">Gaming</option>
                   <option value="Education">Education</option>
-                  <option value="Sport">Sport</option>
+                  <option value="Sports">Sport</option>
                   <option value="Entertainment">Entertainment</option>
                   <option value="Family">Family</option>
                 </select>

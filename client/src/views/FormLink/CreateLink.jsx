@@ -43,7 +43,7 @@ export default function CreateLink(props) {
                 <br />
                 <input type="text" name="title" value={input.title} onChange={handleChange}  />
                 <br />
-                <label>Artist</label>
+                <label>Artist/Author/Creator</label>
                 <br />
                 <input type="text" name="artist" value={input.artist} onChange={handleChange}  />      
                 <br />

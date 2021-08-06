@@ -1,30 +1,24 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
-// import { getUSer, updateUser } from "../../services/users";
+import { getUser, updateUser } from "../../services/users";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-export default function EditUser() {
+export default function EditUser(props) {
   let history = useHistory()
   const { id } = useParams();
-  const [user, setUser] = useState({})
+  const [current, setCurrent] = useState({})
 
-  const data = {
-      username: "",
-      email: "",
-      password: "",
-  }
-  
   useEffect(() => {
     const fetchUser = async () => {
-      // const user = await getUser(id);
-      setUser(user);
+      const user = await getUser(id);
+      setCurrent(user);
       setFormData(user)
     }
     fetchUser();
   }, [id])
 
-  const [formData, setFormData] = useState(data);
+  const [formData, setFormData] = useState(current);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -37,12 +31,12 @@ export default function EditUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData)
-    // await updateUser(id, formData)
+    await updateUser(id, formData)
     history.push(`/`)
   }
 
   return (
-      <Layout>
+      <Layout user={props.user} setUser={props.setUser}>
       Edit User
       <form onSubmit={handleSubmit}>
         <label>Username</label>
@@ -68,7 +62,7 @@ export default function EditUser() {
         <input
           id="password"
           type="password"
-          value={formData.password}
+          value={formData.password_digest}
           onChange={handleInput}
         />
         <br />
