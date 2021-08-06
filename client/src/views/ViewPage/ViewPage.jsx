@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import NewComment from '../FormComment/NewComment';
 import { getPlaylist } from '../../services/playlists.js';
 import { useParams } from 'react-router';
+import { deleteComment } from '../../services/comments';
 
 export default function ViewPage(props) {
   // const [comments, setComments] = useState([]);
@@ -89,6 +90,12 @@ export default function ViewPage(props) {
     // console.log("selected")
   }
 
+  const handleDelete = async (id) => {
+    // console.log(id)
+    await deleteComment(id);
+    fetchPlaylist()
+    };
+
     return (
         <Layout user={props.user} setUser={props.setUser}>
           <h1>{playlist?.title}</h1>
@@ -120,12 +127,12 @@ export default function ViewPage(props) {
           <br />
 
           <div>
-            {playlist?.comments?.map((comment) => {
+            {playlist?.comments?.map((comment, index) => {
               return (
-                <div>
+                <div key={index}>
                   {comment.userId?.username}
                   {comment.content}
-                  <button>DELETE</button>
+                  <button onClick={() => handleDelete(comment._id)}>DELETE</button>
                   <button>EDIT</button>
                 </div>
               )

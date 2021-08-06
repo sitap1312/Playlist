@@ -17,7 +17,7 @@ export default function NewComment(props) {
   }, [props]);
 
   // console.log(props.playlist._id);
-  console.log(play);
+  // console.log(play);
 
   let defaultInput = {
     content: "",

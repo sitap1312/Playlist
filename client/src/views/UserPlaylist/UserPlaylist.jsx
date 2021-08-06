@@ -20,7 +20,7 @@ export default function UserPlaylist(props) {
   // console.log(user)
 
   const handleDelete = async (id) => {
-    console.log(id)
+    // console.log(id)
     await deletePlaylist(id);
     fetchUser()
     };
