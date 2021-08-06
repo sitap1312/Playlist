@@ -9,16 +9,7 @@ import { useParams } from 'react-router';
 export default function ViewPage(props) {
   const [playlist, setPlaylist] = useState({})
   const [loading, setLoading] = useState(false);
-  const [links, setLinks] = useState([])
   const { id } = useParams()
-  const data = [
-    "https://soundcloud.com/thekidlaroi/stay",
-    "https://soundcloud.com/thekidlaroi/not-sober-feat-polo-g-stunna",
-    "https://www.youtube.com/watch?v=RVPeTSUzZ9I",
-    "https://soundcloud.com/drokenji/drokenji-since-december-prod-census-cv?in=soundcloud-hustle/sets/the-lookout-tomorrows-rap-hits",
-    "https://www.youtube.com/watch?v=Zj35vRgeXLs&t=1s",
-  ]
-  const data2 = playlist.videoURLs
 
   useEffect(() => {
     fetchPlaylist()
@@ -40,10 +31,21 @@ export default function ViewPage(props) {
   }
 
   let newArray = []
-  const allURLs = playlist?.links?.map((link) => {
-    // return link.linkURL
+  const allURLs = playlist?.links?.map((link, index) => {
+    <div key={index}></div>
     newArray.push(link.linkURL)
-  }) 
+    return newArray
+  })
+
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  
 
   const [trackIndex, setTrackIndex] = useState(0);
   const [currentVideo, setCurrentVideo] = useState([])
@@ -79,7 +81,6 @@ export default function ViewPage(props) {
 
     return (
         <Layout user={props.user} setUser={props.setUser}>
-          {/* <h1>PLAYLIST NAME</h1> */}
           <h1>{playlist?.title}</h1>
           <h3>{playlist.userId?.username}</h3>
           <p>{playlist?.description}</p>
@@ -95,10 +96,14 @@ export default function ViewPage(props) {
         <button onClick={toNextTrack}>NEXT</button>
           <div>
           <h3>Playlist Items</h3>
-          {playlist?.links?.map((link) => {
+          <button  onClick={myFunction}>Hide/Show List</button>
+          <div id="myDIV">
+          {playlist?.links?.map((link, index) => {
           return (
-            <p>{link.title}---{link.artist}---{link.linkURL}</p>
-          )})}
+            <p key={index}>{link.title}---{link.artist}---{link.linkURL}</p>
+            )
+          })}
+          </div>
           <br />
           <NewComment user={props.user} setUser={props.setUser}/>
           </div>
