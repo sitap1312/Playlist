@@ -47,7 +47,7 @@ export const signOut = () => {
 }
 
 export const getUser = async (id) => {
-  const res = await api.get(`/user/${id}`)
+  const res = await api.get(`/get-user/${id}`)
   return res.data
 }
 

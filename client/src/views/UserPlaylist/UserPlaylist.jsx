@@ -1,39 +1,38 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
 import { useParams } from 'react-router';
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { getUser } from '../../services/users';
 
-export default function UserPlaylist() {
-  const [playlist, setPlaylist] = useState(data)
-  const { id } = useParams()
+export default function UserPlaylist(props) {
+  const [user, setUser] = useState({})
+
 
   useEffect(() => {
-    fetchData()
+    fetchUser()
   }, [])
-  
-  const fetchData = async () => {
-    const res = await getAllPlaylist()
-    console.log(res)
-    setPlaylist(res)
-  }
 
-  // need to filter by userId using the current user logged on from the props or through back end
-  const filterByUser = (category) => {
-    const filtered = playlist.filter((cat) => cat.userId === category)
-    return filtered
+  const fetchUser = async () => {
+    const user = await getUser(props.user?.id)
+    setUser(user)
   }
-  
-  // we need to add the delete playlists function on this page as it is the user's own playlists
+  console.log(user)
+
   return (
-    <Layout>
-    <h2>{id}</h2>
+    <Layout user={props.user} setUser={props.setUser}>
+      <h2>{props.user?.username}'s Playlists</h2>
       <div className="categoryPlaylist">
-      {filterByUser(id).map((playlist) => {
-        return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
-        )
-      })}
+        {user?.playlist?.map((playlist, index) => {
+          return (
+            <>
+              <h4 key={index}>{playlist.title}</h4>
+              <img src={playlist.imgURL} alt={playlist.title} />
+              <p>{props.user.username}</p>
+              <button>Delete playlist</button>
+            </>
+          )
+        })}
       </div>
     </Layout>
   )

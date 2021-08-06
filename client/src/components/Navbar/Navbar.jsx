@@ -13,10 +13,11 @@ export default function Nav(props) {
       <Link to="/">PLAYLISTIFY</Link>
       {props.user ? (
         <>
-          <div>{props.user?.username}</div>
+          <Link to="/my-account">Hi!, {props.user?.username}</Link>
           <Link to="/create-playlist">CREATE PLAYLIST</Link>
           <button onClick={handleSignOut}>Sign Out</button>
           <Link to="/edit-user">Edit account</Link>
+
         </>
       ) : (
         <div>
