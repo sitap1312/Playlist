@@ -22,8 +22,6 @@ export default function ViewPage(props) {
 
   async function fetchPlaylist () {
     let res = await getPlaylist(id)
-    // console.log(id)
-    // console.log(res)
     if (res) {
       setPlaylist(res)
       setLoading(true);

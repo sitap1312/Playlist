@@ -20,6 +20,6 @@ router.post("/change-password");
 router.put("/user/:id",restrict, updateUser);
 
 // delete user
-router.delete("/user/:id", deleteUser);
+router.delete("/user/:id",restrict, deleteUser);
 
 export default router;

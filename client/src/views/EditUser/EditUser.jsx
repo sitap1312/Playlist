@@ -3,22 +3,28 @@ import Layout from "../../components/Layout/Layout";
 import { getUser, updateUser } from "../../services/users";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { signOut, deleteUser } from '../../services/users';
 
 export default function EditUser(props) {
   let history = useHistory()
   const { id } = useParams();
   const [current, setCurrent] = useState({})
+  const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await getUser(id);
-      setCurrent(user);
-      setFormData(user)
-    }
-    fetchUser();
-  }, [id])
 
-  const [formData, setFormData] = useState(current);
+
+  // useEffect(() => {
+  //   editUser()
+  // }, [props.user?.id])
+
+
+
+  const defaultInput = {
+    username: "",
+    email: "",
+    password: "",
+  }
+  const [formData, setFormData] = useState(defaultInput);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -30,28 +36,43 @@ export default function EditUser(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
-    await updateUser(id, formData)
-    history.push(`/`)
+    setLoading(true)
+    await updateUser(props.user?.id,formData)
+    handleSignOut()
+    history.push(`/sign-in`)
+  }
+  const handleSignOut = () => {
+    signOut();
+    props.setUser(null);
+  };
+  const handleDelete = async () => {
+    await deleteUser(props.user?.id)
+    handleSignOut()
+    history.push("/")
   }
 
   return (
       <Layout user={props.user} setUser={props.setUser}>
       Edit User
+      <br/>
+      <button onClick={handleDelete}>Delete Account</button>
       <form onSubmit={handleSubmit}>
         <label>Username</label>
         <br />
         <input
-          id="username"
+          placeholder={props.user?.username}
+          name="username"
           type="text"
           value={formData.username}
           onChange={handleInput}
+          required={true}
         />
         <br />
         <label>Email</label>
         <br />
         <input
-          id="email"
+          placeholder={props.user?.email}
+          name="email"
           type="email"
           value={formData.email}
           onChange={handleInput}
@@ -60,7 +81,7 @@ export default function EditUser(props) {
         <label>Password</label>
         <br />
         <input
-          id="password"
+          name="password"
           type="password"
           value={formData.password_digest}
           onChange={handleInput}
