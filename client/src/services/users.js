@@ -61,12 +61,13 @@ export const getUser = async (req,res) => {
 }
 
 // updating the user info
-export const createUser = async (req, res) => {
+export const updateUser = async (req, res) => {
   try {
-    const user = new User(req.body);
-    await user.save();
-    res.status(201).json(user);
+    const { user_id } = req.params;
+    const { body } = req;
+    const updatedUser = await User.findByIdAndUpdate(user_id, body, { new: true })
+    res.send(updatedUser)
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(422).json({ error: e.message });
   }
 };
