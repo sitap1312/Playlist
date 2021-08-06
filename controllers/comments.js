@@ -1,5 +1,7 @@
 import db from '../db/connection.js';
 import Comment from "../models/comment.js";
+import Playlist from "../models/playlist.js";
+import User from "../models/user.js";
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
@@ -34,16 +36,18 @@ export const createComment = async (req, res) => {
     const playlist = await Playlist.findById(newComment.playlistId);
     const user = await User.findById(req.user);
 
+    console.log(newComment)
+    console.log(playlist)
     console.log(user)
-    comment.userId = user._id;
+
     await newComment.save();
     playlist.comments.push(newComment._id);
     user.comments.push(newComment._id);
     await playlist.save();
     await user.save();
-    res.status(201).json(playlist);
+    res.status(201).json(newComment);
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(400).json({ error: e.message });
   }
 };
 
