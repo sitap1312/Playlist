@@ -94,10 +94,23 @@ export const getUser = async (req,res) => {
 // updating the user info
 export const updateUser = async (req, res) => {
   try {
-    const { user_id } = req.user;
-    const { body } = req;
-    const updatedUser = await User.findByIdAndUpdate(user_id, body, { new: true })
-    res.send(updatedUser)
+    const  user_id  = req.user;
+    const { username, email, password } = req.body;
+    const password_digest = await bcrypt.hash(password, SALT_ROUNDS)
+    const info = {
+      username,
+      email,
+      password_digest,
+    };
+    const updatedUser = await User.findByIdAndUpdate(user_id, info, { new: true })
+    const payload = {
+      id: user_id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      exp: parseInt(exp.getTime() / 1000)
+    }
+    const token = jwt.sign(payload, TOKEN_KEY);
+    res.status(201).json({ token })
   } catch (e) {
     res.status(422).json({ error: e.message });
   }

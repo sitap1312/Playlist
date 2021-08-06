@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { signUp, signIn, verify, updateUser, deleteUser } from "../controllers/users.js";
+import restrict from "../helpers/restrict.js"
 
 const router = Router()
 
@@ -16,7 +17,7 @@ router.get("/verify", verify);
 router.post("/change-password");
 
 // edit user
-router.put("/user/:id", updateUser);
+router.put("/user/:id",restrict, updateUser);
 
 // delete user
 router.delete("/user/:id", deleteUser);
