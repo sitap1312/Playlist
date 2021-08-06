@@ -1,9 +1,9 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
-import { useParams } from 'react-router';
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getUser } from '../../services/users';
+import { deletePlaylist } from '../../services/playlists';
 
 export default function UserPlaylist(props) {
   const [user, setUser] = useState({})
@@ -17,7 +17,13 @@ export default function UserPlaylist(props) {
     const user = await getUser(props.user?.id)
     setUser(user)
   }
-  console.log(user)
+  // console.log(user)
+
+  const handleDelete = async (id) => {
+    console.log(id)
+    await deletePlaylist(id);
+    fetchUser()
+    };
 
   return (
     <Layout user={props.user} setUser={props.setUser}>
@@ -25,12 +31,14 @@ export default function UserPlaylist(props) {
       <div className="categoryPlaylist">
         {user?.playlist?.map((playlist, index) => {
           return (
-            <>
-              <h4 key={index}>{playlist.title}</h4>
+              <div key={index}>
+              <Link  to={`/preview/${playlist._id}`}>
+              <h4 >{playlist.title}</h4>
               <img src={playlist.imgURL} alt={playlist.title} />
               <p>{props.user.username}</p>
-              <button>Delete playlist</button>
-            </>
+              </Link>
+              <button onClick={() => handleDelete(playlist._id)}>Delete playlist</button>
+              </div>
           )
         })}
       </div>

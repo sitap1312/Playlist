@@ -111,7 +111,7 @@ export default function ViewPage(props) {
           <div id="myDIV">
           {playlist?.links?.map((link, index) => {
           return (
-            <div onClick={() => handlePlay(index)} key={index}>{link.title}---{link.artist}---{link.linkURL}</div>
+            <div key={index} onClick={() => handlePlay(index)} key={index}>{link.title}---{link.artist}---{link.linkURL}</div>
             )
           })}
           </div>
