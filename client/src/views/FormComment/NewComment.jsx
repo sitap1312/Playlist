@@ -27,8 +27,9 @@ export default function NewComment(props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <br />
+        <h4>{props?.user?.username}</h4>
         <label>Add Comment</label>
-        <h1>{props.user?.username}</h1>
         <br />
         <input type="text" name="content" value={input.content} onChange={handleChange} />
         <br />
