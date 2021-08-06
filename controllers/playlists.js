@@ -8,7 +8,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 export const getAllPlaylists = async (req, res) => {
   try {
     const playlists = await Playlist.find({});
-    res.send(playlists);
+    res.json(playlists);
   } catch (e) {
     res.status(500).json({ error: "Error Displaying all Playlist" });
   }
@@ -18,12 +18,12 @@ export const getAllPlaylists = async (req, res) => {
 export const getPlaylist = async (req, res) => {
   try {
     let { id } = req.params;
-    const playlist = await Playlist.findById(id);
+    const playlist = await Playlist.findById(id).populate("links").populate("userId");
     if (playlist) {
-      res.send(playlist);
+      res.json(playlist);
     }
   } catch (e) {
-    res.status(500).json({ error: "Error displying Playlist" });
+    res.status(500).json({ error: "Error displaying Playlist" });
   }
 };
 
@@ -37,7 +37,7 @@ export const createPlaylist = async (req, res) => {
     console.log(user)
     playlist.userId = user._id;
     await playlist.save();
-    user.playlist.push(playlist._id);
+    user.playlist.push(playlist);
     await user.save();
     res.status(201).json(playlist);
   } catch (e) {

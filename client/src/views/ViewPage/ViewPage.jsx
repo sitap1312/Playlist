@@ -1,9 +1,15 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
 import ReactPlayer from 'react-player'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import NewComment from '../FormComment/NewComment';
+import { getPlaylist } from '../../services/playlists';
+import { useParams } from 'react-router';
+
 export default function ViewPage(props) {
+  const [playlist, setPlaylist] = useState({})
+  const [links, setLinks] = useState([])
+  const { id } = useParams()
   const data = [
     "https://soundcloud.com/thekidlaroi/stay",
     "https://soundcloud.com/thekidlaroi/not-sober-feat-polo-g-stunna",
@@ -11,23 +17,37 @@ export default function ViewPage(props) {
     "https://soundcloud.com/drokenji/drokenji-since-december-prod-census-cv?in=soundcloud-hustle/sets/the-lookout-tomorrows-rap-hits",
     "https://www.youtube.com/watch?v=Zj35vRgeXLs&t=1s",
   ]
-  const playlistItems = data.map((link, index) =>
-  <div key={index}> 
-      <h3>{index}. {link}</h3>
-  </div>
-  );
-  const [currentVideo, setCurrentVideo] = useState(data[0])
+
+  useEffect(() => {
+  fetchPlaylist()
+  }, [])
+  
+  async function fetchPlaylist () {
+    let res = await getPlaylist(id)
+    // console.log(id)
+    // console.log(res)
+    if (res) {
+      setPlaylist(res)
+    }
+    setLinks(playlist.videoURLs)
+  }
+
+  useEffect(() => {
+    setCurrentVideo(links)
+  }, [])
+  
   const [trackIndex, setTrackIndex] = useState(0);
+  const [currentVideo, setCurrentVideo] = useState([])
   const toPrevTrack = () => {
     if (trackIndex - 1 < 0) {
-      setTrackIndex(data.length - 1);
+      setTrackIndex(playlist.length - 1);
     } else {
       setTrackIndex(trackIndex - 1);
     }
     fetchVideo()
   }
   const toNextTrack = () => {
-    if (trackIndex < data.length - 1) {
+    if (trackIndex < playlist.length - 1) {
       setTrackIndex(trackIndex + 1);
     } else {
       setTrackIndex(0);
@@ -35,24 +55,28 @@ export default function ViewPage(props) {
     fetchVideo()
   }
   const fetchVideo = () => {
-    setCurrentVideo(data[trackIndex])
+    setCurrentVideo(playlist[trackIndex])
   }
   const handleWatchComplete = ({ played }) => {
     // console.log(played)
-    if (played >= 0.99) {
+    if (played >= 0.98) {
       console.log("Done!")
       toNextTrack()
     } 
   }
+
+
+
     return (
         <Layout user={props.user} setUser={props.setUser}>
-          <h1>PLAYLIST NAME</h1>
-          {/* <img src="https://wallpaperaccess.com/full/39608.jpg" width='500px' height="500px" /> */}
-        <h3>SHAHROZE</h3>
+          {/* <h1>PLAYLIST NAME</h1> */}
+          <h1>{playlist?.title}</h1>
+          <h3>{playlist.userId?.username}</h3>
+          <p>{playlist?.description}</p>
             <ReactPlayer
               className='react-player'
               controls={true}
-              playing url={currentVideo}
+              url={currentVideo}
               onProgress={handleWatchComplete}
               width='100%'
               height='50vh'
@@ -61,8 +85,12 @@ export default function ViewPage(props) {
         <button onClick={toNextTrack}>NEXT</button>
           <div>
           <h3>Playlist Items</h3>
-          <div>{playlistItems}</div>
-          <NewComment user={props.user} setUser={props.setUser}/>
+          {playlist?.links?.map((link) => {
+          return (
+            <p>{link.title}---{link.artist}---{link.linkURL}</p>
+          )})}
+          <br />
+          {/* <NewComment user={props.user} setUser={props.setUser}/> */}
           </div>
         </Layout>
   )
