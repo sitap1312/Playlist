@@ -26,6 +26,7 @@ export const getComment = async (req, res) => {
   }
 };
 
+
 //Create a New comment
 export const createComment = async (req, res) => {
   try {
@@ -33,17 +34,14 @@ export const createComment = async (req, res) => {
     const newComment = new Comment(req.body);
     const playlist = await Playlist.findById(newComment.playlistId);
     const user = await User.findById(req.user);
-
-    console.log(user)
-    comment.userId = user._id;
     await newComment.save();
     playlist.comments.push(newComment._id);
     user.comments.push(newComment._id);
     await playlist.save();
     await user.save();
-    res.status(201).json(playlist);
+    res.status(201).json(newComment);
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(400).json({ error: e.message });
   }
 };
 
