@@ -118,14 +118,22 @@ export default function ViewPage(props) {
           })}
           </div>
           <br />
-          {playlist?.comments?.map((comment) => {
-            return (
-              <div>
-                {comment.content}
-              </div>
-            )
-          })}
           <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+          <br />
+
+          <div>
+            {playlist?.comments?.map((comment) => {
+              return (
+                <div>
+                  {comment.userId?.username}
+                  {comment.content}
+                  <button>DELETE</button>
+                  <button>EDIT</button>
+                </div>
+              )
+            })}
+          </div>
+          
           </div>
         </Layout>
   )
