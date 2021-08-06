@@ -16,7 +16,7 @@ export default function ViewPage(props) {
   }, [])
 
   useEffect(() => {
-    setCurrentVideo(newArray[0]); // This is be executed when `loading` state changes
+    setCurrentVideo(newArray[trackIndex]); // This is be executed when `loading` state changes
 }, [loading])
 
 
@@ -49,13 +49,18 @@ export default function ViewPage(props) {
 
   const [trackIndex, setTrackIndex] = useState(0);
   const [currentVideo, setCurrentVideo] = useState([])
+  
+  useEffect(() => {
+    fetchVideo()
+}, [trackIndex])
+  
   const toPrevTrack = () => {
-    if (trackIndex - 1 < 0) {
-      setTrackIndex(newArray.length - 1);
+    if (trackIndex > 0) {
+      setTrackIndex(trackIndex - 1);
     } else {
       setTrackIndex(0);
     }
-    fetchVideo()
+    console.log("back")
   }
   const toNextTrack = () => {
     if (trackIndex < newArray.length - 1) {
@@ -63,7 +68,7 @@ export default function ViewPage(props) {
     } else {
       setTrackIndex(0);
     }
-    fetchVideo()
+    console.log("forward")
   }
   const fetchVideo = () => {
       setCurrentVideo(newArray[trackIndex])
@@ -78,6 +83,11 @@ export default function ViewPage(props) {
     } 
   }
 
+  const handlePlay = (index) => {
+    setTrackIndex(index);
+    // console.log(index)
+    console.log("selected")
+  }
 
     return (
         <Layout user={props.user} setUser={props.setUser}>
@@ -100,7 +110,7 @@ export default function ViewPage(props) {
           <div id="myDIV">
           {playlist?.links?.map((link, index) => {
           return (
-            <p key={index}>{link.title}---{link.artist}---{link.linkURL}</p>
+            <div onClick={() => handlePlay(index)} key={index}>{link.title}---{link.artist}---{link.linkURL}</div>
             )
           })}
           </div>
