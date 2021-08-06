@@ -77,16 +77,31 @@ export const verify = async (req, res) => {
   }
 }
 
-  //User Update
-  export const updateUser = async (req, res) => {
-    try {
-      const { id } = req.params;
-      const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
-      res.status(200).json(updatedUser);
-    } catch (e) {
-      res.status(500).json({ error: e.message });
-    }
-  };
+// getUser
+export const getUser = async (req,res) => {
+  try {
+      const user = await User.findById(req.user).populate("playlist")
+      if(user) {
+          return res.status(200).json(user)
+      } else {
+          return res.status(404).send("User Not Found")
+      }
+  } catch(err) {
+      return res.status(500).json({error: err.message})
+  }
+}
+
+// updating the user info
+export const updateUser = async (req, res) => {
+  try {
+    const { user_id } = req.user;
+    const { body } = req;
+    const updatedUser = await User.findByIdAndUpdate(user_id, body, { new: true })
+    res.send(updatedUser)
+  } catch (e) {
+    res.status(422).json({ error: e.message });
+  }
+};
 
   //User Delete
   export const deleteUser = async (req, res) => {

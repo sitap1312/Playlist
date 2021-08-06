@@ -46,28 +46,16 @@ export const signOut = () => {
   }
 }
 
-// getUser
-export const getUser = async (req,res) => {
-  try {
-      const user = await User.findById(req.params.id).populate("playlist")
-      if(user) {
-          return res.status(200).json(user)
-      } else {
-          return res.status(404).send("User Not Found")
-      }
-  } catch(err) {
-      return res.status(500).json({error: err.message})
-  }
+export const getUser = async (credentials) => {
+  const res = await api.get("/users", credentials)
+  return res.data
 }
 
-// updating the user info
-export const updateUser = async (req, res) => {
+export const updateUser = async (credentials) => {
   try {
-    const { user_id } = req.params;
-    const { body } = req;
-    const updatedUser = await User.findByIdAndUpdate(user_id, body, { new: true })
-    res.send(updatedUser)
+    const res = await api.put("/user", credentials);
+    return res.data;
   } catch (e) {
-    res.status(422).json({ error: e.message });
+    throw e;
   }
-};
+}
