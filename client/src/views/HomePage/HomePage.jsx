@@ -31,65 +31,65 @@ export default function HomePage(props) {
       <Link to="/preview/:id"><button>PREVIEW</button></Link>
       <h2>Discover</h2> <Link to="/Discover-all">See more</Link>
       <div className="discoverPlaylist">
-      {playlist.map((playlist) => {
+      {playlist.map((playlist, index) => {
         return (
-          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
       <h2>Music</h2> <Link to="/categories/Music">See more</Link>
       <div className="musicPlaylist">
-      {filterByCategory("Music").map((playlist) => {
+      {filterByCategory("Music").map((playlist, index) => {
         return (
-          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
       <h2>Videos</h2> <Link to="/categories/Videos">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Video").map((playlist) => {
+      {filterByCategory("Video").map((playlist, index) => {
         return (
-          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
       <h2>Gaming</h2> <Link to="/categories/Gaming">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Gaming").map((playlist) => {
+      {filterByCategory("Gaming").map((playlist, index) => {
         return (
-          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
       <h2>Education</h2> <Link to="/categories/Education">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Education").map((playlist) => {
+      {filterByCategory("Education").map((playlist, index) => {
         return (
-          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
       <h2>Sports</h2> <Link to="/categories/Sports">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Sports").map((playlist) => {
+      {filterByCategory("Sports").map((playlist, index) => {
         return (
-          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
       <h2>Entertainment</h2> <Link to="/categories/Entertainment">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Entertainment").map((playlist) => {
+      {filterByCategory("Entertainment").map((playlist, index) => {
         return (
-          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
       <h2>Family</h2> <Link to="/categories/Family">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Family").map((playlist) => {
+      {filterByCategory("Family").map((playlist, index) => {
         return (
-          <Link to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
