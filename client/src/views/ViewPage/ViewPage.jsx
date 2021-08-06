@@ -83,6 +83,12 @@ export default function ViewPage(props) {
     } 
   }
 
+  const handlePlay = (index) => {
+    setTrackIndex(index);
+    // console.log(index)
+    console.log("selected")
+  }
+
     return (
         <Layout user={props.user} setUser={props.setUser}>
           <h1>{playlist?.title}</h1>
@@ -104,7 +110,7 @@ export default function ViewPage(props) {
           <div id="myDIV">
           {playlist?.links?.map((link, index) => {
           return (
-            <p key={index}>{link.title}---{link.artist}---{link.linkURL}</p>
+            <div onClick={() => handlePlay(index)} key={index}>{link.title}---{link.artist}---{link.linkURL}</div>
             )
           })}
           </div>
