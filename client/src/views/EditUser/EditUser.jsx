@@ -45,11 +45,25 @@ export default function EditUser(props) {
     signOut();
     props.setUser(null);
   };
-  const handleDelete = async () => {
+
+  const handleDelete =async () => {
+    let entry = prompt("Please enter email address to confirm DELETE:", "");
+    if (entry === null || entry === "") {
+      alert("NO INPUT - DELETION CANCELLED")
+    } else if (entry === props.user?.email) {
+      alert("DELETION COMPLETE")
     await deleteUser(props.user?.id)
     handleSignOut()
     history.push("/")
+    } else {
+      alert("INCORRECT PASSCODE - TRY AGAIN TO CONFIRM")
+    }
   }
+  // const handleDelete = async () => {
+  //   await deleteUser(props.user?.id)
+  //   handleSignOut()
+  //   history.push("/")
+  // }
 
   return (
       <Layout user={props.user} setUser={props.setUser}>
