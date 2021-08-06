@@ -130,13 +130,14 @@ export default function ViewPage(props) {
             {playlist?.comments?.map((comment, index) => {
               return (
                 <div key={index}>
-                  {comment.userId?.username}
+                  {comment.username}---
                   {comment.content}
                   <button onClick={() => handleDelete(comment._id)}>DELETE</button>
                   <button>EDIT</button>
                 </div>
               )
             })}
+
           </div>
           
           </div>

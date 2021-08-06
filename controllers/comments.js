@@ -32,12 +32,15 @@ export const getComment = async (req, res) => {
 export const createComment = async (req, res) => {
   try {
     const newComment = new Comment(req.body);
+
     const playlist = await Playlist.findById(newComment.playlistId);
     const user = await User.findById(req.user);
 
     console.log(newComment);
     console.log(playlist);
     console.log(user);
+    newComment.userId = user._id;
+    newComment.username = user.username;
 
     await newComment.save();
     playlist.comments.push(newComment._id);
@@ -49,6 +52,7 @@ export const createComment = async (req, res) => {
     res.status(400).json({ error: e.message });
   }
 };
+
 
 //Update a comment
 export const updateComment = async (req, res) => {
