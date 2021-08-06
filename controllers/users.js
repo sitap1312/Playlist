@@ -119,8 +119,8 @@ export const updateUser = async (req, res) => {
   //User Delete
   export const deleteUser = async (req, res) => {
     try {
-      const { id } = req.params;
-      const deletedUser = await User.findByIdAndDelete(id);
+      const user_id = req.user;
+      const deletedUser = await User.findByIdAndDelete(user_id);
       res.status(200).json({ message: `Deleted ${deletedUser.username}` });
     } catch (err) {
       res.status(500).json({ error: "Error deleting task" });

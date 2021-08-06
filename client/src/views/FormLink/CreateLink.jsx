@@ -35,9 +35,11 @@ export default function CreateLink(props) {
         playlistId: id,
       };
         let song = await createLink(fields)
-        setSong(song)
-  };
 
+      setSong(song)
+      setInput(defaultInput)
+      
+    }
   
     return (
       <div>
@@ -54,7 +56,7 @@ export default function CreateLink(props) {
                 <br />
                 <label>LinkURL</label>
                 <br />
-                <input type="text" name="linkURL" value={input.imgURL} onChange={handleChange}  />                
+                <input type="text" name="linkURL" value={input.linkURL} onChange={handleChange}  />                
                 <br />
                 <button type="submit">Add Link</button>
         </form>

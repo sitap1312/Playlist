@@ -10,6 +10,7 @@ import CreatePlaylist from './views/FormPlaylist/CreatePlaylist';
 import EditUser from './views/EditUser/EditUser';
 import Categories from './views/Categories/Categories';
 import AllPlaylist from './views/Categories/AllPlaylist';
+import UserPlaylist from './views/UserPlaylist/UserPlaylist';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,8 +39,11 @@ function App() {
       <Route exact path="/create-playlist">
         <CreatePlaylist user={user} setUser={setUser}/>
       </Route>
-      <Route exact path="/create-playlist">
+      <Route exact path="/edit-user">
         <EditUser user={user} setUser={setUser}/>
+      </Route>
+      <Route exact path="/my-account">
+        <UserPlaylist user={user} setUser={setUser}/>
       </Route>
       {!user && (<>
         <Route path="/sign-in">
