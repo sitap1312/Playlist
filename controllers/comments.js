@@ -1,5 +1,7 @@
 import db from '../db/connection.js';
 import Comment from "../models/comment.js";
+import Playlist from '../models/playlist.js';
+import User from '../models/user.js';
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
@@ -34,6 +36,11 @@ export const createComment = async (req, res) => {
     const newComment = new Comment(req.body);
     const playlist = await Playlist.findById(newComment.playlistId);
     const user = await User.findById(req.user);
+
+    console.log(newComment)
+    console.log(playlist)
+    console.log(user)
+
     await newComment.save();
     playlist.comments.push(newComment._id);
     user.comments.push(newComment._id);
