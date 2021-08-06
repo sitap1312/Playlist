@@ -100,7 +100,7 @@ export default function ViewPage(props) {
             <p>{link.title}---{link.artist}---{link.linkURL}</p>
           )})}
           <br />
-          {/* <NewComment user={props.user} setUser={props.setUser}/> */}
+          <NewComment user={props.user} setUser={props.setUser}/>
           </div>
         </Layout>
   )
