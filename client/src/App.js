@@ -38,7 +38,7 @@ function App() {
       <Route exact path="/create-playlist">
         <CreatePlaylist user={user} setUser={setUser}/>
       </Route>
-      <Route exact path="/create-playlist">
+      <Route exact path="/edit-user">
         <EditUser user={user} setUser={setUser}/>
       </Route>
       {!user && (<>

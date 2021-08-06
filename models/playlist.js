@@ -7,7 +7,6 @@ const playlistSchema = new Schema({
   description: { type: String, required: true },
   category: { type: Array, required: true },
   links: [{ type: Schema.Types.ObjectId, ref: "Link" }],
-  videoURLs: [{ type: String, ref: "Link" }],
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment", required: true }], 
 },
