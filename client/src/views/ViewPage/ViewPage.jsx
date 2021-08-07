@@ -17,6 +17,7 @@ export default function ViewPage(props) {
 
   useEffect(() => {
     fetchPlaylist()
+    // myFunction2()
   }, [toggle]);
 
   useEffect(() => {
@@ -48,6 +49,23 @@ export default function ViewPage(props) {
     }
   }
   
+  function myFunction2() {
+    var x = document.getElementById("editBox");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function myFunction3() {
+    var x = document.getElementById("newBox");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
 
   const [trackIndex, setTrackIndex] = useState(0);
   const [currentVideo, setCurrentVideo] = useState([]);
@@ -99,6 +117,12 @@ export default function ViewPage(props) {
     fetchPlaylist()
   };
 
+  const handleEdit = (id) => {
+    setCommId(id)
+    // myFunction2()
+    // myFunction3()
+  };
+
     return (
         <Layout user={props.user} setUser={props.setUser}>
           <h1>{playlist?.title}</h1>
@@ -126,8 +150,12 @@ export default function ViewPage(props) {
           })}
           </div>
           <br />
+          <div id="newBox">
           <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+          </div>
+          <div id="editBox">
           <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+          </div>
           <br />
 
           <div>
@@ -137,7 +165,7 @@ export default function ViewPage(props) {
                   {comment.username}---
                   {comment.content}
                   <button onClick={() => handleDelete(comment._id)}>DELETE</button>
-                  <button onClick={() => setCommId(comment)}>EDIT</button>
+                  <button onClick={() => handleEdit(comment)}>EDIT</button>
                 </div>
               )
             })}
