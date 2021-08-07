@@ -1,4 +1,5 @@
 import React from 'react'
+import "./ViewPage.css"
 import Layout from "../../components/Layout/Layout";
 import ReactPlayer from 'react-player'
 import { useState, useEffect } from "react"
@@ -120,10 +121,11 @@ export default function ViewPage(props) {
           <div>
           <h3>Playlist Items</h3>
           <button  onClick={myFunction}>Hide/Show List</button>
-          <div id="myDIV">
+          <div id="myDIV" className="viewPageList">
           {playlist?.links?.map((link, index) => {
           return (
-            <div key={index} onClick={() => handlePlay(index)}>{link.title}---{link.artist}---{link.linkURL}</div>
+            <div key={index} onClick={() => handlePlay(index)}>{link.title}---
+              {link.artist}</div>
             )
           })}
           </div>
@@ -138,7 +140,7 @@ export default function ViewPage(props) {
             </>)}
           <br />
 
-          <div>
+          <div >
             {playlist?.comments?.slice(0).reverse().map((comment, index) => {
               return (
                 <div key={index}>
