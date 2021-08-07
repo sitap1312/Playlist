@@ -159,7 +159,7 @@ export default function ViewPage(props) {
           <br />
 
           <div>
-            {playlist?.comments?.map((comment, index) => {
+            {playlist?.comments?.slice(0).reverse().map((comment, index) => {
               return (
                 <div key={index}>
                   {comment.username}---
@@ -179,3 +179,4 @@ export default function ViewPage(props) {
 // for the yellow warning for dev tools: https://stackoverflow.com/questions/61339968/devtools-failed-to-load-sourcemap-could-not-load-content-for-chrome-extension
 // REACTPLAYER can take in an array of youtube videos but cannot take in an array of soundcloud songs
 // how to pass index prop through onClick = https://www.codegrepper.com/code-examples/javascript/how+to+pass+index+onClick+function+react+button
+// https://stackoverflow.com/questions/36415904/is-there-a-way-to-use-map-on-an-array-in-reverse-order-with-javascript
