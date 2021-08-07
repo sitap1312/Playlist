@@ -38,6 +38,7 @@ export default function UserPlaylist(props) {
               <p>{props.user.username}</p>
               </Link>
               <button onClick={() => handleDelete(playlist._id)}>Delete playlist</button>
+              <Link to={`/edit-playlist/${playlist._id}`}><button>Edit Playlist</button></Link>
               </div>
           )
         })}

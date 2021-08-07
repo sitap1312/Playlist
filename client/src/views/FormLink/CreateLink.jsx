@@ -37,8 +37,8 @@ export default function CreateLink(props) {
         let song = await createLink(fields)
 
       setSong(song)
+      props.setToggle(prevToggle => !prevToggle);
       setInput(defaultInput)
-      
     }
   
     return (
@@ -65,7 +65,6 @@ export default function CreateLink(props) {
           <h1>Title: {song.title}</h1>
           <h1>Artist: {song.artist}</h1>
           <h1>URL: {song.linkURL}</h1>
-
         </div>
         </div>
     )
