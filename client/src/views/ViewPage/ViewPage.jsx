@@ -6,6 +6,7 @@ import NewComment from '../FormComment/NewComment';
 import { getPlaylist } from '../../services/playlists.js';
 import { useParams } from 'react-router';
 import { deleteComment } from '../../services/comments';
+import EditComment from '../FormComment/EditComment';
 
 export default function ViewPage(props) {
   // const [comments, setComments] = useState([]);
@@ -49,7 +50,9 @@ export default function ViewPage(props) {
   
 
   const [trackIndex, setTrackIndex] = useState(0);
-  const [currentVideo, setCurrentVideo] = useState([])
+  const [currentVideo, setCurrentVideo] = useState([]);
+  const [commId, setCommId] = useState("");
+
   
   useEffect(() => {
     fetchVideo()
@@ -94,7 +97,7 @@ export default function ViewPage(props) {
     // console.log(id)
     await deleteComment(id);
     fetchPlaylist()
-    };
+  };
 
     return (
         <Layout user={props.user} setUser={props.setUser}>
@@ -124,6 +127,7 @@ export default function ViewPage(props) {
           </div>
           <br />
           <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+          <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
           <br />
 
           <div>
@@ -133,7 +137,7 @@ export default function ViewPage(props) {
                   {comment.username}---
                   {comment.content}
                   <button onClick={() => handleDelete(comment._id)}>DELETE</button>
-                  <button>EDIT</button>
+                  <button onClick={() => setCommId(comment)}>EDIT</button>
                 </div>
               )
             })}
