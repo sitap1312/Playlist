@@ -1,15 +1,19 @@
 import { useState } from "react"
+
 import { createLink } from "../../services/links.js";
+
 
 export default function CreateLink(props) {
   const [song, setSong] = useState("")
   const id = props.newlist._id
+
   let defaultInput = {
     title: "",
     artist: "",
     linkURL: "",
     playlistId: "",
   };
+
 
   const [input, setInput] = useState(defaultInput)
 
@@ -23,11 +27,6 @@ export default function CreateLink(props) {
 
     async function handleSubmit(event) {
       event.preventDefault()
-
-      console.log(id)
-      console.log(defaultInput)
-      console.log(input)
-      
       const fields = {
         title: input.title,
         artist: input.artist,
@@ -35,10 +34,9 @@ export default function CreateLink(props) {
         playlistId: id,
       };
         let song = await createLink(fields)
-
       setSong(song)
+      props.setToggle(prevToggle => !prevToggle);
       setInput(defaultInput)
-      
     }
   
     return (
@@ -60,18 +58,6 @@ export default function CreateLink(props) {
                 <br />
                 <button type="submit">Add Link</button>
         </form>
-        <div>
-          {/* show the song that was just added */}
-          <h1>Title: {song.title}</h1>
-          <h1>Artist: {song.artist}</h1>
-          <h1>URL: {song.linkURL}</h1>
-          {/* show full list of all songs added to the playlist */}
-          {props.newlist?.links?.map((playlist) => {
-            return (
-              <p>{playlist.links.title}</p>
-            )
-          })}
-        </div>
         </div>
     )
-} 
+}

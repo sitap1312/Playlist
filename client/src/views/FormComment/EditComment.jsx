@@ -2,8 +2,6 @@ import { get } from "mongoose";
 import { useState, useEffect } from "react";
 import { updateComment, getComment } from "../../services/comments.js";
 
-
-
 export default function EditComment(props) {
   const [comments, setComments] = useState([]);
   const [data, setData] = useState({});
@@ -22,19 +20,23 @@ export default function EditComment(props) {
     setData(res);
   }
 
-  // console.log(props.playlist._id);
-  // console.log(play);
-
   let defaultInput = {
     content: data.content,
     playlistId: ""
   };
 
+  useEffect(() => {
+    setInput(defaultInput);
+  }, [data]);
+
+  // console.log(props.playlist._id);
+  // console.log(play);
+
+
   const [input, setInput] = useState(data);
 
   function handleChange(e) {
     let { name, value } = e.target
-
     setInput(prevState => ({
       ...prevState,
       [name]: value,
@@ -43,22 +45,14 @@ export default function EditComment(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    
-
     const fields = {
-      content: input.content,
-      // _id: data._id
+    content: input.content,
     };
     let id = data._id;
-    //This is where we left off 
-    // Edit worked but content is replaced 
-    // with previous comment in text area after submition
     console.log(fields);
     let comments = await updateComment(id, fields);
     setComments(comments);
     props.setToggle(prevToggle => !prevToggle);
-
-    setInput(defaultInput);
   };
 
   return (
@@ -66,7 +60,7 @@ export default function EditComment(props) {
       <form onSubmit={handleSubmit}>
         <br />
         <h4>{props?.user?.username}</h4>
-        <label>Add Comment</label>
+        <label><strong>Edit Comment</strong></label>
         <br />
         <textarea cols="75" rows="4" type="text" name="content" value={input.content} onChange={handleChange} />
         <br />
@@ -74,7 +68,6 @@ export default function EditComment(props) {
       </form>
 
       <div>
-        {/* Display comments here.. */}
       </div>
     </div>
   )

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import Layout from "../../components/Layout/Layout"
 import { Link } from "react-router-dom"
-
 import { getAllPlaylist } from "../../services/playlists.js"
 
 export default function HomePage(props) {
@@ -28,7 +27,6 @@ export default function HomePage(props) {
   return (
     <Layout user={props.user} setUser={props.setUser}>
       <h1>PLAYLISTIFY</h1> 
-      <Link to="/preview/:id"><button>PREVIEW</button></Link>
       <h2>Discover</h2> <Link to="/Discover-all">See more</Link>
       <div className="discoverPlaylist">
       {playlist.map((playlist, index) => {
@@ -47,7 +45,7 @@ export default function HomePage(props) {
       </div>
       <h2>Videos</h2> <Link to="/categories/Videos">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Video").map((playlist, index) => {
+      {filterByCategory("Videos").map((playlist, index) => {
         return (
           <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
