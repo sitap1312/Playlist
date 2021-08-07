@@ -27,15 +27,14 @@ export const getLink = async (req, res) => {
   }
 };
 
-// Create a New link
-export const createLink = async (req, res) => {
+
+  export const createLink = async (req, res) => {
       try {
       const newLink = new Link(req.body);
       const playlist = await Playlist.findById(newLink.playlistId)
       console.log(playlist)
       await newLink.save();
       playlist.links.push(newLink._id)
-      playlist.videoURLs.push(newLink.linkURL)
       await playlist.save()
         res.status(201).json(newLink);
       } catch (err) {

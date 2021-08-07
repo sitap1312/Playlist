@@ -45,3 +45,26 @@ export const signOut = () => {
     throw e
   }
 }
+
+export const getUser = async (id) => {
+  const res = await api.get(`/get-user/${id}`)
+  return res.data
+}
+
+export const updateUser = async (id, credentials) => {
+  try {
+    const res = await api.put(`/user/${id}`, credentials);
+    return res.data;
+  } catch (e) {
+    throw e;
+  }
+}
+
+export const deleteUser = async (id) => {
+  try {
+    const res = await api.delete(`/user/${id}`)
+    return res.data
+  } catch(err) {
+      throw err
+  }
+}

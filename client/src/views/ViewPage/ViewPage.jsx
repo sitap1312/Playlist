@@ -1,102 +1,159 @@
 import React from 'react'
+import "./ViewPage.css"
 import Layout from "../../components/Layout/Layout";
 import ReactPlayer from 'react-player'
 import { useState, useEffect } from "react"
 import NewComment from '../FormComment/NewComment';
-import { getPlaylist } from '../../services/playlists';
+import { getPlaylist } from '../../services/playlists.js';
 import { useParams } from 'react-router';
+import { deleteComment } from '../../services/comments';
+import EditComment from '../FormComment/EditComment';
 
 export default function ViewPage(props) {
-  const [playlist, setPlaylist] = useState({})
-  const { id } = useParams()
-  // const data = [
-  //   "https://soundcloud.com/thekidlaroi/stay",
-  //   "https://soundcloud.com/thekidlaroi/not-sober-feat-polo-g-stunna",
-  //   "https://www.youtube.com/watch?v=RVPeTSUzZ9I",
-  //   "https://soundcloud.com/drokenji/drokenji-since-december-prod-census-cv?in=soundcloud-hustle/sets/the-lookout-tomorrows-rap-hits",
-  //   "https://www.youtube.com/watch?v=Zj35vRgeXLs&t=1s",
-  // ]
+  // const [comments, setComments] = useState([]);
+  const [playlist, setPlaylist] = useState({});
+  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     fetchPlaylist()
-    setCurrentVideo(allURLs)
-  }, [])
+  }, [toggle]);
+
+  useEffect(() => {
+    setCurrentVideo(newArray[trackIndex]); // This is be executed when `loading` state changes
+}, [loading])
   
-  const allURLs = playlist?.links?.map((link) => {
-    return link.linkURL
-  })
-  const fetchPlaylist = async () => {
-    const res = await getPlaylist(id)
-    console.log(id)
-    console.log(res)
+  async function fetchPlaylist () {
+    let res = await getPlaylist(id)
     if (res) {
       setPlaylist(res)
+      setLoading(true);
     }
   }
-  // const data = [playlist?.links[0]?.linkURL]
-  console.log("THIESE IS LINKS", playlist)
 
-  // const playlistItems = playlist?.links?.map((link, index) =>
-  //   <div key={index}>
-  //     <h3>{index}. {link.linkURL}</h3>
-  //   </div>
-  // );
-  
-  const [currentVideo, setCurrentVideo] = useState([])
-  console.log("THIS IS CURRENT VIDEO",currentVideo)
-  const [trackIndex, setTrackIndex] = useState(0);
-  const toPrevTrack = () => {
-    if (trackIndex - 1 < 0) {
-      setTrackIndex(playlist.length - 1);
+  let newArray = []
+  const allURLs = playlist?.links?.map((link, index) => {
+    <div key={index}></div>
+    newArray.push(link.linkURL)
+    return newArray
+  })
+
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
     } else {
-      setTrackIndex(trackIndex - 1);
+      x.style.display = "none";
     }
+  }
+  const [trackIndex, setTrackIndex] = useState(0);
+  const [currentVideo, setCurrentVideo] = useState([]);
+  const [commId, setCommId] = useState("");
+  
+  useEffect(() => {
     fetchVideo()
+}, [trackIndex])
+  
+  const toPrevTrack = () => {
+    if (trackIndex > 0) {
+      setTrackIndex(trackIndex - 1);
+    } else {
+      setTrackIndex(0);
+    }
+    // console.log("back")
   }
   const toNextTrack = () => {
-    if (trackIndex < playlist.length - 1) {
+    if (trackIndex < newArray.length - 1) {
       setTrackIndex(trackIndex + 1);
     } else {
       setTrackIndex(0);
     }
-    fetchVideo()
+    // console.log("forward")
   }
   const fetchVideo = () => {
-    setCurrentVideo(playlist[trackIndex])
+      setCurrentVideo(newArray[trackIndex])
   }
   const handleWatchComplete = ({ played }) => {
-    // console.log(played)
-    if (played >= 0.99) {
-      console.log("Done!")
+    if (played >= 0.98) {
       toNextTrack()
     }
   }
+
+  const handlePlay = (index) => {
+    setTrackIndex(index);
+  }
+
+  const handleDelete = async (id) => {
+    await deleteComment(id);
+    fetchPlaylist()
+  };
+
+  const handleEdit = (id) => {
+    setCommId(id)
+  };
+
     return (
-      <Layout user={props.user} setUser={props.setUser}>
-        <h1>PLAYLIST NAME</h1>
-        <h3>{playlist?.title}</h3>
-        <ReactPlayer
-          className='react-player'
-          controls={true}
-          playing url={allURLs}
-          onProgress={handleWatchComplete}
-          width='100%'
-          height='50vh'
+        <Layout user={props.user} setUser={props.setUser}>
+          <h1>{playlist?.title}</h1>
+          <h3>{playlist.userId?.username}</h3>
+          <p>{playlist?.description}</p>
+          <h3>{playlist?.category}</h3>
+            <ReactPlayer
+              className='react-player'
+              controls={true}
+              playing url={currentVideo}
+              onProgress={handleWatchComplete}
+              width='100%'
+              height='50vh'
         />
         <button onClick={toPrevTrack}>PREV</button>
         <button onClick={toNextTrack}>NEXT</button>
         <div>
           <h3>Playlist Items</h3>
-        {playlist?.links?.map((link) => {
+          <button  onClick={myFunction}>Hide/Show List</button>
+          <div id="myDIV" className="viewPageList">
+          {playlist?.links?.map((link, index) => {
           return (
-            <p>{link.linkURL}</p>
-          )
+            <div key={index} onClick={() => handlePlay(index)}>{link.title}---
+              {link.artist}</div>
+            )
+          })}
+          </div>
+          <br />
+          {props.user && (<>
+          <div id="newBox">
+          <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+          </div>
+          <div id="editBox">
+          <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+            </div>
+            </>)}
+          <br />
+
+          <div >
+            {playlist?.comments?.slice(0).reverse().map((comment, index) => {
+              return (
+                <div key={index}>
+                  {comment.username}---
+                  {comment.content}
+                  {props.user.username === comment.username && (<>
+                    <div id="commButtons">
+                      <button onClick={() => handleDelete(comment._id)}>DELETE</button>
+                      <button onClick={() => handleEdit(comment)}>EDIT</button>
+                    </div>
+                    </>)}
+                </div>
+              )
+            })}
+
+          </div>
           
-        })}
-          <NewComment user={props.user} setUser={props.setUser} />
-        </div>
-      </Layout>
-    )
-  }
+          </div>
+        </Layout>
+  )
+}
 // for the yellow warning for dev tools: https://stackoverflow.com/questions/61339968/devtools-failed-to-load-sourcemap-could-not-load-content-for-chrome-extension
-// // REACTPLAYER can take in an array of youtube videos but cannot take in an array of soundcloud songs
+// REACTPLAYER can take in an array of youtube videos but cannot take in an array of soundcloud songs
+// how to pass index prop through onClick = https://www.codegrepper.com/code-examples/javascript/how+to+pass+index+onClick+function+react+button
+// https://stackoverflow.com/questions/36415904/is-there-a-way-to-use-map-on-an-array-in-reverse-order-with-javascript*/}

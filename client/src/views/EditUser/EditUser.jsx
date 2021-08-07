@@ -1,30 +1,30 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
-// import { getUSer, updateUser } from "../../services/users";
+import { getUser, updateUser } from "../../services/users";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { signOut, deleteUser } from '../../services/users';
 
-export default function EditUser() {
+export default function EditUser(props) {
   let history = useHistory()
   const { id } = useParams();
-  const [user, setUser] = useState({})
+  const [current, setCurrent] = useState({})
+  const [loading, setLoading] = useState(false)
 
-  const data = {
-      username: "",
-      email: "",
-      password: "",
+
+
+  // useEffect(() => {
+  //   editUser()
+  // }, [props.user?.id])
+
+
+
+  const defaultInput = {
+    username: "",
+    email: "",
+    password: "",
   }
-  
-  useEffect(() => {
-    const fetchUser = async () => {
-      // const user = await getUser(id);
-      setUser(user);
-      setFormData(user)
-    }
-    fetchUser();
-  }, [id])
-
-  const [formData, setFormData] = useState(data);
+  const [formData, setFormData] = useState(defaultInput);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -36,28 +36,57 @@ export default function EditUser() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
-    // await updateUser(id, formData)
-    history.push(`/`)
+    setLoading(true)
+    await updateUser(props.user?.id,formData)
+    handleSignOut()
+    history.push(`/sign-in`)
   }
+  const handleSignOut = () => {
+    signOut();
+    props.setUser(null);
+  };
+
+  const handleDelete =async () => {
+    let entry = prompt("Please enter email address to confirm DELETE:", "");
+    if (entry === null || entry === "") {
+      alert("NO INPUT - DELETION CANCELLED")
+    } else if (entry === props.user?.email) {
+      alert("DELETION COMPLETE")
+    await deleteUser(props.user?.id)
+    handleSignOut()
+    history.push("/")
+    } else {
+      alert("INCORRECT PASSCODE - TRY AGAIN TO CONFIRM")
+    }
+  }
+  // const handleDelete = async () => {
+  //   await deleteUser(props.user?.id)
+  //   handleSignOut()
+  //   history.push("/")
+  // }
 
   return (
-      <Layout>
+      <Layout user={props.user} setUser={props.setUser}>
       Edit User
+      <br/>
+      <button onClick={handleDelete}>Delete Account</button>
       <form onSubmit={handleSubmit}>
         <label>Username</label>
         <br />
         <input
-          id="username"
+          placeholder={props.user?.username}
+          name="username"
           type="text"
           value={formData.username}
           onChange={handleInput}
+          required={true}
         />
         <br />
         <label>Email</label>
         <br />
         <input
-          id="email"
+          placeholder={props.user?.email}
+          name="email"
           type="email"
           value={formData.email}
           onChange={handleInput}
@@ -66,9 +95,9 @@ export default function EditUser() {
         <label>Password</label>
         <br />
         <input
-          id="password"
+          name="password"
           type="password"
-          value={formData.password}
+          value={formData.password_digest}
           onChange={handleInput}
         />
         <br />

@@ -77,22 +77,50 @@ export const verify = async (req, res) => {
   }
 }
 
-  //User Update
-  export const updateUser = async (req, res) => {
-    try {
-      const { id } = req.params;
-      const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
-      res.status(200).json(updatedUser);
-    } catch (e) {
-      res.status(500).json({ error: e.message });
+// getUser
+export const getUser = async (req,res) => {
+  try {
+      const user = await User.findById(req.user).populate("playlist")
+      if(user) {
+          return res.status(200).json(user)
+      } else {
+          return res.status(404).send("User Not Found")
+      }
+  } catch(err) {
+      return res.status(500).json({error: err.message})
+  }
+}
+
+// updating the user info
+export const updateUser = async (req, res) => {
+  try {
+    const  user_id  = req.user;
+    const { username, email, password } = req.body;
+    const password_digest = await bcrypt.hash(password, SALT_ROUNDS)
+    const info = {
+      username,
+      email,
+      password_digest,
+    };
+    const updatedUser = await User.findByIdAndUpdate(user_id, info, { new: true })
+    const payload = {
+      id: user_id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      exp: parseInt(exp.getTime() / 1000)
     }
-  };
+    const token = jwt.sign(payload, TOKEN_KEY);
+    res.status(201).json({ token })
+  } catch (e) {
+    res.status(422).json({ error: e.message });
+  }
+};
 
   //User Delete
   export const deleteUser = async (req, res) => {
     try {
-      const { id } = req.params;
-      const deletedUser = await User.findByIdAndDelete(id);
+      const user_id = req.user;
+      const deletedUser = await User.findByIdAndDelete(user_id);
       res.status(200).json({ message: `Deleted ${deletedUser.username}` });
     } catch (err) {
       res.status(500).json({ error: "Error deleting task" });
