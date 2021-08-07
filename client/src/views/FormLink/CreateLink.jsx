@@ -1,15 +1,19 @@
 import { useState } from "react"
+
 import { createLink } from "../../services/links.js";
+
 
 export default function CreateLink(props) {
   const [song, setSong] = useState("")
   const id = props.newlist._id
+
   let defaultInput = {
     title: "",
     artist: "",
     linkURL: "",
     playlistId: "",
   };
+
 
   const [input, setInput] = useState(defaultInput)
 
@@ -23,11 +27,6 @@ export default function CreateLink(props) {
 
     async function handleSubmit(event) {
       event.preventDefault()
-
-      console.log(id)
-      console.log(defaultInput)
-      console.log(input)
-      
       const fields = {
         title: input.title,
         artist: input.artist,
@@ -35,7 +34,6 @@ export default function CreateLink(props) {
         playlistId: id,
       };
         let song = await createLink(fields)
-
       setSong(song)
       props.setToggle(prevToggle => !prevToggle);
       setInput(defaultInput)
@@ -44,6 +42,7 @@ export default function CreateLink(props) {
     return (
       <div>
             <h1>Add a Link</h1>
+            <h1>{props.newlist.title}</h1>
             <form onSubmit={handleSubmit}>
                 <label>Link Title</label>
                 <br />
@@ -61,4 +60,4 @@ export default function CreateLink(props) {
         </form>
         </div>
     )
-} 
+}

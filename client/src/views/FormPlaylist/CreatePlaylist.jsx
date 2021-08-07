@@ -40,6 +40,7 @@ export default function CreatePlaylist(props) {
       } else {
         x.style.display = "none";
       }
+
     }
   
     useEffect(() => {

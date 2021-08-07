@@ -33,8 +33,6 @@ export const createPlaylist = async (req, res) => {
 
     const playlist = new Playlist(req.body);
     const user = await User.findById(req.user);
-
-    console.log(user)
     playlist.userId = user._id;
     await playlist.save();
     user.playlist.push(playlist);
