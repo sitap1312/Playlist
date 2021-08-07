@@ -4,17 +4,23 @@ import { getPlaylist, updatePlaylist } from '../../services/playlists'
 import { deleteLink, getLink ,updateLink } from '../../services/links'
 import { useParams } from 'react-router'
 import CreateLink from '../FormLink/CreateLink'
-import e from 'cors'
 
 
+const defaultForm = {
+  title: "",
+  imgURL: "",
+  description: "",
+  category: "",
+}
 
 export default function EditPlaylist(props) {
-  const [updated, setUpdated] = useState(false)
   const [playlist, setPlaylist] = useState({})
-  const [link, setLink] = useState([])
   const [newlist, setNewList] = useState({})
   const [toggle, setToggle] = useState(true)
+  const [category, setCategory] = useState("Choose Category")
   const { id } = useParams()
+
+  const [input, setInput] = useState(defaultForm)
 
 
   useEffect(() => {
@@ -37,39 +43,26 @@ export default function EditPlaylist(props) {
 
   
 
-  const handleChange = async (e) => {
-    const { name, value } = e.target
-    setPlaylist({
-      ...playlist,
-      [name]: value
-    })
-  }
+  function handleChange(event) {
+    let {name, value} = event.target
+    setInput(prevState => ({
+        ...prevState,
+        [name]: value,
+    }))
+  setCategory(event.target.value)
+}
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const fields = {
-      title: playlist.title,
-      imgURL: playlist.imgURL,
-      description: playlist.description,
-      category: playlist.category
-    }
-    console.log(fields)
-    const updated = await updatePlaylist(id, fields)
-
+      e.preventDefault()
+      let updated = await updatePlaylist(id,input)
+      setPlaylist(updated)
+      // history.push(`/`)
+      setToggle(!toggle)
   }
 
-
-  // async function handleSubmit(event) {
-  //   event.preventDefault();
-  //   const fields = {
-  //   content: input.content,
-  //   };
-  //   let id = data._id;
-  //   console.log(fields);
-  //   let comments = await updateComment(id, fields);
-  //   setComments(comments);
-  //   props.setToggle(prevToggle => !prevToggle);
-  // };
+  useEffect(() => {
+    updatePlaylist(id, input)
+  },[toggle])
 
   const handleDelete = async (id) => {
     await deleteLink(id);
@@ -83,39 +76,44 @@ export default function EditPlaylist(props) {
       {playlist?.title} <br />
       <form onSubmit={handleSubmit}>
         <input type="text"
-          placeholder="Title"
-          value={playlist.title}
+          placeholder="title"
+          value={input.title}
           name="title"
           required
           onChange={handleChange}
           /><br />
-      </form>
       <img
         src={playlist?.imgURL}
         alt={playlist?.title} />
       <br />
-      <form onSubmit={handleSubmit}>
       <input
             className='input-name'
             placeholder='Image URL'
-            value={playlist.imgURL}
+            value={input.imgURL}
             name='imgURL'
             required
             onChange={handleChange}
           />
-      </form >
       {playlist?.description} <br />
-      <form onSubmit={handleSubmit} >
       <input
             className='input-name'
             placeholder='Description'
-            value={playlist.description}
+            value={input.description}
             name='description'
             required
             onChange={handleChange}
           /><br />
-      </form>
-      <button type="submit">Update playlist</button>
+      <select type="text" name="category" value={input.category} onChange={handleChange}>
+                  <option value="Music">Music</option>
+                  <option value="Videos">Video</option>
+                  <option value="Gaming">Gaming</option>
+                  <option value="Education">Education</option>
+                  <option value="Sports">Sport</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Family">Family</option>
+            </select>
+          </form>
+      <button onClick={handleSubmit} type="submit">Update playlist</button>
       {playlist.links?.map((link, index) => {
         return (
           <>
