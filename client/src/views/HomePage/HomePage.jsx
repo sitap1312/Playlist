@@ -45,7 +45,7 @@ export default function HomePage(props) {
       </div>
       <h2>Videos</h2> <Link to="/categories/Videos">See more</Link>
       <div className="videoPlaylist">
-      {filterByCategory("Video").map((playlist, index) => {
+      {filterByCategory("Videos").map((playlist, index) => {
         return (
           <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )

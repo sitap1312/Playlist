@@ -39,10 +39,6 @@ export default function EditPlaylist(props) {
     setNewList(playlist)
   },[playlist])
 
-  
-
-  
-
   function handleChange(event) {
     let {name, value} = event.target
     setInput(prevState => ({
