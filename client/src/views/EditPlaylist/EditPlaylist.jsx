@@ -27,9 +27,9 @@ export default function EditPlaylist(props) {
     fetchPlaylist()
   }, [id])
 
-  // useEffect(() => {
-  //   fetchPlaylist()
-  // }, [toggle])
+  useEffect(() => {
+    fetchPlaylist()
+  }, [toggle])
   
   const fetchPlaylist = async () => {
     const res = await getPlaylist(id)
@@ -56,13 +56,8 @@ export default function EditPlaylist(props) {
       e.preventDefault()
       let updated = await updatePlaylist(id,input)
       setPlaylist(updated)
-      // history.push(`/`)
-      setToggle(!toggle)
+      fetchPlaylist()
   }
-
-  useEffect(() => {
-    updatePlaylist(id, input)
-  },[toggle])
 
   const handleDelete = async (id) => {
     await deleteLink(id);
