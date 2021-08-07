@@ -23,8 +23,7 @@ export default function ViewPage(props) {
   useEffect(() => {
     setCurrentVideo(newArray[trackIndex]); // This is be executed when `loading` state changes
 }, [loading])
-
-
+  
   async function fetchPlaylist () {
     let res = await getPlaylist(id)
     if (res) {
@@ -123,16 +122,6 @@ export default function ViewPage(props) {
     // myFunction3()
   };
 
-  function hideButtons() {
-    var x = document.getElementById("commButtons");
-    if (!props.user) {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-}
-
-
     return (
         <Layout user={props.user} setUser={props.setUser}>
           <h1>{playlist?.title}</h1>
@@ -174,10 +163,12 @@ export default function ViewPage(props) {
                 <div key={index}>
                   {comment.username}---
                   {comment.content}
-                  <div id="commButtons">
+                  {props.user && (<>
+                    <div id="commButtons">
                       <button onClick={() => handleDelete(comment._id)}>DELETE</button>
                       <button onClick={() => handleEdit(comment)}>EDIT</button>
-                  </div>
+                    </div>
+                    </>)}
                 </div>
               )
             })}
