@@ -7,7 +7,7 @@ let defaultInput = {
   title: "",
   imgURL: "",
   description: "",
-  category: "Music",
+  category: "",
 }
 
 export default function CreatePlaylist(props) {
