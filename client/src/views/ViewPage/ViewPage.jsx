@@ -17,7 +17,6 @@ export default function ViewPage(props) {
 
   useEffect(() => {
     fetchPlaylist()
-    // myFunction2()
   }, [toggle]);
 
   useEffect(() => {
@@ -48,24 +47,6 @@ export default function ViewPage(props) {
     }
   }
   
-  function myFunction2() {
-    var x = document.getElementById("editBox");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-
-  function myFunction3() {
-    var x = document.getElementById("newBox");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-
   const [trackIndex, setTrackIndex] = useState(0);
   const [currentVideo, setCurrentVideo] = useState([]);
   const [commId, setCommId] = useState("");
@@ -118,8 +99,6 @@ export default function ViewPage(props) {
 
   const handleEdit = (id) => {
     setCommId(id)
-    // myFunction2()
-    // myFunction3()
   };
 
     return (
