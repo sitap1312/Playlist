@@ -165,7 +165,7 @@ export default function ViewPage(props) {
                 <div key={index}>
                   {comment.username}---
                   {comment.content}
-                  {props.user && (<>
+                  {props.user.username === comment.username && (<>
                     <div id="commButtons">
                       <button onClick={() => handleDelete(comment._id)}>DELETE</button>
                       <button onClick={() => handleEdit(comment)}>EDIT</button>

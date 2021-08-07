@@ -21,9 +21,9 @@ export default function AllPlaylist(props) {
     <Layout user={props.user} setUser={props.setUser}>
       <h2>Discover</h2>
       <div className="allPlaylist">
-      {playlist.map((playlist) => {
+      {playlist.map((playlist, index) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <Link key={index} to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
         )
       })}
       </div>
