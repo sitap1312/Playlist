@@ -11,6 +11,7 @@ import EditUser from './views/EditUser/EditUser';
 import Categories from './views/Categories/Categories';
 import AllPlaylist from './views/Categories/AllPlaylist';
 import UserPlaylist from './views/UserPlaylist/UserPlaylist';
+import EditPlaylist from './views/EditPlaylist/EditPlaylist';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,6 +45,9 @@ function App() {
       </Route>
       <Route exact path="/my-account">
         <UserPlaylist user={user} setUser={setUser}/>
+      </Route>
+      <Route exact path="/edit-playlist/:id">
+        <EditPlaylist user={user} setUser={setUser}/>
       </Route>
       {!user && (<>
         <Route path="/sign-in">

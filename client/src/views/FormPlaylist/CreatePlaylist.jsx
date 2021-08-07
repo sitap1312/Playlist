@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Layout from "../../components/Layout/Layout";
-import { createPlaylist } from "../../services/playlists.js";
+import { createPlaylist, getPlaylist } from "../../services/playlists.js";
 import CreateLink from "../FormLink/CreateLink";
-// import { useHistory } from "react-router";
+import { deleteLink, } from '../../services/links'
 
 let defaultInput = {
   title: "",
@@ -13,9 +13,10 @@ let defaultInput = {
 
 export default function CreatePlaylist(props) {
   const [category, setCategory] = useState("Select a category below")
-  // const history = useHistory()
   const [input, setInput] = useState(defaultInput)
+  const [playlist, setPlaylist] = useState({})
   const [newlist, setNewList] = useState({})
+  const [toggle, setToggle] = useState(true)
 
     function handleChange(event) {
         let {name, value} = event.target
@@ -29,7 +30,6 @@ export default function CreatePlaylist(props) {
         event.preventDefault()
       let newlist = await createPlaylist(input)
       setNewList(newlist)
-      // history.push(`/`)
       myFunction()
     }
   
@@ -41,6 +41,24 @@ export default function CreatePlaylist(props) {
         x.style.display = "none";
       }
     }
+  
+    useEffect(() => {
+      fetchPlaylist()
+    }, [newlist])
+  
+    useEffect(() => {
+      fetchPlaylist()
+    }, [toggle])
+    
+    const fetchPlaylist = async () => {
+      const res = await getPlaylist(newlist._id)
+      setPlaylist(res)
+    }
+  
+    const handleDelete = async (id) => {
+      await deleteLink(id);
+      fetchPlaylist()
+    };
   
     return (
       <Layout user={props.user} setUser={props.setUser}>
@@ -63,7 +81,7 @@ export default function CreatePlaylist(props) {
                 <br />
                 <label>Category</label>
                 <br />      
-                <select type="text" name="category" value={input.category} onChange={handleChange}>
+                <select type="text" name="category" value={input.category} onChange={handleChange} required={true}>
                   <option value="Music">Music</option>
                   <option value="Videos">Video</option>
                   <option value="Gaming">Gaming</option>
@@ -81,7 +99,17 @@ export default function CreatePlaylist(props) {
           <img src={input.imgURL} alt={input.title} />
           <p>{props.username}</p>
         </div>
-        <CreateLink newlist={newlist} />
+        <div>
+        {playlist.links?.map((link, index) => {
+        return (
+          <>
+          <div key={index}> {link.title}---{link.artist}---{link.linkURL}</div>
+          <button onClick={() => handleDelete(link._id)}>Delete Link</button>
+          </>
+        )
+        })}
+          </div>
+        <CreateLink setToggle={setToggle} newlist={newlist} />
         </Layout>
     )
 } 

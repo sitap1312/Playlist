@@ -37,14 +37,13 @@ export default function CreateLink(props) {
         let song = await createLink(fields)
 
       setSong(song)
+      props.setToggle(prevToggle => !prevToggle);
       setInput(defaultInput)
-      
     }
   
     return (
       <div>
             <h1>Add a Link</h1>
-            <h1>{props.newlist.title}</h1>
             <form onSubmit={handleSubmit}>
                 <label>Link Title</label>
                 <br />
@@ -60,18 +59,6 @@ export default function CreateLink(props) {
                 <br />
                 <button type="submit">Add Link</button>
         </form>
-        <div>
-          {/* show the song that was just added */}
-          <h1>Title: {song.title}</h1>
-          <h1>Artist: {song.artist}</h1>
-          <h1>URL: {song.linkURL}</h1>
-          {/* show full list of all songs added to the playlist */}
-          {props.newlist?.links?.map((playlist) => {
-            return (
-              <p>{playlist.links.title}</p>
-            )
-          })}
-        </div>
         </div>
     )
 } 

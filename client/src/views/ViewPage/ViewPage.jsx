@@ -1,4 +1,5 @@
 import React from 'react'
+import "./ViewPage.css"
 import Layout from "../../components/Layout/Layout";
 import ReactPlayer from 'react-player'
 import { useState, useEffect } from "react"
@@ -6,6 +7,7 @@ import NewComment from '../FormComment/NewComment';
 import { getPlaylist } from '../../services/playlists.js';
 import { useParams } from 'react-router';
 import { deleteComment } from '../../services/comments';
+import EditComment from '../FormComment/EditComment';
 
 export default function ViewPage(props) {
   // const [comments, setComments] = useState([]);
@@ -21,8 +23,7 @@ export default function ViewPage(props) {
   useEffect(() => {
     setCurrentVideo(newArray[trackIndex]); // This is be executed when `loading` state changes
 }, [loading])
-
-
+  
   async function fetchPlaylist () {
     let res = await getPlaylist(id)
     if (res) {
@@ -47,9 +48,10 @@ export default function ViewPage(props) {
     }
   }
   
-
   const [trackIndex, setTrackIndex] = useState(0);
-  const [currentVideo, setCurrentVideo] = useState([])
+  const [currentVideo, setCurrentVideo] = useState([]);
+  const [commId, setCommId] = useState("");
+
   
   useEffect(() => {
     fetchVideo()
@@ -94,7 +96,11 @@ export default function ViewPage(props) {
     // console.log(id)
     await deleteComment(id);
     fetchPlaylist()
-    };
+  };
+
+  const handleEdit = (id) => {
+    setCommId(id)
+  };
 
     return (
         <Layout user={props.user} setUser={props.setUser}>
@@ -115,25 +121,37 @@ export default function ViewPage(props) {
           <div>
           <h3>Playlist Items</h3>
           <button  onClick={myFunction}>Hide/Show List</button>
-          <div id="myDIV">
+          <div id="myDIV" className="viewPageList">
           {playlist?.links?.map((link, index) => {
           return (
-            <div key={index} onClick={() => handlePlay(index)} key={index}>{link.title}---{link.artist}---{link.linkURL}</div>
+            <div key={index} onClick={() => handlePlay(index)}>{link.title}---
+              {link.artist}</div>
             )
           })}
           </div>
           <br />
+          {props.user && (<>
+          <div id="newBox">
           <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+          </div>
+          <div id="editBox">
+          <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+            </div>
+            </>)}
           <br />
 
-          <div>
-            {playlist?.comments?.map((comment, index) => {
+          <div >
+            {playlist?.comments?.slice(0).reverse().map((comment, index) => {
               return (
                 <div key={index}>
                   {comment.username}---
                   {comment.content}
-                  <button onClick={() => handleDelete(comment._id)}>DELETE</button>
-                  <button>EDIT</button>
+                  {props.user.username === comment.username && (<>
+                    <div id="commButtons">
+                      <button onClick={() => handleDelete(comment._id)}>DELETE</button>
+                      <button onClick={() => handleEdit(comment)}>EDIT</button>
+                    </div>
+                    </>)}
                 </div>
               )
             })}
@@ -147,3 +165,4 @@ export default function ViewPage(props) {
 // for the yellow warning for dev tools: https://stackoverflow.com/questions/61339968/devtools-failed-to-load-sourcemap-could-not-load-content-for-chrome-extension
 // REACTPLAYER can take in an array of youtube videos but cannot take in an array of soundcloud songs
 // how to pass index prop through onClick = https://www.codegrepper.com/code-examples/javascript/how+to+pass+index+onClick+function+react+button
+// https://stackoverflow.com/questions/36415904/is-there-a-way-to-use-map-on-an-array-in-reverse-order-with-javascript*/}
