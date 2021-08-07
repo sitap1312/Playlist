@@ -13,7 +13,6 @@ let defaultInput = {
 
 export default function CreatePlaylist(props) {
   const [category, setCategory] = useState("Select a category below")
-  // const history = useHistory()
   const [input, setInput] = useState(defaultInput)
   const [playlist, setPlaylist] = useState({})
   const [newlist, setNewList] = useState({})
@@ -31,7 +30,6 @@ export default function CreatePlaylist(props) {
         event.preventDefault()
       let newlist = await createPlaylist(input)
       setNewList(newlist)
-      // history.push(`/`)
       myFunction()
     }
   
