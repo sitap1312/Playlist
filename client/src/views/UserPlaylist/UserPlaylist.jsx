@@ -26,8 +26,10 @@ export default function UserPlaylist(props) {
         {user?.playlist?.map((playlist, index) => {
           return (
             <>
-              <h4 key={index}>{playlist.title}</h4>
-              <img src={playlist.imgURL} alt={playlist.title} />
+              <Link to={`/edit-playlist/${playlist._id}`}>
+                <h4 key={index}>{playlist.title}</h4>
+                <img src={playlist.imgURL} alt={playlist.title} />
+              </Link>
               <p>{props.user.username}</p>
               <button>Delete playlist</button>
             </>
