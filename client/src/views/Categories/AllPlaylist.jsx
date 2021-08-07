@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getAllPlaylist } from "../../services/playlists.js"
 
-export default function AllPlaylist() {
+export default function AllPlaylist(props) {
   const [playlist, setPlaylist] = useState([])
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function AllPlaylist() {
   }
 
   return (
-    <Layout>
+    <Layout user={props.user} setUser={props.setUser}>
       <h2>Discover</h2>
       <div className="allPlaylist">
       {playlist.map((playlist) => {

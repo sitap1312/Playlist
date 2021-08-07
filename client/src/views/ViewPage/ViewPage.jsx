@@ -123,6 +123,16 @@ export default function ViewPage(props) {
     // myFunction3()
   };
 
+  function hideButtons() {
+    var x = document.getElementById("commButtons");
+    if (!props.user) {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+}
+
+
     return (
         <Layout user={props.user} setUser={props.setUser}>
           <h1>{playlist?.title}</h1>
@@ -164,8 +174,10 @@ export default function ViewPage(props) {
                 <div key={index}>
                   {comment.username}---
                   {comment.content}
-                  <button onClick={() => handleDelete(comment._id)}>DELETE</button>
-                  <button onClick={() => handleEdit(comment)}>EDIT</button>
+                  <div id="commButtons">
+                      <button onClick={() => handleDelete(comment._id)}>DELETE</button>
+                      <button onClick={() => handleEdit(comment)}>EDIT</button>
+                  </div>
                 </div>
               )
             })}
@@ -179,4 +191,4 @@ export default function ViewPage(props) {
 // for the yellow warning for dev tools: https://stackoverflow.com/questions/61339968/devtools-failed-to-load-sourcemap-could-not-load-content-for-chrome-extension
 // REACTPLAYER can take in an array of youtube videos but cannot take in an array of soundcloud songs
 // how to pass index prop through onClick = https://www.codegrepper.com/code-examples/javascript/how+to+pass+index+onClick+function+react+button
-// https://stackoverflow.com/questions/36415904/is-there-a-way-to-use-map-on-an-array-in-reverse-order-with-javascript
+// https://stackoverflow.com/questions/36415904/is-there-a-way-to-use-map-on-an-array-in-reverse-order-with-javascript*/}

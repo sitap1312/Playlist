@@ -2,7 +2,6 @@ import { useState } from "react"
 import Layout from "../../components/Layout/Layout";
 import { createPlaylist } from "../../services/playlists.js";
 import CreateLink from "../FormLink/CreateLink";
-// import { useHistory } from "react-router";
 
 let defaultInput = {
   title: "",
