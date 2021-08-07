@@ -65,12 +65,7 @@ export default function CreateLink(props) {
           <h1>Title: {song.title}</h1>
           <h1>Artist: {song.artist}</h1>
           <h1>URL: {song.linkURL}</h1>
-          {/* show full list of all songs added to the playlist */}
-          {props.newlist?.links?.map((playlist) => {
-            return (
-              <p>{playlist.links.title}</p>
-            )
-          })}
+
         </div>
         </div>
     )

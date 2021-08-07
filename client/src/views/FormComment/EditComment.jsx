@@ -47,17 +47,12 @@ export default function EditComment(props) {
     event.preventDefault();
     const fields = {
     content: input.content,
-      // _id: data._id
     };
     let id = data._id;
-    //This is where we left off 
-    // Edit worked but content is replaced 
-    // with previous comment in text area after submition
     console.log(fields);
     let comments = await updateComment(id, fields);
     setComments(comments);
     props.setToggle(prevToggle => !prevToggle);
-    // setInput(defaultInput);
   };
 
   return (
