@@ -27,7 +27,6 @@ export default function HomePage(props) {
   return (
     <Layout user={props.user} setUser={props.setUser}>
       <h1>PLAYLISTIFY</h1> 
-      <Link to="/preview/:id"><button>PREVIEW</button></Link>
       <h2>Discover</h2> <Link to="/Discover-all">See more</Link>
       <div className="discoverPlaylist">
       {playlist.map((playlist, index) => {

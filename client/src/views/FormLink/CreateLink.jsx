@@ -37,8 +37,8 @@ export default function CreateLink(props) {
         let song = await createLink(fields)
 
       setSong(song)
+      props.setToggle(prevToggle => !prevToggle);
       setInput(defaultInput)
-      
     }
   
     return (
@@ -68,7 +68,7 @@ export default function CreateLink(props) {
           {/* show full list of all songs added to the playlist */}
           {props.newlist?.links?.map((playlist) => {
             return (
-              <p>{playlist.links.title}</p>
+              <p>{playlist.links?.title}</p>
             )
           })}
         </div>
