@@ -47,6 +47,7 @@ export default function ViewPage(props) {
       x.style.display = "none";
     }
   }
+<<<<<<< HEAD
 
   function switchBox1() {
     let x = document.getElementById("editBox");
@@ -62,10 +63,11 @@ export default function ViewPage(props) {
     y.style.display = "block";
   }
 
+=======
+>>>>>>> userSita2
   const [trackIndex, setTrackIndex] = useState(0);
   const [currentVideo, setCurrentVideo] = useState([]);
   const [commId, setCommId] = useState("");
-
   
   useEffect(() => {
     fetchVideo()
@@ -89,25 +91,18 @@ export default function ViewPage(props) {
   }
   const fetchVideo = () => {
       setCurrentVideo(newArray[trackIndex])
-      // console.log(newArray[trackIndex])
-      // console.log(trackIndex)
   }
   const handleWatchComplete = ({ played }) => {
-    // console.log(played)
     if (played >= 0.98) {
-      // console.log("Done!")
       toNextTrack()
-    } 
+    }
   }
 
   const handlePlay = (index) => {
     setTrackIndex(index);
-    // console.log(index)
-    // console.log("selected")
   }
 
   const handleDelete = async (id) => {
-    // console.log(id)
     await deleteComment(id);
     fetchPlaylist()
   };

@@ -1,11 +1,9 @@
 import api from "./apiConfig";
 
-
 //Create Link
 export const createLink = async (input) => {
   try {
     const res = await api.post("/link", input)
-    console.log(res.data)
     return res.data
   } catch (error) {
     throw error
