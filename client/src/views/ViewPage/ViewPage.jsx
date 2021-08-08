@@ -103,28 +103,38 @@ export default function ViewPage(props) {
   };
 
     return (
-        <Layout user={props.user} setUser={props.setUser}>
-          <h1>{playlist?.title}</h1>
-          <h3>{playlist.userId?.username}</h3>
-          <p>{playlist?.description}</p>
-          <h3>{playlist?.category}</h3>
+      <Layout user={props.user} setUser={props.setUser}>
+        <section className="viewPageContainer">
+          <div className="playlistInfo">
+          <div className="viewPlayTitle">{playlist?.title}</div>
+          <div className="viewUser">{playlist.userId?.username}</div>
+          <div className="viewPlayCat">{playlist?.category}</div>
+          </div>
             <ReactPlayer
               className='react-player'
               controls={true}
               playing url={currentVideo}
               onProgress={handleWatchComplete}
               width='100%'
-              height='50vh'
-        />
-        <button onClick={toPrevTrack}>PREV</button>
-        <button onClick={toNextTrack}>NEXT</button>
+            height='50vh'
+          />
+        <section className="belowPlayer">
+        <div className="descBox">
+        <div className="viewLabels">DESCRIPTION</div>
+        <div className="viewPlayDesc">{playlist?.description}</div>
+        </div>
+        <div className="buttonContainer">    
+        <button className="PlayerBtn" onClick={toPrevTrack}>PREV</button>
+        <button className="PlayerBtn" onClick={toNextTrack}>NEXT</button>
+        </div>
+        </section>
           <div>
-          <h3>Playlist Items</h3>
-          <button  onClick={myFunction}>Hide/Show List</button>
+          <div className="playlistHeader">Playlist Items</div>
+          <button className="hideShowBtn" onClick={myFunction}>Hide/Show List</button>
           <div id="myDIV" className="viewPageList">
           {playlist?.links?.map((link, index) => {
           return (
-            <div key={index} onClick={() => handlePlay(index)}>{link.title}---
+            <div className="listVids" key={index} onClick={() => handlePlay(index)}>{link.title}---
               {link.artist}</div>
             )
           })}
@@ -139,7 +149,6 @@ export default function ViewPage(props) {
             </div>
             </>)}
           <br />
-
           <div >
             {playlist?.comments?.slice(0).reverse().map((comment, index) => {
               return (
@@ -155,10 +164,9 @@ export default function ViewPage(props) {
                 </div>
               )
             })}
-
           </div>
-          
           </div>
+          </section>
         </Layout>
   )
 }

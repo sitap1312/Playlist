@@ -1,1 +1,115 @@
-/* comments section */
+.viewPageContainer {
+  /* background-color: #354152; */
+  /* background-color: #363537; */
+  background-color: #121212;
+  /* color: #7edbb0; */
+  /* color: #7e8ba3; */
+  color: white;
+  text-align: center;
+}
+
+/* #181818 for the cards
+#282828 for the hover */
+
+.playlistInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.viewPlayTitle {
+  font-size: 40px;
+  font-weight: bolder;
+  color: #7edbb0;
+  padding: 10px;
+  max-width: 400px;
+}
+
+.viewPlayCat {
+  font-size: 20px;
+  color: #7edbb0;
+}
+
+.belowPlayer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.descBox {
+  max-height: 150px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.viewPlayDesc {
+  margin: 10px;
+  padding: 10px;
+  max-height: 200px;
+}
+
+.PlayerBtn {
+  width: 100px;
+  padding: 10px 30px;
+  background-color: #354152;
+  color: #7edbb0;
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.PlayerBtn:hover {
+  background-color: #282828;
+}
+
+.hideShowBtn {
+  width: 150px;
+  padding: 5px 10px;
+  background-color: #354152;
+  color: #7edbb0;
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.hideShowBtn:hover {
+  background-color: #282828;
+}
+
+.viewLabels {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.playlistHeader {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #7edbb0;
+}
+
+.listVids {
+  font-weight: bold;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
