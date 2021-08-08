@@ -4,65 +4,85 @@
   justify-content: center;
   align-self: flex-start; 
   align-self: flex-end;
-}
-
-.signup-form {
-  border: rgb(48, 47, 47) 1px solid;
-  box-shadow: 0 0 250px #000;
-  text-align: center;
-  padding: 4rem 2rem;
-  height: 100%;
-  width: 30%;
-  margin: 4%;
-}
-
-.signup-btn {
-  background-color: teal;
-  height: 30px;
-  width: 50%;
-  border-radius: 999px;
-  height: 5vh;
-  font-size: medium;
-}
-
-.signup-btn:hover {
-  background-color: rgb(75, 77, 77);
-  cursor: pointer;
-}
-
-body {
-  background-color: #354152;
-  color: teal;
+  background-color: #121212;
   align-items: center;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif, sans-serif;
   margin: 0;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
-h2 {
-  font-size: 2.75rem;
-  font-weight: 100;
-  margin: 0 0 1rem;
-  text-transform: uppercase;
-}
-
-
-input {
-  border: 1px solid #242c37;
-  border-radius: 999px;
-  background-color: transparent;
+.signup-form {
+  border: rgb(48, 47, 47) 1px solid;
+  box-shadow: 0 0 250px #7edbb0;
   text-align: center;
-  width: 60%;
+  padding: 2rem 2rem;
+  height: 500px;
+  width: 400px;
+  margin: 4%;
+  background-color: #282828;
+  border-radius: 30px;
+}
+
+.signup-btn {
+  background: linear-gradient(90deg, #7edbb0 15%, teal 100%);
+  height: 35px;
+  width: 80%;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.signup-btn:hover {
+  background: #90d3a7;
+  color: white;
+}
+
+.login-title {
+  font-size: 35px;
+  font-weight: 100;
+  padding-top: 10px;
+  color: #7edbb0;
+}
+
+
+.login-input {
+  border: 1px solid #7edbb0;
+  border-radius: 999px;
+  background-color: #282828;
+  text-align: center;
+  width: 70%;
   height: 20px;
   background-size: 1.5rem;
   background-position: 1rem 50%;
   padding: .5rem 1rem;
-  color: #fff;
+  color: white;
   margin-bottom: 6%;
 }
 
-a {
-  color: #7e8ba3;
-  /* color: teal; */
+.login-link {
+  color: white;
+}
+
+.login-logo {
+  height: 100px;
+}
+
+.login-text {
+  color: #7edbb0;
+  padding-top: 10px;
+}
+
+.delete-btn {
+  background: linear-gradient(90deg, #7edbb0 15%, teal 100%);
+  height: 35px;
+  width: 80%;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.delete-btn:hover {
+  background: rgb(207, 91, 83);
+  color: white;
 }

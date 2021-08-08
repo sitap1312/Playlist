@@ -69,12 +69,13 @@ export default function EditUser(props) {
     <Layout user={props.user} setUser={props.setUser}>
       <section className="signup-page">
         <div className="signup-form">
-          <h2>Edit Account</h2>
+          <div className="login-title">Edit Account</div>
           <br />
 
           <form onSubmit={handleSubmit}>
 
             <input
+              className="login-input"
               placeholder={props.user?.username}
               name="username"
               type="text"
@@ -85,6 +86,7 @@ export default function EditUser(props) {
 
             <br />
             <input
+              className="login-input"
               placeholder={props.user?.email}
               name="email"
               type="email"
@@ -94,6 +96,7 @@ export default function EditUser(props) {
 
             <br />
             <input
+              className="login-input"
               name="password"
               type="password"
               value={formData.password_digest}
@@ -107,7 +110,7 @@ export default function EditUser(props) {
             <br />
 
             <div>
-              <button className="signup-btn" type="submit" onClick={handleDelete}>Delete Account</button>
+              <button className="delete-btn" type="submit" onClick={handleDelete}>DELETE ACCOUNT</button>
             </div>
             </form>
           </div>

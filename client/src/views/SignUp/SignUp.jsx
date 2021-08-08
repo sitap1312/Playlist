@@ -3,6 +3,7 @@ import { useState } from "react";
 import { signUp } from "../../services/users"
 import Layout from "../../components/Layout/Layout";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SignUp(props) {
   const [input, setInput] = useState({ username: "", email: "", password: "" });
@@ -29,11 +30,17 @@ export default function SignUp(props) {
     <Layout>
       <section className="signup-page">
         <div className="signup-form">
-          <h2>SignUp</h2>
+          
+          <Link to="/">
+            <img className="login-logo" src="https://i.imgur.com/xidyTP5.png" />
+          </Link>
+          
+          <div className="login-title">SIGN UP</div>
           <form onSubmit={handleSubmit}>
 
             <br />
             <input
+              className="login-input"
               id="username"
               type="text"
               value={input.username}
@@ -42,6 +49,7 @@ export default function SignUp(props) {
 
             <br />
             <input
+              className="login-input"
               id="email"
               type="email"
               value={input.email}
@@ -50,6 +58,7 @@ export default function SignUp(props) {
 
             <br />
             <input
+              className="login-input"
               id="password"
               type="password"
               value={input.password}
@@ -63,7 +72,7 @@ export default function SignUp(props) {
 
             <br />
 
-            <p>Already have an accout? <a href="/sign-in">Log in</a></p>
+            <div className="login-text">Already have an accout? <a className="login-link" href="/sign-in">Sign in</a></div>
             
           </form>
         </div>

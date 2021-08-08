@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./SignIn.css"
+import { Link } from "react-router-dom";
 import { signIn } from "../../services/users"
 import Layout from "../../components/Layout/Layout";
 import { useHistory } from "react-router-dom";
@@ -29,33 +29,43 @@ export default function SignIn(props) {
     <Layout>
       <section className="signup-page">
         <div className="signup-form">
-          <h2>Welcome Back!</h2>
+
+          <Link to="/">
+            <img className="login-logo" src="https://i.imgur.com/xidyTP5.png" />
+          </Link>
+          
+          <div className="login-title">SIGN IN</div>
           <form onSubmit={handleSubmit}>
 
             <br />
             <input
+              className="login-input"
               id="email"
               type="email"
               value={input.email}
               onChange={handleInput}
-              className="inputfield"
               placeholder="info@emailaddress.com"/>
             <br />
 
             <br />
             <input
+              className="login-input"
               id="password"
               type="password"
               value={input.password}
               onChange={handleInput}
-              className="inputfield"
               placeholder="••••••••••••" />
             <br />
             <br />
 
             <div>
-              <button className="signup-btn" type="submit">LOGIN IN</button>
+              <button className="signup-btn" type="submit">SIGN IN</button>
             </div>
+
+            <br />
+
+            <div className="login-text">Do not have an Account? <a className="login-link" href="/sign-up">Sign Up</a></div>
+          
           </form>
         </div>
     </section>
