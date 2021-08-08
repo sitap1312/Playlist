@@ -1,6 +1,10 @@
+/* * {
+  border: 3px solid red;
+} */
 .App {
-  text-align: center;
+  /* text-align: center; */
   font-family: "Roboto", sans-serif;
+  background-color: #121212
 }
 
 .App-logo {

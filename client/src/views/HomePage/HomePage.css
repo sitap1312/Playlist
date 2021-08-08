@@ -1,0 +1,13 @@
+.homepage {
+  background-color: #121212;
+}
+.discoverPlaylist {
+  display: flex;
+  flex-flow:row nowrap;
+  flex-basis: 33%;
+  max-width: 1480px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  overflow: auto;
+}

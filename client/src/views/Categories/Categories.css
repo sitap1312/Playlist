@@ -1,0 +1,7 @@
+.allPlaylist{
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+}
+
+/* background-color: #121212 */

@@ -4,6 +4,8 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getAllPlaylist } from "../../services/playlists.js"
+import PlaylistCard from '../PlaylistCard/PlaylistCard';
+import "./Categories.css"
 
 export default function Categories(props) {
   const [playlist, setPlaylist] = useState([])
@@ -28,10 +30,10 @@ export default function Categories(props) {
   return (
     <Layout user={props.user} setUser={props.setUser}>
     <h2>{id}</h2>
-      <div className="categoryPlaylist">
+      <div className="allPlaylist">
       {filterByCategory(id).map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
       </div>
