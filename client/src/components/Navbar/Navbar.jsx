@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { signOut } from "../../services/users";
+import { useHistory } from "react-router";
 
 export default function Nav(props) {
+  let history = useHistory()
+
   const handleSignOut = () => {
     signOut();
     props.setUser(null);
+    history.push("/")
   };
 
   return (
