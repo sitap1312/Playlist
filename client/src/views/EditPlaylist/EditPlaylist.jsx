@@ -5,14 +5,6 @@ import { deleteLink, getLink ,updateLink } from '../../services/links'
 import { useParams } from 'react-router'
 import CreateLink from '../FormLink/CreateLink'
 
-
-const defaultForm = {
-  title: "",
-  imgURL: "",
-  description: "",
-  category: "",
-}
-
 export default function EditPlaylist(props) {
   const [playlist, setPlaylist] = useState({})
   const [newlist, setNewList] = useState({})
@@ -20,8 +12,14 @@ export default function EditPlaylist(props) {
   const [category, setCategory] = useState("Choose Category")
   const { id } = useParams()
 
-  const [input, setInput] = useState(defaultForm)
+  const defaultForm = {
+    title: "",
+    imgURL: "",
+    description: "",
+    category: "",
+  }
 
+  const [input, setInput] = useState(defaultForm)
 
   useEffect(() => {
     fetchPlaylist()
@@ -34,6 +32,7 @@ export default function EditPlaylist(props) {
   const fetchPlaylist = async () => {
     const res = await getPlaylist(id)
     setPlaylist(res)
+    setInput(res)
   }
   useEffect(() => {
     setNewList(playlist)
@@ -65,27 +64,23 @@ export default function EditPlaylist(props) {
       <section className="createEditContainer">
       <div className="createFormTitle">Edit Playlist</div><br />
       <section className="createPlaylistContainer">
-      <div className="createFormDiv"></div>
-        {playlist?.title}
-        <br />
+      <div className="createFormDiv">
       <form onSubmit={handleSubmit}>
       <div className="formLabel">Playlist Title</div>
         <input
-          className='input-name'
+          className="login-input"
           type="text"
           placeholder="title"
           value={input.title}
           name="title"
-          required
           onChange={handleChange}
             />
       <div className="formLabel">Image URL</div>      
       <input
-            className='input-name'
+            className="login-input"
             placeholder='Image URL'
             value={input.imgURL}
             name='imgURL'
-            required
             onChange={handleChange}
           />
       <div className="formLabel">Description</div>     
@@ -94,7 +89,6 @@ export default function EditPlaylist(props) {
             placeholder='Description'
             value={input.description}
             name='description'
-            required
             onChange={handleChange}
             />
       
@@ -108,17 +102,17 @@ export default function EditPlaylist(props) {
                   <option value="Entertainment">Entertainment</option>
                   <option value="Family">Family</option>
             </select>
-          </form>
           <button className="hideShowBtn" onClick={handleSubmit} type="submit">Update playlist</button>
-          </section>
-      
+          </form>
+            </div>
         <div className="newPlaylistContainer">
         <div className="inputTitle">{playlist?.title}</div>
         <img className="playlistIMG" src={playlist?.imgURL} alt={playlist?.title} />
         <div className="playlistCat">{playlist?.category}</div>
         <div className="playlistDesc">{playlist?.description}</div>
         </div>
-        
+        </section>
+
         <div className="newLinksAdded">
         <div className="createPlaylistItems">Playlist Links</div>
         {playlist.links?.map((link, index) => {
