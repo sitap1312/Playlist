@@ -170,9 +170,9 @@ export default function ViewPage(props) {
             {playlist?.comments?.slice(0).reverse().map((comment, index) => {
               return (
                 <div key={index}>
-                  <div className="commentUser">{comment.username}</div>
-                  <div className="commentContent">{comment.content}</div>
-                  {props.user.username === comment.username && (<>
+                  <div className="commentUser">{comment?.username}</div>
+                  <div className="commentContent">{comment?.content}</div>
+                  {props.user?.username === comment.username && (<>
                     <div className="commButtons">
                       <button className="CommBtn" onClick={() => handleDelete(comment._id)}>DELETE</button>
                       <button className="CommBtn" onClick={() => handleEdit(comment)}>EDIT</button>

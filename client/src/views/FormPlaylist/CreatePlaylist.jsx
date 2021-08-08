@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import "./CreatePlaylist.css"
 import Layout from "../../components/Layout/Layout";
 import { createPlaylist, getPlaylist } from "../../services/playlists.js";
 import CreateLink from "../FormLink/CreateLink";
@@ -62,10 +63,12 @@ export default function CreatePlaylist(props) {
   
     return (
       <Layout user={props.user} setUser={props.setUser}>
-        <br />
-        <button  onClick={myFunction}>Hide/Show Form</button>
+        <section className="createEditContainer">
+          <div className="createFormTitle">Create Playlist</div>
+          <button className="hideShowBtn" onClick={myFunction}>Hide/Show Form</button>
+            <section className="createPlaylistContainer">
             <div id="myDIV">
-            <h1>Create Playlist</h1>
+            <div className="createFormDiv">
             <form onSubmit={handleSubmit}>
                 <label>Playlist Title</label>
                 <br />
@@ -92,14 +95,17 @@ export default function CreatePlaylist(props) {
                 </select>
                 <br />
                 <button type="submit">Create Playlist</button>
-          </form>
-        </div>
-        <div>
-          <h1>{input.title}</h1>
-          <img src={input.imgURL} alt={input.title} />
-          <p>{props.username}</p>
-        </div>
-        <div>
+            </form>
+            </div>
+          </div>
+        <div className="newPlaylistContainer">
+          <div className="inputTitle">{input.title}</div>
+          <img className="playlistIMG" src={input.imgURL} alt={input.title} />
+          <div className="creatorName">{props.user?.username}</div>
+          <div className="playlistDesc">{input.description}</div>
+          </div>
+          </section>
+        <div className="newLinksAdded">
         {playlist.links?.map((link, index) => {
         return (
           <>
@@ -109,7 +115,8 @@ export default function CreatePlaylist(props) {
         )
         })}
           </div>
-        <CreateLink setToggle={setToggle} newlist={newlist} />
+          <CreateLink setToggle={setToggle} newlist={newlist} />
+          </section>
         </Layout>
     )
 } 
