@@ -54,14 +54,10 @@ export default function NewComment(props) {
         <div className="inputDiv">
           <input className="commInput" type="text" value={input} name="content" value={input.content} placeholder="enter a public comment" onChange={handleChange} />
         <div className="commBtnDiv">
-        <button className="commSubmitBtn" type="submit">Submit</button>
+        <button className="commSubmitBtn" type="submit">SUBMIT</button>
         </div>
         </div>
       </form>
-
-      <div>
-        {/* Display comments here.. */}
-      </div>
     </div>
   )
 }

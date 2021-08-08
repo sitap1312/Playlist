@@ -50,7 +50,7 @@ export default function EditPlaylist(props) {
 
   const handleSubmit = async (e) => {
       e.preventDefault()
-      let updated = await updatePlaylist(id,input)
+      let updated = await updatePlaylist(id, input)
       setPlaylist(updated)
       fetchPlaylist()
   }
@@ -62,21 +62,24 @@ export default function EditPlaylist(props) {
 
   return (
     <Layout user={props.user} setUser={props.setUser}>
-      <p>Edit Playlist</p><br />
-      
-      {playlist?.title} <br />
+      <section className="createEditContainer">
+      <div className="createFormTitle">Edit Playlist</div><br />
+      <section className="createPlaylistContainer">
+      <div className="createFormDiv"></div>
+        {playlist?.title}
+        <br />
       <form onSubmit={handleSubmit}>
-        <input type="text"
+      <div className="formLabel">Playlist Title</div>
+        <input
+          className='input-name'
+          type="text"
           placeholder="title"
           value={input.title}
           name="title"
           required
           onChange={handleChange}
-          /><br />
-      <img
-        src={playlist?.imgURL}
-        alt={playlist?.title} />
-      <br />
+            />
+      <div className="formLabel">Image URL</div>      
       <input
             className='input-name'
             placeholder='Image URL'
@@ -85,16 +88,18 @@ export default function EditPlaylist(props) {
             required
             onChange={handleChange}
           />
-      {playlist?.description} <br />
+      <div className="formLabel">Description</div>     
       <input
-            className='input-name'
+            className="login-input"
             placeholder='Description'
             value={input.description}
             name='description'
             required
             onChange={handleChange}
-          /><br />
-      <select type="text" name="category" value={input.category} onChange={handleChange}>
+            />
+      
+      <div className="formLabel">Category</div>
+      <select className="dropdownInput" type="text" name="category" value={input.category} onChange={handleChange}>
                   <option value="Music">Music</option>
                   <option value="Videos">Video</option>
                   <option value="Gaming">Gaming</option>
@@ -104,16 +109,29 @@ export default function EditPlaylist(props) {
                   <option value="Family">Family</option>
             </select>
           </form>
-      <button onClick={handleSubmit} type="submit">Update playlist</button>
-      {playlist.links?.map((link, index) => {
+          <button className="hideShowBtn" onClick={handleSubmit} type="submit">Update playlist</button>
+          </section>
+      
+        <div className="newPlaylistContainer">
+        <div className="inputTitle">{playlist?.title}</div>
+        <img className="playlistIMG" src={playlist?.imgURL} alt={playlist?.title} />
+        <div className="playlistCat">{playlist?.category}</div>
+        <div className="playlistDesc">{playlist?.description}</div>
+        </div>
+        
+        <div className="newLinksAdded">
+        <div className="createPlaylistItems">Playlist Links</div>
+        {playlist.links?.map((link, index) => {
         return (
-          <>
-          <div key={index}> {link.title}---{link.artist}---{link.linkURL}</div>
-          <button onClick={() => handleDelete(link._id)}>Delete Link</button>
-          </>
+          <div className="listVidsContainer">
+          <div className="listVids" key={index}> {link.title}---{link.artist}---{link.linkURL}</div>
+          <button className="commSubmitBtn" onClick={() => handleDelete(link._id)}>DELETE</button>
+          </div>
         )
-      })}
+        })}
+        </div>
       <CreateLink setToggle={setToggle} newlist={newlist} />
+      </section>
     </Layout>
   )
 }
