@@ -1,3 +1,4 @@
+import "./SignUp.css"
 import { useState } from "react";
 import { signUp } from "../../services/users"
 import Layout from "../../components/Layout/Layout";
@@ -23,39 +24,50 @@ export default function SignUp(props) {
       [id]: value,
     }));
   };
+
   return (
     <Layout>
-      SignUp
-      <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <br />
-        <input
-          id="username"
-          type="text"
-          value={input.username}
-          onChange={handleInput}
-        />
-        <br />
-        <label>Email</label>
-        <br />
-        <input
-          id="email"
-          type="email"
-          value={input.email}
-          onChange={handleInput}
-        />
-        <br />
-        <label>Password</label>
-        <br />
-        <input
-          id="password"
-          type="password"
-          value={input.password}
-          onChange={handleInput}
-        />
-        <br />
-        <button>Sign Up</button>
-      </form>
+      <section className="signup-page">
+        <div className="signup-form">
+          <h2>SignUp</h2>
+          <form onSubmit={handleSubmit}>
+
+            <br />
+            <input
+              id="username"
+              type="text"
+              value={input.username}
+              onChange={handleInput} placeholder="username" />
+            <br />
+
+            <br />
+            <input
+              id="email"
+              type="email"
+              value={input.email}
+              onChange={handleInput} placeholder="info@emailaddress.com" />
+            <br />
+
+            <br />
+            <input
+              id="password"
+              type="password"
+              value={input.password}
+              onChange={handleInput} placeholder="••••••••••••" />
+            <br />
+            <br />
+
+            <div>
+              <button className="signup-btn" type="submit">SIGN UP</button>
+            </div>
+
+            <br />
+
+            <p>Already have an accout? <a href="/sign-in">Log in</a></p>
+            
+          </form>
+        </div>
+      </section>
     </Layout>
   );
-}
+};
