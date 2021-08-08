@@ -47,7 +47,6 @@ export default function ViewPage(props) {
       x.style.display = "none";
     }
   }
-<<<<<<< HEAD
 
   function switchBox1() {
     let x = document.getElementById("editBox");
@@ -63,8 +62,6 @@ export default function ViewPage(props) {
     y.style.display = "block";
   }
 
-=======
->>>>>>> userSita2
   const [trackIndex, setTrackIndex] = useState(0);
   const [currentVideo, setCurrentVideo] = useState([]);
   const [commId, setCommId] = useState("");
