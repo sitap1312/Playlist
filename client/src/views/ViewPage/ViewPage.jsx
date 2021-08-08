@@ -48,23 +48,18 @@ export default function ViewPage(props) {
     }
   }
 
-  // function switchBox1() {
-  //   var x = document.getElementById("editBox");
-  //   if (x.style.visibility === "visible") {
-  //     x.style.visibility = "hidden";
-  //   } else {
-  //     x.style.visibility = "visible";
-  //   }
-  // }
-
   function switchBox1() {
     let x = document.getElementById("editBox");
     x.style.display = "block";
+    let y = document.getElementById("newBox");
+    y.style.display = "none";
   }
 
   function switchBox0() {
     let x = document.getElementById("editBox");
     x.style.display = "none";
+    let y = document.getElementById("newBox");
+    y.style.display = "block";
   }
 
   const [trackIndex, setTrackIndex] = useState(0);
@@ -167,7 +162,7 @@ export default function ViewPage(props) {
           <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
           </div>
           <div id="editBox">
-          <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} switchBox1={switchBox1} />
+          <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} switchBox0={switchBox0} />
             </div>
             </>)}
           <br />

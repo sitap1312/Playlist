@@ -53,6 +53,7 @@ export default function EditComment(props) {
     let comments = await updateComment(id, fields);
     setComments(comments);
     props.setToggle(prevToggle => !prevToggle);
+    props.switchBox0()
   };
 
   return (
@@ -65,7 +66,7 @@ export default function EditComment(props) {
         <div className="inputDiv">
         <input className="commInput" type="text" name="content" value={input.content} onChange={handleChange} />
         <div className="commBtnDiv">
-        <button className="commSubmitBtn" onClick={props.switchBox1}>Cancel</button>
+        <button className="commSubmitBtn" onClick={props.switchBox0}>Cancel</button>
         <button className="commSubmitBtn" type="submit">Submit</button>
         </div>
         </div>
