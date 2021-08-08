@@ -58,13 +58,17 @@ export default function EditComment(props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <br />
-        <h4>{props?.user?.username}</h4>
-        <label><strong>Edit Comment</strong></label>
-        <br />
-        <textarea cols="75" rows="4" type="text" name="content" value={input.content} onChange={handleChange} />
-        <br />
-        <button type="submit">Submit</button>
+      <div className="commFormHeader">
+        <div className="commFormLabel">Edit Comment</div>
+        <div className="commFormUser">{props?.user?.username}</div>
+        </div>
+        <div className="inputDiv">
+        <input className="commInput" type="text" name="content" value={input.content} onChange={handleChange} />
+        <div className="commBtnDiv">
+        <button className="commSubmitBtn" onClick={props.switchBox1}>Cancel</button>
+        <button className="commSubmitBtn" type="submit">Submit</button>
+        </div>
+        </div>
       </form>
 
       <div>

@@ -29,6 +29,8 @@
 .viewPlayCat {
   font-size: 20px;
   color: #7edbb0;
+  text-decoration: none;
+  border-style: none;
 }
 
 .belowPlayer {
@@ -43,18 +45,17 @@
   width: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: left;
+  padding-left: 10px;
 }
 
 .viewPlayDesc {
   margin: 10px;
-  padding: 10px;
   max-height: 200px;
 }
 
 .PlayerBtn {
-  width: 100px;
-  padding: 10px 30px;
+  padding: 7px 15px;
   background-color: #354152;
   color: #7edbb0;
   text-align: center;
@@ -65,18 +66,17 @@
   cursor: pointer;
   margin-left: 5px;
   margin-right: 5px;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 .PlayerBtn:hover {
   background-color: #282828;
+  border-color: #7edbb0;
+  color: white;
 }
 
 .hideShowBtn {
   width: 150px;
-  padding: 5px 10px;
+  padding: 3px 10px;
   background-color: #354152;
   color: #7edbb0;
   text-align: center;
@@ -86,13 +86,12 @@
   font-weight: bold;
   cursor: pointer;
   margin: 10px;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 .hideShowBtn:hover {
   background-color: #282828;
+  border-color: #7edbb0;
+  color: white;
 }
 
 .viewLabels {
@@ -112,4 +111,59 @@
   padding-top: 2px;
   padding-bottom: 2px;
   cursor: pointer;
+}
+
+.listVids:hover {
+  color: #7edbb0;
+}
+
+.commentBox {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  text-align: left;
+  padding-left: 10px;
+  padding-bottom: 50px;
+}
+
+.commentUser {
+  font-size: 16px;
+  font-weight: bolder;
+  padding-top: 5px;
+  color: #7edbb0;
+}
+
+.commentContent {
+  min-height: 30px;
+  margin-bottom: 5px;
+}
+
+.commButtons {
+  text-align: right;
+}
+
+.CommBtn {
+  width: 80px;
+  padding: 3px 10px;
+  background-color: #354152;
+  color: #7edbb0;
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.CommBtn:hover {
+  background-color: #282828;
+  border-color: #7edbb0;
+  color: white;
+}
+
+#editBox {
+  /* visibility: hidden; */
+  display: none;
 }
