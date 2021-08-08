@@ -1,4 +1,12 @@
-.allPlaylist{
+.userNamePlaylist {
+    font-size: 40px;
+    font-weight: bolder;
+    color: #7edbb0;
+    padding: 10px;
+    text-align: center;
+}
+
+.userPlaylist {
   display: flex;
   flex-flow:row wrap;
   justify-content: space-between;
@@ -6,12 +14,4 @@
   max-width: 1480px;
   padding: 20px;
   margin: 0 auto;
-}
-
-.playlistCategory{
-  font-size: 40px;
-    font-weight: bolder;
-    color: #7edbb0;
-    padding: 10px;
-    text-align: center;
 }

@@ -21,7 +21,7 @@ export default function AllPlaylist(props) {
 
   return (
     <Layout user={props.user} setUser={props.setUser}>
-      <h2>Discover</h2>
+      <h2 className="playlistCategory">Discover</h2>
       <div className="allPlaylist">
       {playlist.map((playlist, index) => {
         return (

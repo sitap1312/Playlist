@@ -7,7 +7,8 @@ export default function PlaylistCard(props) {
     <div>
       <Link className="link" to={`/preview/${props.playlist._id}`}><div className="playlistCardContainer">
           <img className="playlistCardImg" src={props.playlist?.imgURL} alt={props.playlist?.title}/>
-          <h2 className="playlistCardTitle">{props.playlist?.title}</h2>
+        <h2 className="playlistCardTitle">{props.playlist?.title}</h2>
+        <div className="playlistCardDescription">{props.playlist.description}</div>
       </div> </Link>
     </div>
   )

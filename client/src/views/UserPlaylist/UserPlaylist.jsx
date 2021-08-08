@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getUser } from '../../services/users';
 import { deletePlaylist } from '../../services/playlists';
+import PlaylistCard from '../PlaylistCard/PlaylistCard';
+import "./UserPlaylist.css"
 
 export default function UserPlaylist(props) {
   const [user, setUser] = useState({})
@@ -27,22 +29,18 @@ export default function UserPlaylist(props) {
 
   return (
     <Layout user={props.user} setUser={props.setUser}>
-      <h2>{props.user?.username}'s Playlists</h2>
-      <div className="categoryPlaylist">
-        {user?.playlist?.map((playlist, index) => {
-          return (
-              <div key={index}>
-              <Link  to={`/preview/${playlist._id}`}>
-              <h4 >{playlist.title}</h4>
-              <img src={playlist.imgURL} alt={playlist.title} />
-              <p>{props.user.username}</p>
-              </Link>
-              <button onClick={() => handleDelete(playlist._id)}>Delete playlist</button>
-              <Link to={`/edit-playlist/${playlist._id}`}><button>Edit Playlist</button></Link>
-              </div>
-          )
-        })}
-      </div>
+        <h2 className="userNamePlaylist">{props.user?.username}'s Playlists</h2>
+          <div className="userPlaylist">
+            {user?.playlist?.map((playlist, index) => {
+              return (
+                <div key={index}>
+                  <PlaylistCard key={index} playlist={playlist} />
+                  <button onClick={() => handleDelete(playlist._id)}>Delete playlist</button>
+                  <Link to={`/edit-playlist/${playlist._id}`}><button>Edit Playlist</button></Link>
+                </div>
+              )
+            })}
+          </div>
     </Layout>
   )
 }

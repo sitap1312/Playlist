@@ -30,64 +30,79 @@ export default function HomePage(props) {
   return (
     <Layout user={props.user} setUser={props.setUser}>
       <div className="homepage">
-      <h1>PLAYLISTIFY</h1> 
-      <h2>Discover</h2> <Link to="/Discover-all">See more</Link>
+        <div className="categoryTitle">
+          <h2>Discover</h2> <Link className="seeMore" to="/Discover-all">See more</Link>
+        </div>
       <div className="discoverPlaylist">
       {playlist.map((playlist, index) => {
         return (
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
+      <div className="categoryTitle">
+        <h2 className="" >Music</h2> <Link className="seeMore"  to="/categories/Music">See more</Link>
       </div>
-      <h2>Music</h2> <Link to="/categories/Music">See more</Link>
       <div className="discoverPlaylist">
       {filterByCategory("Music").map((playlist, index) => {
         return (
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
+      <div className="categoryTitle">
+        <h2>Videos</h2> <Link className="seeMore"  to="/categories/Videos">See more</Link>
       </div>
-      <h2>Videos</h2> <Link to="/categories/Videos">See more</Link>
-      <div className="discoverPlaylist">
+          <div className="discoverPlaylist">
       {filterByCategory("Videos").map((playlist, index) => {
         return (
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
+        <div className="categoryTitle">
+      <h2>Gaming</h2> <Link className="seeMore"  to="/categories/Gaming">See more</Link>
       </div>
-      <h2>Gaming</h2> <Link to="/categories/Gaming">See more</Link>
-      <div className="discoverPlaylist">
+          <div className="discoverPlaylist">
       {filterByCategory("Gaming").map((playlist, index) => {
         return (
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
+        <div className="categoryTitle">
+      <h2>Education</h2> <Link className="seeMore"  to="/categories/Education">See more</Link>
       </div>
-      <h2>Education</h2> <Link to="/categories/Education">See more</Link>
-      <div className="discoverPlaylist">
+          <div className="discoverPlaylist">
       {filterByCategory("Education").map((playlist, index) => {
         return (
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
-      <h2>Sports</h2> <Link to="/categories/Sports">See more</Link>
+        </div>
+        <div className="categoryTitle">
+      <h2>Sports</h2> <Link className="seeMore"  to="/categories/Sports">See more</Link>
+        </div>
       <div className="discoverPlaylist">
       {filterByCategory("Sports").map((playlist, index) => {
         return (
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
-      <h2>Entertainment</h2> <Link to="/categories/Entertainment">See more</Link>
+        </div>
+        <div className="categoryTitle">
+          <h2>Entertainment</h2> <Link className="seeMore"  to="/categories/Entertainment">See more</Link>
+          </div>
       <div className="discoverPlaylist">
       {filterByCategory("Entertainment").map((playlist, index) => {
         return (
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
-      <h2>Family</h2> <Link to="/categories/Family">See more</Link>
+        </div>
+        <div className="categoryTitle">
+          <h2>Family</h2> <Link className="seeMore"  to="/categories/Family">See more</Link>
+          </div>
       <div className="videoPlaylist">
       {filterByCategory("Family").map((playlist, index) => {
         return (

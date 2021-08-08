@@ -10,4 +10,22 @@
   margin: 0 auto;
   margin-bottom: 25px;
   overflow: auto;
+  border-top: 1px solid white;
 }
+
+.categoryTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: #7EDBB0;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.seeMore {
+  font-size: 17px;
+  text-decoration: none;
+  color: #7EDBB0;
+  align-items:flex-end ;
+}
+
