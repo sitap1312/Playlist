@@ -18,11 +18,13 @@ export default function ViewPage(props) {
 
   useEffect(() => {
     fetchPlaylist()
+    // eslint-disable-next-line
   }, [toggle]);
 
   useEffect(() => {
     setCurrentVideo(newArray[trackIndex]); // This is be executed when `loading` state changes
-}, [loading])
+// eslint-disable-next-line
+  }, [loading])
   
   async function fetchPlaylist () {
     let res = await getPlaylist(id)
@@ -33,7 +35,7 @@ export default function ViewPage(props) {
   }
 
   let newArray = []
-  const allURLs = playlist?.links?.map((link, index) => {
+  playlist?.links?.map((link, index) => {
     <div key={index}></div>
     newArray.push(link.linkURL)
     return newArray
@@ -68,6 +70,7 @@ export default function ViewPage(props) {
   
   useEffect(() => {
     fetchVideo()
+    // eslint-disable-next-line
 }, [trackIndex])
   
   const toPrevTrack = () => {
@@ -76,7 +79,6 @@ export default function ViewPage(props) {
     } else {
       setTrackIndex(0);
     }
-    // console.log("back")
   }
   const toNextTrack = () => {
     if (trackIndex < newArray.length - 1) {
@@ -84,7 +86,6 @@ export default function ViewPage(props) {
     } else {
       setTrackIndex(0);
     }
-    // console.log("forward")
   }
   const fetchVideo = () => {
       setCurrentVideo(newArray[trackIndex])

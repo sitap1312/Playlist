@@ -13,7 +13,6 @@ let defaultInput = {
 }
 
 export default function CreatePlaylist(props) {
-  const [category, setCategory] = useState("Select a category below")
   const [input, setInput] = useState(defaultInput)
   const [playlist, setPlaylist] = useState({})
   const [newlist, setNewList] = useState({})
@@ -25,7 +24,6 @@ export default function CreatePlaylist(props) {
             ...prevState,
             [name]: value,
         }))
-      setCategory(event.target.value)
     }
     async function handleSubmit(event) {
         event.preventDefault()
@@ -46,10 +44,12 @@ export default function CreatePlaylist(props) {
   
     useEffect(() => {
       fetchPlaylist()
+      // eslint-disable-next-line
     }, [newlist])
   
     useEffect(() => {
       fetchPlaylist()
+      // eslint-disable-next-line
     }, [toggle])
     
     const fetchPlaylist = async () => {

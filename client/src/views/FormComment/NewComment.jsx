@@ -4,8 +4,6 @@ import { createComment } from "../../services/comments.js";
 
 
 export default function NewComment(props) {
-  const [comments, setComments] = useState([]);
-
   const [play, setPlay] = useState("");
 
   useEffect(() => {
@@ -36,9 +34,7 @@ export default function NewComment(props) {
       playlistId: play
     };
 
-    console.log(fields);
-    let comments = await createComment(fields);
-    setComments(comments);
+    await createComment(fields);
     props.setToggle(prevToggle => !prevToggle);
 
     setInput(defaultInput);
@@ -52,7 +48,7 @@ export default function NewComment(props) {
         <div className="commFormUser">{props?.user?.username}</div>
         </div>
         <div className="inputDiv">
-          <input className="commInput" type="text" value={input} name="content" value={input.content} placeholder="enter a public comment" onChange={handleChange} />
+          <input className="commInput" type="text" value={input.content} name="content" placeholder="enter a public comment" onChange={handleChange} />
         <div className="commBtnDiv">
         <button className="commSubmitBtn" type="submit">SUBMIT</button>
         </div>

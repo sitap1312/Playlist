@@ -14,7 +14,6 @@ export default function AllPlaylist(props) {
   
   const fetchData = async () => {
     const res = await getAllPlaylist()
-    console.log(res)
     setPlaylist(res)
   }
 

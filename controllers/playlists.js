@@ -58,7 +58,6 @@ export const updatePlaylist = async (req, res) => {
 export const deletePlaylist = async (req, res) => {
   try {
     let { id } = req.params;
-    console.log(id)
     const deletedPlaylist = await Playlist.findByIdAndDelete(id);
     res.status(200).json({message: `Deleted ${deletedPlaylist.title}`});
   } catch (e) {

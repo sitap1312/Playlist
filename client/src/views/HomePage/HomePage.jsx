@@ -16,7 +16,6 @@ export default function HomePage(props) {
   
   const fetchData = async () => {
     const res = await getAllPlaylist()
-    console.log(res)
     setPlaylist(res)
   }
 

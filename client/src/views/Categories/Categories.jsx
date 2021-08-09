@@ -16,7 +16,6 @@ export default function Categories(props) {
   
   const fetchData = async () => {
     const res = await getAllPlaylist()
-    console.log(res)
     setPlaylist(res)
   }
 

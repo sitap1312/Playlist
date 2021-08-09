@@ -4,7 +4,6 @@ import { createLink } from "../../services/links.js";
 
 
 export default function CreateLink(props) {
-  const [song, setSong] = useState("")
   const id = props.newlist._id
 
   let defaultInput = {
@@ -33,8 +32,7 @@ export default function CreateLink(props) {
         linkURL: input.linkURL,
         playlistId: id,
       };
-        let song = await createLink(fields)
-      setSong(song)
+      await createLink(fields)
       props.setToggle(prevToggle => !prevToggle);
       setInput(defaultInput)
     }

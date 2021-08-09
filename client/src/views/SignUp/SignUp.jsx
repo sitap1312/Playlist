@@ -13,7 +13,6 @@ export default function SignUp(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const user = await signUp(input)
-    console.log(user);
     setUser(user);
     history.push("/");
   };
@@ -32,7 +31,7 @@ export default function SignUp(props) {
         <div className="signup-form">
           
           <Link to="/">
-            <img className="login-logo" src="https://i.imgur.com/xidyTP5.png" />
+            <img className="login-logo" src="https://i.imgur.com/xidyTP5.png" alt="Logo" />
           </Link>
           
           <div className="login-title">SIGN UP</div>

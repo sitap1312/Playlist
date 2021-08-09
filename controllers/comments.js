@@ -35,10 +35,6 @@ export const createComment = async (req, res) => {
 
     const playlist = await Playlist.findById(newComment.playlistId);
     const user = await User.findById(req.user);
-
-    console.log(newComment);
-    console.log(playlist);
-    console.log(user);
     newComment.userId = user._id;
     newComment.username = user.username;
 
