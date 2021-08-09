@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 
 app.use("/api", routes);
 
-// app.get("/", (req, res) => res.send("<h1>Hello, world</h1>"));
+app.get("/", (req, res) => res.send("<h1>Hello, world</h1>"));
 
 // db.on("connected", () => {
 //   console.log("Connected to MongoDB");
