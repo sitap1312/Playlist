@@ -25,7 +25,9 @@ export default function AllPlaylist(props) {
       <div className="allPlaylist">
       {playlist.map((playlist, index) => {
         return (
-          <PlaylistCard key={index} playlist={playlist} />
+          <div className="indivPlaylist">
+            <PlaylistCard key={index} playlist={playlist} />
+          </div> 
         )
       })}
       </div>

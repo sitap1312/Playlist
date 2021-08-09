@@ -9,8 +9,7 @@
 .userPlaylist {
   display: flex;
   flex-flow:row wrap;
-  justify-content: space-between;
-  flex-basis: 33%;
+  justify-content: flex-start;
   max-width: 1480px;
   padding: 20px;
   margin: 0 auto;
@@ -25,10 +24,7 @@
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-  margin-left: -20px;
-  margin-right: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-left: 35px;
 }
 
 .deletePlaylistBtn:hover {
@@ -45,12 +41,25 @@
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 40px;
+  margin-bottom: 10px;
 }
 
-.editPlaylistBtn:hover {
-  background-color: #5A9C7D;
+@media screen and (max-width: 375px) {
+
+  .userPlaylist{
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .indivPlaylist {
+    margin: 0 auto
+  }
+
+  .userNamePlaylist {
+    font-size: 25px;
+  }
 }

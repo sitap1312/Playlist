@@ -60,6 +60,7 @@ export default function HomePage(props) {
         )
       })}
         </div>
+        <div>
         <div className="categoryTitle">
       <h2 className="categoryGaming">Gaming</h2> <Link className="seeMore"  to="/categories/Gaming">See more</Link>
       </div>
@@ -69,7 +70,8 @@ export default function HomePage(props) {
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-        </div>
+          </div>
+          </div>
         <div className="categoryTitle">
       <h2 className="categoryEducation">Education</h2> <Link className="seeMore"  to="/categories/Education">See more</Link>
       </div>
@@ -103,7 +105,7 @@ export default function HomePage(props) {
         <div className="categoryTitle">
           <h2 className="categoryFamily">Family</h2> <Link className="seeMore"  to="/categories/Family">See more</Link>
           </div>
-      <div className="videoPlaylist">
+      <div className="discoverPlaylist">
       {filterByCategory("Family").map((playlist, index) => {
         return (
           <PlaylistCard key={index} playlist={playlist} />

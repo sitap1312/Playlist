@@ -18,8 +18,8 @@
   justify-content: space-between;
   align-items: baseline;
   color: #7EDBB0;
-  margin-left: 20px;
-  margin-right: 20px;
+  max-width: 1480px;
+  margin: 0 auto;
 }
 
 .seeMore {
@@ -27,5 +27,11 @@
   text-decoration: none;
   color: #7EDBB0;
   align-items:flex-end ;
+  max-width: 1480px;
 }
 
+@media screen and (max-width: 375px) {
+  .discoverPlaylist {
+    max-width: 100vw;
+  }
+}
