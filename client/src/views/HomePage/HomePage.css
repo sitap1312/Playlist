@@ -20,6 +20,7 @@
   color: #7EDBB0;
   max-width: 1480px;
   margin: 0 auto;
+  padding-left: 5px;
 }
 
 .seeMore {
@@ -28,6 +29,7 @@
   color: #7EDBB0;
   align-items:flex-end ;
   max-width: 1480px;
+  padding-right: 5px;
 }
 
 @media screen and (max-width: 375px) {

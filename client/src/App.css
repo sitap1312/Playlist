@@ -4,6 +4,7 @@
 .App {
   /* text-align: center; */
   font-family: "Roboto", sans-serif;
-  background-color: #121212
+  background-color: #121212;
+  height: 100vh;
 }
 
