@@ -35,8 +35,8 @@ export default function UserPlaylist(props) {
               return (
                 <div key={index}>
                   <PlaylistCard key={index} playlist={playlist} />
-                  <button onClick={() => handleDelete(playlist._id)}>Delete playlist</button>
-                  <Link to={`/edit-playlist/${playlist._id}`}><button>Edit Playlist</button></Link>
+                  <button className="deletePlaylistBtn" onClick={() => handleDelete(playlist._id)}>Delete Playlist</button>
+                  <Link className="linkToEditPlaylist" to={`/edit-playlist/${playlist._id}`}><button className="editPlaylistBtn">Edit Playlist</button></Link>
                 </div>
               )
             })}

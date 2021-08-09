@@ -29,7 +29,7 @@ export default function Categories(props) {
   
   return (
     <Layout user={props.user} setUser={props.setUser}>
-    <h2>{id}</h2>
+    <h2 className="categoryPlaylistName">{id}</h2>
       <div className="allPlaylist">
       {filterByCategory(id).map((playlist, index) => {
         return (
