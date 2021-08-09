@@ -10,10 +10,7 @@ mongoose.set("useCreateIndex", true);
 mongoose.set("returnOriginal", true);
 
 mongoose
-  .connect(MONGODB_URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  })
+  .connect(MONGODB_URI, {useUnifiedTopology: true,useNewUrlParser: true,})
   .catch((error) =>
     console.error("Error connecting to MongoDB: ", error.message)
   );
