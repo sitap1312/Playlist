@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
+
 .navbar-page {
   background-color: #121212;
   width: 100%;
@@ -8,6 +10,7 @@
   position: fixed;
   top: 0;
   justify-content: space-between;
+  z-index: 1;
 }
 .nav-header {
   display: flex;
@@ -17,6 +20,7 @@
 .navbar-logo {
   display: flex;
   flex-direction: row;
+  font-family: "Kalam", cursive;
 }
 .navLogoContainer {
   color: #7edbb0;

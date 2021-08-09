@@ -18,7 +18,7 @@ export default function Nav(props) {
         <div className="navbar-logo">   
         <Link to="/" className="navLogoContainer">
           <img className="nav-logo" src="https://i.imgur.com/xidyTP5.png" alt="logo"/>
-          <div lassName="title" >PLAYLISTIFY</div>
+          <div className="title" >PLAYLISTIFY</div>
               
         </Link>
         </div>
