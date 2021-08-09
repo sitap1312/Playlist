@@ -1,18 +1,19 @@
 .userNamePlaylist {
-    font-size: 40px;
-    font-weight: bolder;
-    color: #7edbb0;
-    padding: 10px;
-    text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #7edbb0;
+  padding: 10px;
+  text-align: center;
 }
 
 .userPlaylist {
   display: flex;
-  flex-flow:row wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
   max-width: 1480px;
   padding: 20px;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .deletePlaylistBtn {
@@ -52,8 +53,7 @@
 }
 
 @media screen and (max-width: 375px) {
-
-  .userPlaylist{
+  .userPlaylist {
     display: flex;
     justify-content: center;
     flex-flow: column nowrap;
@@ -61,7 +61,7 @@
     padding: 0;
   }
   .indivPlaylist {
-    margin: 0 auto
+    margin: 0 auto;
   }
 
   .userNamePlaylist {
