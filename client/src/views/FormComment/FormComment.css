@@ -1,6 +1,11 @@
-.commFormHeader {
+.commFormContainer {
   width: 55%;
   margin: auto;
+  max-width: 1000px;
+}
+
+.commFormHeader {
+  width: 100%;
 }
 
 .commFormLabel {
@@ -16,6 +21,7 @@
   font-weight: bolder;
   padding-bottom: 5px;
   color: #7edbb0;
+  padding-left: 2px;
 }
 
 .inputDiv {
@@ -26,7 +32,7 @@
 }
 
 .commInput {
-  width: 47%;
+  width: 100%;
   height: 50px;
   border: 0;
   border-bottom: 2px solid #7edbb0;
@@ -59,4 +65,22 @@
   background-color: #282828;
   border-color: #7edbb0;
   color: white;
+}
+
+@media screen and (max-width: 650px) {
+  .commFormContainer {
+    width: 80%;
+    margin: auto;
+  }
+
+  .inputDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .commSubmitBtn {
+    margin: 10px;
+  }
 }

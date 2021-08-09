@@ -16,7 +16,6 @@ export default function Categories(props) {
   
   const fetchData = async () => {
     const res = await getAllPlaylist()
-    console.log(res)
     setPlaylist(res)
   }
 
@@ -28,6 +27,7 @@ export default function Categories(props) {
   
   return (
     <Layout user={props.user} setUser={props.setUser}>
+      <div className="viewPlaylists"> 
     <h2 className="categoryPlaylistName">{id}</h2>
       <div className="allPlaylist">
       {filterByCategory(id).map((playlist, index) => {
@@ -35,6 +35,7 @@ export default function Categories(props) {
           <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
       </div>
     </Layout>
   )

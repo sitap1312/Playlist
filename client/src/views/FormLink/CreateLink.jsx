@@ -4,7 +4,6 @@ import { createLink } from "../../services/links.js";
 
 
 export default function CreateLink(props) {
-  const [song, setSong] = useState("")
   const id = props.newlist._id
 
   let defaultInput = {
@@ -33,10 +32,9 @@ export default function CreateLink(props) {
         linkURL: input.linkURL,
         playlistId: id,
       };
-        let song = await createLink(fields)
-      setSong(song)
-      props.setToggle(prevToggle => !prevToggle);
+      await createLink(fields)
       setInput(defaultInput)
+      props.fetchPlaylist()
     }
   
     return (
@@ -45,15 +43,15 @@ export default function CreateLink(props) {
             <form onSubmit={handleSubmit}>
                 <div className="formLabel">Link Title</div>
                 
-                <input class="login-input" type="text" name="title" value={input.title} onChange={handleChange}  />
+                <input className="login-input" type="text" name="title" value={input.title} onChange={handleChange}  />
                 
                 <div className="formLabel">Artist/Author/Creator</div>
                 
-                <input class="login-input" type="text" name="artist" value={input.artist} onChange={handleChange}  />      
+                <input className="login-input" type="text" name="artist" value={input.artist} onChange={handleChange}  />      
                 
                 <div className="formLabel">LinkURL</div>
                 
-                <input class="login-input" type="text" name="linkURL" value={input.linkURL} onChange={handleChange}  />                
+                <input className="login-input" type="text" name="linkURL" value={input.linkURL} onChange={handleChange}  />                
                 <br />
           <button className="hideShowBtn" type="submit">Add Link</button>
         </form>

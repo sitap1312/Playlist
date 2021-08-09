@@ -1,16 +1,12 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
-import { getUser, updateUser } from "../../services/users";
-import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { updateUser } from "../../services/users";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { signOut, deleteUser } from '../../services/users';
 
 export default function EditUser(props) {
   let history = useHistory()
-  const { id } = useParams();
-  const [current, setCurrent] = useState({})
-  const [loading, setLoading] = useState(false)
-
 
   const defaultInput = {
     username: "",
@@ -29,7 +25,6 @@ export default function EditUser(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
     await updateUser(props.user?.id,formData)
     handleSignOut()
     history.push(`/sign-in`)

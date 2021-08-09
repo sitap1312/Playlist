@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import { getAllPlaylist } from "../../services/playlists.js"
 import PlaylistCard from '../PlaylistCard/PlaylistCard';
 import "./Categories.css"
@@ -15,7 +14,6 @@ export default function AllPlaylist(props) {
   
   const fetchData = async () => {
     const res = await getAllPlaylist()
-    console.log(res)
     setPlaylist(res)
   }
 
@@ -29,6 +27,7 @@ export default function AllPlaylist(props) {
   
   return (
     <Layout user={props.user} setUser={props.setUser}>
+      <div className="viewPlaylists"> 
       <h2 className="playlistCategory">Discover</h2>
       <div className="allPlaylist">
       {playlist.map((playlist, index) => {
@@ -36,7 +35,8 @@ export default function AllPlaylist(props) {
             <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
+        </div>
+        </div>
     </Layout>
   )
 }

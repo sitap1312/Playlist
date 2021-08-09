@@ -1,15 +1,8 @@
 .viewPageContainer {
-  /* background-color: #354152; */
-  /* background-color: #363537; */
   background-color: #121212;
-  /* color: #7edbb0; */
-  /* color: #7e8ba3; */
   color: white;
   text-align: center;
 }
-
-/* #181818 for the cards
-#282828 for the hover */
 
 .playlistInfo {
   display: flex;
@@ -127,6 +120,7 @@
   text-align: left;
   padding-left: 10px;
   padding-bottom: 50px;
+  max-width: 1000px;
 }
 
 .commentUser {
@@ -167,4 +161,24 @@
 
 #editBox {
   display: none;
+}
+
+@media screen and (max-width: 650px) {
+  .viewPlayTitle {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #7edbb0;
+    padding: 10px;
+    max-width: 30%;
+  }
+
+  .commentBox {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    padding-left: 10px;
+    padding-bottom: 50px;
+  }
 }

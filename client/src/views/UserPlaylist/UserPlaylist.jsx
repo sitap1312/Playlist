@@ -13,16 +13,15 @@ export default function UserPlaylist(props) {
 
   useEffect(() => {
     fetchUser()
+    // eslint-disable-next-line
   }, [])
 
   const fetchUser = async () => {
     const user = await getUser(props.user?.id)
     setUser(user)
   }
-  // console.log(user)
 
   const handleDelete = async (id) => {
-    // console.log(id)
     await deletePlaylist(id);
     fetchUser()
     };

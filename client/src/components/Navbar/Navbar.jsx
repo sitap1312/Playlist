@@ -15,18 +15,18 @@ export default function Nav(props) {
 
   return (
     <section className= "navbar-page"> 
-   
         <div className="navbar-logo">   
         <Link to="/" className="navLogoContainer">
           <img className="nav-logo" src="https://i.imgur.com/xidyTP5.png" alt="logo"/>
-          <div lassName="title" >PLAYLISTIFY</div>
+          <div className="title" >PLAYLISTIFY</div>
               
         </Link>
         </div>
             <div className="options"> 
       {props.user ? (
           <>
-             <div className="navbar-options">
+            <div className="navbar-options">
+
               <Link className="nav-link" to="/my-account">Hi! {props.user?.username} </Link>
             </div>
 
@@ -35,17 +35,21 @@ export default function Nav(props) {
             </div>
 
             <div className="navbar-options">
-             <Link   className="nav-link" to="/edit-user"> Edit Account </Link>
-           </div>
-           <div className="navbar-options" >
+            <Link   className="nav-link" to="/edit-user"> Edit Account </Link>
+          </div>
+          <div className="navbar-options" >
             <button className="signout-btn" type="submit" onClick={handleSignOut}>SIGN OUT</button>
               </div>
         </>
-      ) : (
-        <div className="sign-btns">
-          <Link  className="nav-link" to="/sign-up">Sign Up </Link>
-          <Link   className="nav-link" to="/sign-in">Sign In</Link>
-        </div>
+        ) : (
+        <div className="loginButtonContainer">
+        <div className="navbar-options">
+          <Link  className="loginButtons" to="/sign-up">SIGN UP</Link>
+          </div>
+          <div className="navbar-options">
+          <Link className="loginButtons" to="/sign-in">SIGN IN</Link>
+          </div>
+          </div>
         )}
         </div>
       </section>

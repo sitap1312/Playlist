@@ -12,7 +12,6 @@ export default function SignIn(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const user = await signIn(input)
-    console.log(user);
     setUser(user);
     history.push("/");
   };
@@ -31,7 +30,7 @@ export default function SignIn(props) {
         <div className="signup-form">
 
           <Link to="/">
-            <img className="login-logo" src="https://i.imgur.com/xidyTP5.png" />
+            <img className="login-logo" src="https://i.imgur.com/xidyTP5.png" alt="Logo" />
           </Link>
           
           <div className="login-title">SIGN IN</div>

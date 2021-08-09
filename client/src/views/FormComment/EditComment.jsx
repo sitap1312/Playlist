@@ -1,22 +1,18 @@
-import { get } from "mongoose";
 import { useState, useEffect } from "react";
 import { updateComment, getComment } from "../../services/comments.js";
 
 export default function EditComment(props) {
-  const [comments, setComments] = useState([]);
-  const [data, setData] = useState({});
-  const [play, setPlay] = useState("");
+  const [data, setData] = useState({content: ""});
 
   useEffect(() => {
-    fetchData();
-    setPlay(props.playlist._id);
+    if (props.commId._id) {
+      fetchData();
+    }
+    // eslint-disable-next-line
   }, [props.commId._id]);
-
-  console.log(props);
 
   const fetchData = async () => {
     const res = await getComment(props.commId._id);
-    console.log(res);
     setData(res);
   }
 
@@ -27,11 +23,8 @@ export default function EditComment(props) {
 
   useEffect(() => {
     setInput(defaultInput);
+    // eslint-disable-next-line
   }, [data]);
-
-  // console.log(props.playlist._id);
-  // console.log(play);
-
 
   const [input, setInput] = useState(data);
 
@@ -49,9 +42,7 @@ export default function EditComment(props) {
     content: input.content,
     };
     let id = data._id;
-    console.log(fields);
-    let comments = await updateComment(id, fields);
-    setComments(comments);
+    await updateComment(id, fields);
     props.setToggle(prevToggle => !prevToggle);
     props.switchBox0()
   };
