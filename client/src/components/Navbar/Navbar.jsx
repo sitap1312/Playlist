@@ -15,30 +15,36 @@ export default function Nav(props) {
 
   return (
     <section className= "navbar-page"> 
-        <div className="navbar-logo">   
+      <div className="navbar-logo">
         <Link to="/" className="navLogoContainer">
           <img className="nav-logo" src="https://i.imgur.com/xidyTP5.png" alt="logo"/>
           <div className="title" >PLAYLISTIFY</div>
               
         </Link>
         </div>
-            <div className="options"> 
+                <div className="options"> 
       {props.user ? (
-          <>
-            <div className="navbar-options">
-              <Link className="nav-link" to="/my-account">Hi! {props.user?.username} </Link>
-            </div>
+                <>
+                 
+                <div className="navbar-options">
+                        <Link className="nav-link" to="/my-account">Hi! {props.user?.username} </Link>
+                </div>
 
-            <div className="navbar-options">
-              <Link   className="nav-link" to="/create-playlist">Create Playlist</Link>
-            </div>
+                <div className="navbar-options">
+                         <Link   className="nav-link" to="/create-playlist">Create Playlist</Link>
+                </div>
 
-            <div className="navbar-options">
-            <Link   className="nav-link" to="/edit-user"> Edit Account </Link>
-          </div>
-          <div className="navbar-options" >
-            <button className="signout-btn" type="submit" onClick={handleSignOut}>SIGN OUT</button>
-              </div>
+                <div className="navbar-options">
+                          <Link   className="nav-link" to="/edit-user"> Edit Account </Link>
+                </div>
+                <div className="navbar-options" >
+                       <button className="signout-btn" type="submit" onClick={handleSignOut}>SIGN OUT</button>
+            </div>
+            <a href="javascript:void(0);" class="icon" >
+              <i className="fa fa-bars"> 
+               </i>
+            </a>
+                    
         </>
         ) : (
         <div className="loginButtonContainer">
