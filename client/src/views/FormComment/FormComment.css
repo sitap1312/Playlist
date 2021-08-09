@@ -1,6 +1,7 @@
 .commFormContainer {
   width: 55%;
   margin: auto;
+  max-width: 1000px;
 }
 
 .commFormHeader {
@@ -20,6 +21,7 @@
   font-weight: bolder;
   padding-bottom: 5px;
   color: #7edbb0;
+  padding-left: 2px;
 }
 
 .inputDiv {
@@ -65,7 +67,7 @@
   color: white;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .commFormContainer {
     width: 80%;
     margin: auto;
