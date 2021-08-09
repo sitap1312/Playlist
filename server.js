@@ -19,9 +19,20 @@ app.use(morgan("dev"));
 
 app.use("/api", routes);
 
-app.get("/", (req, res) => res.send("<h1>Hello, world</h1>"));
+// app.get("/", (req, res) => res.send("<h1>Hello, world</h1>"));
+
+// db.on("connected", () => {
+//   console.log("Connected to MongoDB");
+//   app.listen(PORT, console.log(`Connected to port: ${PORT}`));
+// });
 
 db.on("connected", () => {
-  console.log("Connected to MongoDB");
-  app.listen(PORT, console.log(`Connected to port: ${PORT}`));
+  console.log("Connected to MongoDB!");
+  app.listen(PORT, () =>
+    process.env.NODE_ENV === "production"
+      ? console.log(`Express server running in production on port ${PORT}\n\n`)
+      : console.log(
+          `Express server running in development on: http://localhost:${PORT}`
+        )
+  );
 });
