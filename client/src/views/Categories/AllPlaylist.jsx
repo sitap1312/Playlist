@@ -17,14 +17,6 @@ export default function AllPlaylist(props) {
     setPlaylist(res)
   }
 
-  
-  
-  
-  
-  
-  
-  
-  
   return (
     <Layout user={props.user} setUser={props.setUser}>
       <div className="viewPlaylists"> 
