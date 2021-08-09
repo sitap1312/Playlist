@@ -43,6 +43,7 @@ export default function NewComment(props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <div className="commFormContainer">
         <div className="commFormHeader">
         <div className="commFormLabel">Add Comment</div>
         <div className="commFormUser">{props?.user?.username}</div>
@@ -52,7 +53,8 @@ export default function NewComment(props) {
         <div className="commBtnDiv">
         <button className="commSubmitBtn" type="submit">SUBMIT</button>
         </div>
-        </div>
+          </div>
+          </div>
       </form>
     </div>
   )
