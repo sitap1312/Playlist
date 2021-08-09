@@ -37,7 +37,6 @@ export const createComment = async (req, res) => {
     const user = await User.findById(req.user);
     newComment.userId = user._id;
     newComment.username = user.username;
-
     await newComment.save();
     playlist.comments.push(newComment._id);
     user.comments.push(newComment._id);
