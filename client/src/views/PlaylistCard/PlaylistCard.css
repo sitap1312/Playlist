@@ -62,3 +62,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media screen and (max-width: 375px) {
+  .playlistCardContainer {
+    width: 180px;
+    height: 240px;
+    margin-bottom: 10px;
+  }
+  .playlistCardDescription{
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    height: 29px;
+  }
+}
