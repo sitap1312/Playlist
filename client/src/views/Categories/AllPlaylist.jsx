@@ -17,16 +17,9 @@ export default function AllPlaylist(props) {
     setPlaylist(res)
   }
 
-  
-  
-  
-  
-  
-  
-  
-  
   return (
     <Layout user={props.user} setUser={props.setUser}>
+      <div className="viewPlaylists"> 
       <h2 className="playlistCategory">Discover</h2>
       <div className="allPlaylist">
       {playlist.map((playlist, index) => {
@@ -34,7 +27,8 @@ export default function AllPlaylist(props) {
             <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
+        </div>
+        </div>
     </Layout>
   )
 }
