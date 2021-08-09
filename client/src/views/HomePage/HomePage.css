@@ -36,4 +36,7 @@
   .discoverPlaylist {
     max-width: 100vw;
   }
+  .categoryTitle{
+    padding-top: 7px;
+  }
 }
