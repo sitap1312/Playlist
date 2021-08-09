@@ -93,7 +93,6 @@
 }
 
 .loginButtons {
-  padding: 7px 15px;
   background: linear-gradient(90deg, #7edbb0 15%, teal 100%);
   color: #121212;
   text-align: center;
@@ -114,11 +113,30 @@
   color: white;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .navbar-page {
-    
+    padding: 0px;
+    justify-content: space-around;
   }
-  
+
+  .options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 0px;
+  }
+
+  .nav-link {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .navbar-options {
+    margin: auto;
+    text-align: center;
+  }
+
   .nav-header {
     position: absolute;
     transition: all 0.3s ease-in;
@@ -128,5 +146,15 @@
 
   .title {
     display: none;
+  }
+
+  .signout-btn {
+    width: 80px;
+    font-size: small;
+    margin-left: 5px;
+  }
+
+  .loginButtons {
+    font-size: small;
   }
 }
