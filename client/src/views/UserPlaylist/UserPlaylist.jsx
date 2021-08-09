@@ -33,10 +33,10 @@ export default function UserPlaylist(props) {
           <div className="userPlaylist">
             {user?.playlist?.map((playlist, index) => {
               return (
-                <div key={index}>
+                <div className="indivPlaylist" key={index}>
                   <PlaylistCard key={index} playlist={playlist} />
-                  <button onClick={() => handleDelete(playlist._id)}>Delete playlist</button>
-                  <Link to={`/edit-playlist/${playlist._id}`}><button>Edit Playlist</button></Link>
+                  <Link className="linkToEditPlaylist" to={`/edit-playlist/${playlist._id}`}><button className="editPlaylistBtn">Edit</button></Link>
+                  <button className="deletePlaylistBtn" onClick={() => handleDelete(playlist._id)}>Delete</button>
                 </div>
               )
             })}

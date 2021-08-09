@@ -19,13 +19,21 @@ export default function AllPlaylist(props) {
     setPlaylist(res)
   }
 
+  
+  
+  
+  
+  
+  
+  
+  
   return (
     <Layout user={props.user} setUser={props.setUser}>
       <h2 className="playlistCategory">Discover</h2>
       <div className="allPlaylist">
       {playlist.map((playlist, index) => {
         return (
-          <PlaylistCard key={index} playlist={playlist} />
+            <PlaylistCard key={index} playlist={playlist} />
         )
       })}
       </div>
