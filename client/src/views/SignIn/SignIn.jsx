@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { signIn } from "../../services/users"
 import Layout from "../../components/Layout/Layout";
 import { useHistory } from "react-router-dom";
@@ -26,28 +27,48 @@ export default function SignIn(props) {
 
   return (
     <Layout>
-      SignIn
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <br />
-        <input
-          id="email"
-          type="email"
-          value={input.email}
-          onChange={handleInput}
-        />
-        <br />
-        <label>Password</label>
-        <br />
-        <input
-          id="password"
-          type="password"
-          value={input.password}
-          onChange={handleInput}
-        />
-        <br />
-        <button>Sign In</button>
-      </form>
+      <section className="signup-page">
+        <div className="signup-form">
+
+          <Link to="/">
+            <img className="login-logo" src="https://i.imgur.com/xidyTP5.png" />
+          </Link>
+          
+          <div className="login-title">SIGN IN</div>
+          <form onSubmit={handleSubmit}>
+
+            <br />
+            <input
+              className="login-input"
+              id="email"
+              type="email"
+              value={input.email}
+              onChange={handleInput}
+              placeholder="info@emailaddress.com"/>
+            <br />
+
+            <br />
+            <input
+              className="login-input"
+              id="password"
+              type="password"
+              value={input.password}
+              onChange={handleInput}
+              placeholder="••••••••••••" />
+            <br />
+            <br />
+
+            <div>
+              <button className="signup-btn" type="submit">SIGN IN</button>
+            </div>
+
+            <br />
+
+            <div className="login-text">Do not have an Account? <a className="login-link" href="/sign-up">Sign Up</a></div>
+          
+          </form>
+        </div>
+    </section>
     </Layout>
   );
 }

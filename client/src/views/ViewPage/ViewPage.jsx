@@ -8,9 +8,9 @@ import { getPlaylist } from '../../services/playlists.js';
 import { useParams } from 'react-router';
 import { deleteComment } from '../../services/comments';
 import EditComment from '../FormComment/EditComment';
+import { Link } from "react-router-dom"
 
 export default function ViewPage(props) {
-  // const [comments, setComments] = useState([]);
   const [playlist, setPlaylist] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -39,14 +39,29 @@ export default function ViewPage(props) {
     return newArray
   })
 
-  function myFunction() {
-    var x = document.getElementById("myDIV");
+  function hideShow() {
+    let x = document.getElementById("myDIV");
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {
       x.style.display = "none";
     }
   }
+
+  function switchBox1() {
+    let x = document.getElementById("editBox");
+    x.style.display = "block";
+    let y = document.getElementById("newBox");
+    y.style.display = "none";
+  }
+
+  function switchBox0() {
+    let x = document.getElementById("editBox");
+    x.style.display = "none";
+    let y = document.getElementById("newBox");
+    y.style.display = "block";
+  }
+
   const [trackIndex, setTrackIndex] = useState(0);
   const [currentVideo, setCurrentVideo] = useState([]);
   const [commId, setCommId] = useState("");
@@ -91,31 +106,44 @@ export default function ViewPage(props) {
 
   const handleEdit = (id) => {
     setCommId(id)
+    switchBox1()
   };
 
     return (
-        <Layout user={props.user} setUser={props.setUser}>
-          <h1>{playlist?.title}</h1>
-          <h3>{playlist.userId?.username}</h3>
-          <p>{playlist?.description}</p>
-          <h3>{playlist?.category}</h3>
+      <Layout user={props.user} setUser={props.setUser}>
+        <section className="viewPageContainer">
+          <div className="playlistInfo">
+          <div className="viewPlayTitle">{playlist?.title}</div>
+          <div className="viewUser">{playlist.userId?.username}</div>
+          <Link className="viewPlayCat" to={`/categories/${playlist?.category}`}>{playlist?.category}</Link>
+          </div>
             <ReactPlayer
               className='react-player'
               controls={true}
               playing url={currentVideo}
               onProgress={handleWatchComplete}
               width='100%'
-              height='50vh'
-        />
-        <button onClick={toPrevTrack}>PREV</button>
-        <button onClick={toNextTrack}>NEXT</button>
-        <div>
-          <h3>Playlist Items</h3>
-          <button  onClick={myFunction}>Hide/Show List</button>
+              height="360px"
+          />
+        <section className="belowPlayer">
+        <div className="descBox">
+        <div className="viewLabels">DESCRIPTION</div>
+        <div className="viewPlayDesc">{playlist?.description}</div>
+        </div>
+        <div className="buttonContainer">    
+        <button className="PlayerBtn" onClick={toPrevTrack}>PREV</button>
+        <button className="PlayerBtn" onClick={toNextTrack}>NEXT</button>
+        </div>
+        </section>
+          <div className="ListContainer">
+          <div className="ListHeadContainer">
+          <div className="playlistHeader">Playlist Items</div>
+          <button className="hideShowBtn" onClick={hideShow}>Hide/Show List</button>
+          </div>
           <div id="myDIV" className="viewPageList">
           {playlist?.links?.map((link, index) => {
           return (
-            <div key={index} onClick={() => handlePlay(index)}>{link.title}---
+            <div className="listVids" key={index} onClick={() => handlePlay(index)}>{link.title}---
               {link.artist}</div>
             )
           })}
@@ -126,30 +154,28 @@ export default function ViewPage(props) {
           <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
           </div>
           <div id="editBox">
-          <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
+          <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} switchBox0={switchBox0} />
             </div>
             </>)}
           <br />
-
-          <div >
+          <div className="commentBox">
             {playlist?.comments?.slice(0).reverse().map((comment, index) => {
               return (
                 <div key={index}>
-                  {comment.username}---
-                  {comment.content}
-                  {props.user.username === comment.username && (<>
-                    <div id="commButtons">
-                      <button onClick={() => handleDelete(comment._id)}>DELETE</button>
-                      <button onClick={() => handleEdit(comment)}>EDIT</button>
+                  <div className="commentUser">{comment?.username}</div>
+                  <div className="commentContent">{comment?.content}</div>
+                  {props.user?.username === comment.username && (<>
+                    <div className="commButtons">
+                      <button className="CommBtn" onClick={() => handleDelete(comment._id)}>DELETE</button>
+                      <button className="CommBtn" onClick={() => handleEdit(comment)}>EDIT</button>
                     </div>
                     </>)}
                 </div>
               )
             })}
-
           </div>
-          
           </div>
+          </section>
         </Layout>
   )
 }

@@ -40,24 +40,23 @@ export default function CreateLink(props) {
     }
   
     return (
-      <div>
-            <h1>Add a Link</h1>
-            <h1>{props.newlist.title}</h1>
+      <section className="createLinkContainer">
+        <div className="createLinkTitle">Add a Link</div>
             <form onSubmit={handleSubmit}>
-                <label>Link Title</label>
+                <div className="formLabel">Link Title</div>
+                
+                <input class="login-input" type="text" name="title" value={input.title} onChange={handleChange}  />
+                
+                <div className="formLabel">Artist/Author/Creator</div>
+                
+                <input class="login-input" type="text" name="artist" value={input.artist} onChange={handleChange}  />      
+                
+                <div className="formLabel">LinkURL</div>
+                
+                <input class="login-input" type="text" name="linkURL" value={input.linkURL} onChange={handleChange}  />                
                 <br />
-                <input type="text" name="title" value={input.title} onChange={handleChange}  />
-                <br />
-                <label>Artist/Author/Creator</label>
-                <br />
-                <input type="text" name="artist" value={input.artist} onChange={handleChange}  />      
-                <br />
-                <label>LinkURL</label>
-                <br />
-                <input type="text" name="linkURL" value={input.linkURL} onChange={handleChange}  />                
-                <br />
-                <button type="submit">Add Link</button>
+          <button className="hideShowBtn" type="submit">Add Link</button>
         </form>
-        </div>
+        </section>
     )
 }

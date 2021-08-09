@@ -1,23 +1,16 @@
+import "./FormComment.css"
 import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
 import { createComment } from "../../services/comments.js";
-// import { useHistory } from "react-router-dom";
-// import Layout from "../../components/Layout/Layout";
 
 
 export default function NewComment(props) {
   const [comments, setComments] = useState([]);
-  // let history = useHistory();
-  // const { id } = useParams();
 
   const [play, setPlay] = useState("");
 
   useEffect(() => {
     setPlay(props.playlist._id);
   }, [props]);
-
-  // console.log(props.playlist._id);
-  // console.log(play);
 
   let defaultInput = {
     content: "",
@@ -54,18 +47,17 @@ export default function NewComment(props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <br />
-        <h4>{props?.user?.username}</h4>
-        <label>Add Comment</label>
-        <br />
-        <textarea cols="75" rows="4" type="text" value={input} name="content" value={input.content} onChange={handleChange} />
-        <br />
-        <button type="submit">Submit</button>
+        <div className="commFormHeader">
+        <div className="commFormLabel">Add Comment</div>
+        <div className="commFormUser">{props?.user?.username}</div>
+        </div>
+        <div className="inputDiv">
+          <input className="commInput" type="text" value={input} name="content" value={input.content} placeholder="enter a public comment" onChange={handleChange} />
+        <div className="commBtnDiv">
+        <button className="commSubmitBtn" type="submit">SUBMIT</button>
+        </div>
+        </div>
       </form>
-
-      <div>
-        {/* Display comments here.. */}
-      </div>
     </div>
   )
 }
