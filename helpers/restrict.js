@@ -6,7 +6,6 @@ const restrict = (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1];
     let user = jwt.verify(token, TOKEN_KEY);
     if (user) {
-      console.log(user)
       req.user = user.id;
       next();
     }

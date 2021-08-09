@@ -9,7 +9,7 @@ const getToken = () => {
 const api = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
-      ? null
+      ? "https://playlistify4real.herokuapp.com/"
       : "http://localhost:4567/api",
 });
 

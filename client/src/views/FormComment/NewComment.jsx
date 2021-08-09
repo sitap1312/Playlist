@@ -1,39 +1,60 @@
-import { useState } from "react"
-import { createComment } from "../../services/comments";
-import { useHistory } from "react-router-dom";
+import "./FormComment.css"
+import { useState, useEffect } from "react";
+import { createComment } from "../../services/comments.js";
+
 
 export default function NewComment(props) {
-  let history = useHistory()
-  let id = (props.user?.id)
+  const [play, setPlay] = useState("");
+
+  useEffect(() => {
+    setPlay(props.playlist._id);
+  }, [props]);
+
   let defaultInput = {
     content: "",
-    user_id: id,
-  }
-  const [input, setInput] = useState(defaultInput)
+    playlistId: ""
+  };
 
-  function handleChange(event) {
-    let { name, value } = event.target
+  const [input, setInput] = useState(defaultInput);
+
+  function handleChange(e) {
+    let { name, value } = e.target
+
     setInput(prevState => ({
       ...prevState,
       [name]: value,
     }))
-  }
+  };
+
   async function handleSubmit(event) {
     event.preventDefault()
-    await createComment(input)
-    history.push("/")
-    //console.log(input)
-  }
+
+    const fields = {
+      content: input.content,
+      playlistId: play
+    };
+
+    await createComment(fields);
+    props.setToggle(prevToggle => !prevToggle);
+
+    setInput(defaultInput);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <br />
-        <h4>{props?.user?.username}</h4>
-        <label>Add Comment</label>
-        <br />
-        <input type="text" name="content" value={input.content} onChange={handleChange} />
-        <br />
-        <button type="submit">Submit</button>
+        <div className="commFormContainer">
+        <div className="commFormHeader">
+        <div className="commFormLabel">Add Comment</div>
+        <div className="commFormUser">{props?.user?.username}</div>
+        </div>
+        <div className="inputDiv">
+          <input className="commInput" type="text" value={input.content} name="content" placeholder="enter a public comment" onChange={handleChange} />
+        <div className="commBtnDiv">
+        <button className="commSubmitBtn" type="submit">SUBMIT</button>
+        </div>
+          </div>
+          </div>
       </form>
     </div>
   )

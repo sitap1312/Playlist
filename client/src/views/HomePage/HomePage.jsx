@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import Layout from "../../components/Layout/Layout"
 import { Link } from "react-router-dom"
-
 import { getAllPlaylist } from "../../services/playlists.js"
+import PlaylistCard from '../PlaylistCard/PlaylistCard'
+import "./HomePage.css"
+
 
 export default function HomePage(props) {
   const [playlist, setPlaylist] = useState([])
@@ -14,7 +16,6 @@ export default function HomePage(props) {
   
   const fetchData = async () => {
     const res = await getAllPlaylist()
-    console.log(res)
     setPlaylist(res)
   }
 
@@ -24,74 +25,102 @@ export default function HomePage(props) {
     return filtered
   }
   
+  const scrollTop = () => {
+    window.scrollTo(0,0)
+  }
 
   return (
     <Layout user={props.user} setUser={props.setUser}>
-      <h1>PLAYLISTIFY</h1> 
-      <Link to="/preview/:id"><button>PREVIEW</button></Link>
-      <h2>Discover</h2> <Link to="/Discover-all">See more</Link>
+      <div className="homepage">
+        <div className="categoryTitle">
+          <Link className="seeMore" to="/Discover-all"><h2 onClick={scrollTop} className="categoryDiscover">Discover</h2></Link>
+          <Link className="seeMore" to="/Discover-all" onClick={scrollTop} >See more</Link>
+        </div>
       <div className="discoverPlaylist">
       {playlist.map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
+      <div className="categoryTitle">
+      <Link className="seeMore" to="/categories/Music"><h2 className="categoryMusic" onClick={scrollTop} >Music</h2></Link><Link className="seeMore"  to="/categories/Music" onClick={scrollTop} >See more</Link>
       </div>
-      <h2>Music</h2> <Link to="/categories/Music">See more</Link>
-      <div className="musicPlaylist">
+      <div className="discoverPlaylist">
       {filterByCategory("Music").map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
+      <div className="categoryTitle">
+          <Link className="seeMore" to="/categories/Videos"><h2 className="categoryVideos" onClick={scrollTop} >Videos</h2></Link>
+          <Link className="seeMore" to="/categories/Videos" onClick={scrollTop} >See more</Link>
       </div>
-      <h2>Videos</h2> <Link to="/categories/Videos">See more</Link>
-      <div className="videoPlaylist">
-      {filterByCategory("Video").map((playlist, index) => {
+          <div className="discoverPlaylist">
+      {filterByCategory("Videos").map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
+        <div>
+        <div className="categoryTitle">
+        <Link className="seeMore"  to="/categories/Gaming"><h2 className="categoryGaming" onClick={scrollTop} >Gaming</h2></Link>
+        <Link className="seeMore" to="/categories/Gaming" onClick={scrollTop}>See more</Link>
       </div>
-      <h2>Gaming</h2> <Link to="/categories/Gaming">See more</Link>
-      <div className="videoPlaylist">
+          <div className="discoverPlaylist">
       {filterByCategory("Gaming").map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+          </div>
+          </div>
+        <div className="categoryTitle">
+          <Link className="seeMore" to="/categories/Education"><h2 className="categoryEducation" onClick={scrollTop}>Education</h2></Link>
+          <Link className="seeMore" to="/categories/Education" onClick={scrollTop}>See more</Link>
       </div>
-      <h2>Education</h2> <Link to="/categories/Education">See more</Link>
-      <div className="videoPlaylist">
+          <div className="discoverPlaylist">
       {filterByCategory("Education").map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
-      <h2>Sports</h2> <Link to="/categories/Sports">See more</Link>
-      <div className="videoPlaylist">
+        </div>
+        <div className="categoryTitle">
+          <Link className="seeMore" to="/categories/Sports"><h2 className="categorySports" onClick={scrollTop}>Sports</h2></Link>
+          <Link className="seeMore" to="/categories/Sports" onClick={scrollTop} >See more</Link>
+        </div>
+      <div className="discoverPlaylist">
       {filterByCategory("Sports").map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
-      <h2>Entertainment</h2> <Link to="/categories/Entertainment">See more</Link>
-      <div className="videoPlaylist">
+        </div>
+        <div className="categoryTitle">
+          <Link className="seeMore" to="/categories/Entertainment"><h2 className="categoryEntertainment" onClick={scrollTop} >Entertainment</h2></Link>
+          <Link className="seeMore" to="/categories/Entertainment" onClick={scrollTop}>See more</Link>
+          </div>
+      <div className="discoverPlaylist">
       {filterByCategory("Entertainment").map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
-      <h2>Family</h2> <Link to="/categories/Family">See more</Link>
-      <div className="videoPlaylist">
+        </div>
+        <div className="categoryTitle">
+          <Link className="seeMore" to="/categories/Family"><h2 className="categoryFamily" onClick={scrollTop} >Family</h2></Link>
+          <Link className="seeMore" to="/categories/Family" onClick={scrollTop} >See more</Link>
+          </div>
+      <div className="discoverPlaylist">
       {filterByCategory("Family").map((playlist, index) => {
         return (
-          <Link key={index} to={`/preview/${playlist._id}`}><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
+        </div>
       </div>
     </Layout>
   );

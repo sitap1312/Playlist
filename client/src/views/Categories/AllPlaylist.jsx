@@ -1,37 +1,34 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { getAllPlaylist } from "../../services/playlists.js"
+import PlaylistCard from '../PlaylistCard/PlaylistCard';
+import "./Categories.css"
 
-let data = [
-  {
-    imgURL: "https://ninjatune.net/images/artists/thundercat-main.jpg",
-    name: "THUNDERCAT",
-    category: "Music",
-  },
-  {
-    imgURL: "https://pyxis.nymag.com/v1/imgs/3ae/a5b/e1a1c69441d44c72a86e1120d71f297423-04-mac-miller-2.rvertical.w570.jpg",
-    name: "MAC MILLER",
-    category: "Gaming"
-  },
-  { imgURL: "https://s1.ticketm.net/dam/a/384/2dbd2c80-4042-4429-b5fe-563f7227b384_1477701_TABLET_LANDSCAPE_LARGE_16_9.jpg", name: "JOHN MAYER",
-  category: "Sports" }
-] 
+export default function AllPlaylist(props) {
+  const [playlist, setPlaylist] = useState([])
 
-export default function AllPlaylist() {
-  const [playlist, setPlaylist] = useState(data)
-
+  useEffect(() => {
+    fetchData()
+  }, [])
   
+  const fetchData = async () => {
+    const res = await getAllPlaylist()
+    setPlaylist(res)
+  }
+
   return (
-    <Layout>
-      <h2>Discover</h2>
-     <div className="discoverPlaylist">
-      {playlist.map((playlist) => {
+    <Layout user={props.user} setUser={props.setUser}>
+      <div className="viewPlaylists"> 
+      <h2 className="playlistCategory">Discover</h2>
+      <div className="allPlaylist">
+      {playlist.map((playlist, index) => {
         return (
-          <Link to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+            <PlaylistCard key={index} playlist={playlist} />
         )
       })}
-      </div>
+        </div>
+        </div>
     </Layout>
   )
 }

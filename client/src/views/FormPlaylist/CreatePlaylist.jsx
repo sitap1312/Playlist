@@ -1,8 +1,9 @@
 import { useState } from "react"
+import "./CreatePlaylist.css"
 import Layout from "../../components/Layout/Layout";
-import { createPlaylist } from "../../services/playlists";
+import { createPlaylist, getPlaylist } from "../../services/playlists.js";
 import CreateLink from "../FormLink/CreateLink";
-// import { useHistory } from "react-router";
+import { deleteLink, } from '../../services/links'
 
 let defaultInput = {
   title: "",
@@ -12,9 +13,8 @@ let defaultInput = {
 }
 
 export default function CreatePlaylist(props) {
-  const [category, setCategory] = useState("Select a category below")
-  // const history = useHistory()
   const [input, setInput] = useState(defaultInput)
+  const [playlist, setPlaylist] = useState({})
   const [newlist, setNewList] = useState({})
 
     function handleChange(event) {
@@ -23,13 +23,11 @@ export default function CreatePlaylist(props) {
             ...prevState,
             [name]: value,
         }))
-      setCategory(event.target.value)
     }
     async function handleSubmit(event) {
-        event.preventDefault()
+      event.preventDefault()
       let newlist = await createPlaylist(input)
       setNewList(newlist)
-      // history.push(`/`)
       myFunction()
     }
   
@@ -41,47 +39,69 @@ export default function CreatePlaylist(props) {
         x.style.display = "none";
       }
     }
+
+    
+    const fetchPlaylist = async () => {
+      const res = await getPlaylist(newlist._id)
+      setPlaylist(res)
+    }
+  
+    const handleDelete = async (id) => {
+      await deleteLink(id);
+      fetchPlaylist()
+    };
   
     return (
       <Layout user={props.user} setUser={props.setUser}>
-        <br />
-        <button  onClick={myFunction}>Hide/Show Form</button>
+        <section className="createEditContainer">
+          <div className="createFormTitle">Create Playlist</div>
+          <button className="hideShowBtn" onClick={myFunction}>Hide/Show Form</button>
+            <section className="createPlaylistContainer">
             <div id="myDIV">
-            <h1>Create Playlist</h1>
+            <div className="createFormDiv">
             <form onSubmit={handleSubmit}>
-                <label>Playlist Title</label>
-                <br />
-                <input type="text" name="title" value={input.title} onChange={handleChange}  />
-                <br />
-                <label>Image URL</label>
-                <br />
-                <input type="text" name="imgURL" value={input.imgURL} onChange={handleChange}  />                
-                <br />
-                <label>Description</label>
-                <br />
-                <input type="text" name="description" value={input.description} onChange={handleChange}  />      
-                <br />
-                <label>Category</label>
-                <br />      
-                <select type="text" name="category" value={input.category} onChange={handleChange}>
+                <div className="formLabel">Playlist Title</div>
+                <input className="login-input" type="text" name="title" value={input.title} onChange={handleChange}  />
+                <div className="formLabel">Image URL</div>
+                <input className="login-input" type="text" name="imgURL" value={input.imgURL} onChange={handleChange}  />                
+                <div className="formLabel">Description</div>
+                <input className="login-input" type="text" name="description" value={input.description} onChange={handleChange}  />      
+                
+                <div className="formLabel">Category</div>
+                <select className="dropdownInput" type="text" name="category" value={input.category} onChange={handleChange} required={true}>
                   <option value="Music">Music</option>
-                  <option value="Video">Video</option>
+                  <option value="Videos">Video</option>
                   <option value="Gaming">Gaming</option>
                   <option value="Education">Education</option>
-                  <option value="Sport">Sport</option>
+                  <option value="Sports">Sport</option>
                   <option value="Entertainment">Entertainment</option>
                   <option value="Family">Family</option>
                 </select>
                 <br />
-                <button type="submit">Create Playlist</button>
-          </form>
-        </div>
-        <div>
-          <h1>{input.title}</h1>
-          <img src={input.imgURL} alt={input.title} />
-          <p>{props.username}</p>
-        </div>
-        <CreateLink newlist={newlist} />
+                <button className="hideShowBtn" type="submit">Create Playlist</button>
+            </form>
+            </div>
+          </div>
+        <div className="newPlaylistContainer">
+          <img className="playlistIMG" src={input.imgURL} alt={input.title} />
+          <div className="inputTitle">{input.title}</div>
+          <div className="playlistCat">{input.category}</div>
+          <div className="playlistDesc">{input.description}</div>
+          </div>
+          </section>
+          <div className="newLinksAdded">
+          <div className="createPlaylistItems">Playlist Links</div>
+        {playlist.links?.map((link, index) => {
+        return (
+          <div key={index} className="listVidsContainer">
+          <div className="listVids"> {link.title}---{link.artist}---{link.linkURL}</div>
+          <button className="linkDeleteBtn" onClick={() => handleDelete(link._id)}>DELETE</button>
+          </div>
+        )
+        })}
+          </div>
+          <CreateLink newlist={newlist} fetchPlaylist={fetchPlaylist} />
+          </section>
         </Layout>
     )
 } 

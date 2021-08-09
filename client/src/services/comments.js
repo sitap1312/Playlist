@@ -1,14 +1,16 @@
-import api from './apiConfig'
+import api from './apiConfig';
 
-export const createComment = async (input) => {
+// Getting All Comments
+export const getAllComments = async () => {
   try {
-    const res = await api.post("/comment", input)
+    const res = await api.get("/comment")
     return res.data
   } catch (e) {
     throw e
   }
-}
+};
 
+// Getting Single Comment
 export const getComment = async (id) => {
   try {
     const res = await api.get(`/comment/${id}`);
@@ -16,8 +18,29 @@ export const getComment = async (id) => {
   } catch (e) {
     throw e
   }
-}
+};
 
+// Creating Comments
+export const createComment = async (input) => {
+  try {
+    const res = await api.post("/comment", input)
+    return res.data
+  } catch (e) {
+    throw e
+  }
+};
+
+// Update A Comment
+export const updateComment = async (id, input) => {
+  try {
+    const res = await api.put(`/comment/${id}`, input)
+    return res.data
+  } catch (e) {
+    throw e
+  }
+};
+
+// Delete A Comment
 export const deleteComment = async (id) => {
   try {
     const res = await api.delete(`/comment/${id}`)
@@ -25,13 +48,4 @@ export const deleteComment = async (id) => {
   } catch (e) {
     throw e
   }
-}
-
-export const updateComment = async (id) => {
-  try {
-    const res = await api.put(`/comment/${id}`)
-    return res.data
-  } catch (e) {
-    throw e
-  }
-}
+};
