@@ -26,6 +26,7 @@ export default function Nav(props) {
       {props.user ? (
           <>
             <div className="navbar-options">
+
               <Link className="nav-link" to="/my-account">Hi! {props.user?.username} </Link>
             </div>
 

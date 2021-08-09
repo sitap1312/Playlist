@@ -71,7 +71,7 @@ export default function SignUp(props) {
 
             <br />
 
-            <div className="login-text">Already have an accout? <a className="login-link" href="/sign-in">Sign in</a></div>
+            <div className="login-text">Already have an account? <a className="login-link" href="/sign-in">Sign in</a></div>
             
           </form>
         </div>
