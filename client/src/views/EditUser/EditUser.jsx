@@ -57,7 +57,7 @@ export default function EditUser(props) {
     <Layout user={props.user} setUser={props.setUser}>
       <section className="signup-page">
         <div className="signup-form">
-          <div className="login-title">Edit Account</div>
+          <div className="login-title">EDIT ACCOUNT</div>
           <br />
 
           <form onSubmit={handleSubmit}>

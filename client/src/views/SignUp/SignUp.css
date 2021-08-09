@@ -7,7 +7,6 @@
   background-color: #121212;
   align-items: center;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif, sans-serif;
   margin: 0;
   min-height: 100vh;
 }
@@ -39,7 +38,7 @@
 
 .login-title {
   font-size: 35px;
-  font-weight: 100;
+  font-weight: 200;
   padding-top: 10px;
   color: #7edbb0;
 }

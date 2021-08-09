@@ -94,8 +94,8 @@ export default function CreatePlaylist(props) {
             </div>
           </div>
         <div className="newPlaylistContainer">
-          <div className="inputTitle">{input.title}</div>
           <img className="playlistIMG" src={input.imgURL} alt={input.title} />
+          <div className="inputTitle">{input.title}</div>
           <div className="playlistCat">{input.category}</div>
           <div className="playlistDesc">{input.description}</div>
           </div>
