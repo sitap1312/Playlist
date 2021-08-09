@@ -118,7 +118,7 @@ export default function EditPlaylist(props) {
         return (
           <div key={index} className="listVidsContainer">
           <div className="listVids"> {link.title}---{link.artist}---{link.linkURL}</div>
-          <button className="commSubmitBtn" onClick={() => handleDelete(link._id)}>DELETE</button>
+          <button className="linkDeleteBtn" onClick={() => handleDelete(link._id)}>DELETE</button>
           </div>
         )
         })}

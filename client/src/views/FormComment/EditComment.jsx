@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { updateComment, getComment } from "../../services/comments.js";
 
 export default function EditComment(props) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({content: ""});
 
   useEffect(() => {
-    fetchData();
+    if (props.commId._id) {
+      fetchData();
+    }
     // eslint-disable-next-line
-  }, []);
+  }, [props.commId._id]);
 
   const fetchData = async () => {
     const res = await getComment(props.commId._id);
