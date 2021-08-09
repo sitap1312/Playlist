@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from "../../components/Layout/Layout";
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import { getAllPlaylist } from "../../services/playlists.js"
 import PlaylistCard from '../PlaylistCard/PlaylistCard';
 import "./Categories.css"
