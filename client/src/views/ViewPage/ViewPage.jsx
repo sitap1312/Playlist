@@ -155,7 +155,14 @@ export default function ViewPage(props) {
           <NewComment user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} />
           </div>
           <div id="editBox">
-          <EditComment commId={commId} user={props.user} setUser={props.setUser} playlist={playlist} setToggle={setToggle} switchBox0={switchBox0} />
+          <EditComment
+                  commId={commId}
+                  user={props.user}
+                  setUser={props.setUser}
+                  playlist={playlist}
+                  setToggle={setToggle}
+                  switchBox0={switchBox0}
+                  />
             </div>
             </>)}
           <br />

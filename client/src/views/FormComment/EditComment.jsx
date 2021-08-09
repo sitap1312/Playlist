@@ -7,7 +7,7 @@ export default function EditComment(props) {
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line
-  }, [props.commId._id]);
+  }, []);
 
   const fetchData = async () => {
     const res = await getComment(props.commId._id);

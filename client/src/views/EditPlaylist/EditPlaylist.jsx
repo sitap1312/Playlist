@@ -8,7 +8,6 @@ import CreateLink from '../FormLink/CreateLink'
 export default function EditPlaylist(props) {
   const [playlist, setPlaylist] = useState({})
   const [newlist, setNewList] = useState({})
-  const [toggle, setToggle] = useState(true)
   const { id } = useParams()
 
   const defaultForm = {
@@ -25,10 +24,10 @@ export default function EditPlaylist(props) {
     // eslint-disable-next-line
   }, [id])
 
-  useEffect(() => {
-    fetchPlaylist()
-    // eslint-disable-next-line
-  }, [toggle])
+  // useEffect(() => {
+  //   fetchPlaylist()
+  //   // eslint-disable-next-line
+  // }, [toggle])
   
   const fetchPlaylist = async () => {
     const res = await getPlaylist(id)
@@ -117,14 +116,14 @@ export default function EditPlaylist(props) {
         <div className="createPlaylistItems">Playlist Links</div>
         {playlist.links?.map((link, index) => {
         return (
-          <div className="listVidsContainer">
-          <div className="listVids" key={index}> {link.title}---{link.artist}---{link.linkURL}</div>
+          <div key={index} className="listVidsContainer">
+          <div className="listVids"> {link.title}---{link.artist}---{link.linkURL}</div>
           <button className="commSubmitBtn" onClick={() => handleDelete(link._id)}>DELETE</button>
           </div>
         )
         })}
         </div>
-      <CreateLink setToggle={setToggle} newlist={newlist} />
+      <CreateLink newlist={newlist} fetchPlaylist={fetchPlaylist} />
       </section>
     </Layout>
   )

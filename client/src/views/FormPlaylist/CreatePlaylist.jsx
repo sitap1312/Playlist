@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import "./CreatePlaylist.css"
 import Layout from "../../components/Layout/Layout";
 import { createPlaylist, getPlaylist } from "../../services/playlists.js";
@@ -16,7 +16,6 @@ export default function CreatePlaylist(props) {
   const [input, setInput] = useState(defaultInput)
   const [playlist, setPlaylist] = useState({})
   const [newlist, setNewList] = useState({})
-  const [toggle, setToggle] = useState(true)
 
     function handleChange(event) {
         let {name, value} = event.target
@@ -26,7 +25,7 @@ export default function CreatePlaylist(props) {
         }))
     }
     async function handleSubmit(event) {
-        event.preventDefault()
+      event.preventDefault()
       let newlist = await createPlaylist(input)
       setNewList(newlist)
       myFunction()
@@ -39,18 +38,8 @@ export default function CreatePlaylist(props) {
       } else {
         x.style.display = "none";
       }
-
     }
-  
-    useEffect(() => {
-      fetchPlaylist()
-      // eslint-disable-next-line
-    }, [newlist])
-  
-    useEffect(() => {
-      fetchPlaylist()
-      // eslint-disable-next-line
-    }, [toggle])
+
     
     const fetchPlaylist = async () => {
       const res = await getPlaylist(newlist._id)
@@ -104,14 +93,14 @@ export default function CreatePlaylist(props) {
           <div className="createPlaylistItems">Playlist Links</div>
         {playlist.links?.map((link, index) => {
         return (
-          <div className="listVidsContainer">
-          <div className="listVids" key={index}> {link.title}---{link.artist}---{link.linkURL}</div>
+          <div key={index} className="listVidsContainer">
+          <div className="listVids"> {link.title}---{link.artist}---{link.linkURL}</div>
           <button className="commSubmitBtn" onClick={() => handleDelete(link._id)}>DELETE</button>
           </div>
         )
         })}
           </div>
-          <CreateLink setToggle={setToggle} newlist={newlist} />
+          <CreateLink newlist={newlist} fetchPlaylist={fetchPlaylist} />
           </section>
         </Layout>
     )
