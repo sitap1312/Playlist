@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 // change after deploy and we know everything is working 'tiny'
-app.use(morgan("dev"));
+app.use(morgan("tiny"));
 
 app.use("/api", routes);
 
