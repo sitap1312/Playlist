@@ -108,11 +108,30 @@
   color: white;
 }
 
-@media (max-width: 600px) {
-  .nav-header {
-    position: absolute;
-    transition: all 0.3s ease-in;
-    overflow-y: hidden;
-    display: block;
-  }
+@media screen and (max-width: 650px) {
+
+ .options {
+  position: absolute;
+  display: block;
+  width: 100%;
+  background-color: #333;
+  height: 0px;
+  transition: all 0.3s ease-in;
+  overflow-y: hidden;
+  top: 50px;
+  left: 0px;
+ }
+
+ .navbar-options {
+  display: block;
+  width: 100%;
+ }
+
+ .navbar-page > #nav-check:not(:checked) ~ .navbar-options {
+  height: 0px;
+}
+.navbar-page > #nav-check:checked ~ .navbar-options {
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+}
 }

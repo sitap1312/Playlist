@@ -1,4 +1,4 @@
-import "./Navbar.css"
+import "./Navbar.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import { signOut } from "../../services/users";
@@ -15,15 +15,15 @@ export default function Nav(props) {
 
   return (
     <section className= "navbar-page"> 
+    <input type="checkbox" id="nav-check"></input>
         <div className="navbar-logo">   
-        <Link to="/" className="navLogoContainer">
-          <img className="nav-logo" src="https://i.imgur.com/xidyTP5.png" alt="logo"/>
-          <div className="title" >PLAYLISTIFY</div>
-              
-        </Link>
+          <Link to="/" className="navLogoContainer">
+            <img className="nav-logo" src="https://i.imgur.com/xidyTP5.png" alt="logo"/>
+            <div className="title" >PLAYLISTIFY</div>   
+          </Link>
         </div>
-            <div className="options"> 
-      {props.user ? (
+        <div className="options"> 
+          {props.user ? (
           <>
             <div className="navbar-options">
               <Link className="nav-link" to="/my-account">Hi! {props.user?.username} </Link>
@@ -34,23 +34,27 @@ export default function Nav(props) {
             </div>
 
             <div className="navbar-options">
-            <Link   className="nav-link" to="/edit-user"> Edit Account </Link>
-          </div>
-          <div className="navbar-options" >
-            <button className="signout-btn" type="submit" onClick={handleSignOut}>SIGN OUT</button>
-              </div>
+              <Link   className="nav-link" to="/edit-user"> Edit Account </Link>
+            </div>
+
+            <div className="navbar-options" >
+              <button className="signout-btn" type="submit" onClick={handleSignOut}>SIGN OUT</button>
+            </div>
         </>
         ) : (
         <div className="loginButtonContainer">
-        <div className="navbar-options">
-          <Link  className="loginButtons" to="/sign-up">SIGN UP</Link>
-          </div>
+
           <div className="navbar-options">
-          <Link className="loginButtons" to="/sign-in">SIGN IN</Link>
+            <Link  className="loginButtons" to="/sign-up">SIGN UP</Link>
           </div>
+
+          <div className="navbar-options">
+            <Link className="loginButtons" to="/sign-in">SIGN IN</Link>
           </div>
-        )}
+
         </div>
+        )}
+      </div>
       </section>
   );
 }
