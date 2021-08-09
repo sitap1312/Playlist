@@ -12,13 +12,6 @@ export default function EditUser(props) {
   const [loading, setLoading] = useState(false)
 
 
-
-  // useEffect(() => {
-  //   editUser()
-  // }, [props.user?.id])
-
-
-
   const defaultInput = {
     username: "",
     email: "",
@@ -59,17 +52,12 @@ export default function EditUser(props) {
       alert("INCORRECT PASSCODE - TRY AGAIN TO CONFIRM")
     }
   }
-  // const handleDelete = async () => {
-  //   await deleteUser(props.user?.id)
-  //   handleSignOut()
-  //   history.push("/")
-  // }
 
   return (
     <Layout user={props.user} setUser={props.setUser}>
       <section className="signup-page">
         <div className="signup-form">
-          <div className="login-title">Edit Account</div>
+          <div className="login-title">EDIT ACCOUNT</div>
           <br />
 
           <form onSubmit={handleSubmit}>

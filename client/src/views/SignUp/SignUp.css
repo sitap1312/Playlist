@@ -2,12 +2,11 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-self: flex-start; 
+  align-self: flex-start;
   align-self: flex-end;
   background-color: #121212;
   align-items: center;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif, sans-serif;
   margin: 0;
   min-height: 100vh;
 }
@@ -39,11 +38,10 @@
 
 .login-title {
   font-size: 35px;
-  font-weight: 100;
+  font-weight: 200;
   padding-top: 10px;
   color: #7edbb0;
 }
-
 
 .login-input {
   border: 1px solid #7edbb0;
@@ -54,9 +52,13 @@
   height: 20px;
   background-size: 1.5rem;
   background-position: 1rem 50%;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   color: white;
-  margin-bottom: 6%;
+  margin-bottom: 15px;
+}
+
+input[type="text"] {
+  font-size: 15px;
 }
 
 .login-link {

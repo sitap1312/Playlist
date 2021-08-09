@@ -20,45 +20,54 @@
 }
 
 .createFormDiv {
-  width: 200px;
-  margin-right: 100px;
+  width: 300px;
+  margin-right: 50px;
 }
 
 .newPlaylistContainer {
-  border: 2px solid #7edbb0;
-  border-radius: 20px;
-  width: 300px;
+  width: 250px;
   min-height: 200px;
+  background-color: #181818;
+  border-radius: 4px;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 10px;
+  text-align: left;
 }
 
 .playlistIMG {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 250px;
+  max-height: 250px;
   border: none;
+  width: 100%;
 }
 
 .inputTitle {
-  padding: 10px;
-  font-size: 25px;
+  padding: 5px;
+  font-size: 20px;
   font-weight: bolder;
-  color: #7edbb0;
+  color: #fff;
 }
 
-.creatorName {
+.playlistCat {
   font-weight: bold;
-  padding: 10px;
+  padding: 5px;
 }
 
 .playlistDesc {
-  font-size: 12px;
-  padding: 10px;
+  padding-left: 5px;
+  color: #fff;
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  font-size: 14px;
 }
 
 .hideShowBtn {
   width: 150px;
   padding: 3px 10px;
-  background-color: #354152;
-  color: #7edbb0;
+  background: linear-gradient(90deg, #7edbb0 15%, teal 100%);
+  color: #121212;
   text-align: center;
   align-items: center;
   border-radius: 45px;
@@ -69,7 +78,47 @@
 }
 
 .hideShowBtn:hover {
-  background-color: #282828;
+  background: #282828;
   border-color: #7edbb0;
   color: white;
+}
+
+.formLabel {
+  font-weight: bolder;
+}
+
+.dropdownInput {
+  border: 1px solid #7edbb0;
+  border-radius: 999px;
+  background-color: #282828;
+  text-align: center;
+  width: 80%;
+  height: 35px;
+  padding: 0.5rem 1rem;
+  color: white;
+  margin-bottom: 5%;
+}
+
+.createLinkTitle {
+  padding: 10px;
+  font-size: 20px;
+  color: #7edbb0;
+}
+
+.createLinkContainer {
+  width: 600px;
+  margin: auto;
+}
+
+.listVidsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.createPlaylistItems {
+  margin-top: 20px;
+  padding: 5px;
+  color: #7edbb0;
+  font-size: 20px;
 }

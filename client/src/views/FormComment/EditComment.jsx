@@ -66,14 +66,11 @@ export default function EditComment(props) {
         <div className="inputDiv">
         <input className="commInput" type="text" name="content" value={input.content} onChange={handleChange} />
         <div className="commBtnDiv">
-        <button className="commSubmitBtn" onClick={props.switchBox0}>Cancel</button>
-        <button className="commSubmitBtn" type="submit">Submit</button>
+        <button className="commSubmitBtn" onClick={props.switchBox0}>CANCEL</button>
+        <button className="commSubmitBtn" type="submit">SUBMIT</button>
         </div>
         </div>
       </form>
-
-      <div>
-      </div>
     </div>
   )
 }
