@@ -1,0 +1,124 @@
+.createEditContainer {
+  background-color: #121212;
+  color: white;
+  text-align: center;
+}
+
+.createFormTitle {
+  font-size: 40px;
+  font-weight: bolder;
+  color: #7edbb0;
+  padding: 10px;
+}
+
+.createPlaylistContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.createFormDiv {
+  width: 300px;
+  margin-right: 50px;
+}
+
+.newPlaylistContainer {
+  width: 250px;
+  min-height: 200px;
+  background-color: #181818;
+  border-radius: 4px;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 10px;
+  text-align: left;
+}
+
+.playlistIMG {
+  max-width: 250px;
+  max-height: 250px;
+  border: none;
+  width: 100%;
+}
+
+.inputTitle {
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #fff;
+}
+
+.playlistCat {
+  font-weight: bold;
+  padding: 5px;
+}
+
+.playlistDesc {
+  padding-left: 5px;
+  color: #fff;
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  font-size: 14px;
+}
+
+.hideShowBtn {
+  width: 150px;
+  padding: 3px 10px;
+  background: linear-gradient(90deg, #7edbb0 15%, teal 100%);
+  color: #121212;
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.hideShowBtn:hover {
+  background: #282828;
+  border-color: #7edbb0;
+  color: white;
+}
+
+.formLabel {
+  font-weight: bolder;
+}
+
+.dropdownInput {
+  border: 1px solid #7edbb0;
+  border-radius: 999px;
+  background-color: #282828;
+  text-align: center;
+  width: 80%;
+  height: 35px;
+  padding: 0.5rem 1rem;
+  color: white;
+  margin-bottom: 5%;
+}
+
+.createLinkTitle {
+  padding: 10px;
+  font-size: 20px;
+  color: #7edbb0;
+}
+
+.createLinkContainer {
+  width: 600px;
+  margin: auto;
+}
+
+.listVidsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.createPlaylistItems {
+  margin-top: 20px;
+  padding: 5px;
+  color: #7edbb0;
+  font-size: 20px;
+}

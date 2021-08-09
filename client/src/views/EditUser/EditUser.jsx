@@ -12,13 +12,6 @@ export default function EditUser(props) {
   const [loading, setLoading] = useState(false)
 
 
-
-  // useEffect(() => {
-  //   editUser()
-  // }, [props.user?.id])
-
-
-
   const defaultInput = {
     username: "",
     email: "",
@@ -59,50 +52,57 @@ export default function EditUser(props) {
       alert("INCORRECT PASSCODE - TRY AGAIN TO CONFIRM")
     }
   }
-  // const handleDelete = async () => {
-  //   await deleteUser(props.user?.id)
-  //   handleSignOut()
-  //   history.push("/")
-  // }
 
   return (
-      <Layout user={props.user} setUser={props.setUser}>
-      Edit User
-      <br/>
-      <button onClick={handleDelete}>Delete Account</button>
-      <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <br />
-        <input
-          placeholder={props.user?.username}
-          name="username"
-          type="text"
-          value={formData.username}
-          onChange={handleInput}
-          required={true}
-        />
-        <br />
-        <label>Email</label>
-        <br />
-        <input
-          placeholder={props.user?.email}
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleInput}
-        />
-        <br />
-        <label>Password</label>
-        <br />
-        <input
-          name="password"
-          type="password"
-          value={formData.password_digest}
-          onChange={handleInput}
-        />
-        <br />
-        <button>Update</button>
-      </form>
+    <Layout user={props.user} setUser={props.setUser}>
+      <section className="signup-page">
+        <div className="signup-form">
+          <div className="login-title">EDIT ACCOUNT</div>
+          <br />
+
+          <form onSubmit={handleSubmit}>
+
+            <input
+              className="login-input"
+              placeholder={props.user?.username}
+              name="username"
+              type="text"
+              value={formData.username}
+              onChange={handleInput}
+              required={true} />
+            <br />
+
+            <br />
+            <input
+              className="login-input"
+              placeholder={props.user?.email}
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleInput} />
+            <br />
+
+            <br />
+            <input
+              className="login-input"
+              name="password"
+              type="password"
+              value={formData.password_digest}
+              onChange={handleInput} placeholder="••••••••••••" />
+            <br />
+
+            <div>
+            <button className="signup-btn" type="submit">UPDATE</button>
+            </div>
+
+            <br />
+
+            <div>
+              <button className="delete-btn" type="submit" onClick={handleDelete}>DELETE ACCOUNT</button>
+            </div>
+            </form>
+          </div>
+        </section>
     </Layout>
   )
 }

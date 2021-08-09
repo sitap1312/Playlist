@@ -5,14 +5,6 @@ import { deleteLink, getLink ,updateLink } from '../../services/links'
 import { useParams } from 'react-router'
 import CreateLink from '../FormLink/CreateLink'
 
-
-const defaultForm = {
-  title: "",
-  imgURL: "",
-  description: "",
-  category: "",
-}
-
 export default function EditPlaylist(props) {
   const [playlist, setPlaylist] = useState({})
   const [newlist, setNewList] = useState({})
@@ -20,8 +12,14 @@ export default function EditPlaylist(props) {
   const [category, setCategory] = useState("Choose Category")
   const { id } = useParams()
 
-  const [input, setInput] = useState(defaultForm)
+  const defaultForm = {
+    title: "",
+    imgURL: "",
+    description: "",
+    category: "",
+  }
 
+  const [input, setInput] = useState(defaultForm)
 
   useEffect(() => {
     fetchPlaylist()
@@ -34,6 +32,7 @@ export default function EditPlaylist(props) {
   const fetchPlaylist = async () => {
     const res = await getPlaylist(id)
     setPlaylist(res)
+    setInput(res)
   }
   useEffect(() => {
     setNewList(playlist)
@@ -50,7 +49,7 @@ export default function EditPlaylist(props) {
 
   const handleSubmit = async (e) => {
       e.preventDefault()
-      let updated = await updatePlaylist(id,input)
+      let updated = await updatePlaylist(id, input)
       setPlaylist(updated)
       fetchPlaylist()
   }
@@ -62,39 +61,39 @@ export default function EditPlaylist(props) {
 
   return (
     <Layout user={props.user} setUser={props.setUser}>
-      <p>Edit Playlist</p><br />
-      
-      {playlist?.title} <br />
+      <section className="createEditContainer">
+      <div className="createFormTitle">Edit Playlist</div><br />
+      <section className="createPlaylistContainer">
+      <div className="createFormDiv">
       <form onSubmit={handleSubmit}>
-        <input type="text"
+      <div className="formLabel">Playlist Title</div>
+        <input
+          className="login-input"
+          type="text"
           placeholder="title"
           value={input.title}
           name="title"
-          required
           onChange={handleChange}
-          /><br />
-      <img
-        src={playlist?.imgURL}
-        alt={playlist?.title} />
-      <br />
+            />
+      <div className="formLabel">Image URL</div>      
       <input
-            className='input-name'
+            className="login-input"
             placeholder='Image URL'
             value={input.imgURL}
             name='imgURL'
-            required
             onChange={handleChange}
           />
-      {playlist?.description} <br />
+      <div className="formLabel">Description</div>     
       <input
-            className='input-name'
+            className="login-input"
             placeholder='Description'
             value={input.description}
             name='description'
-            required
             onChange={handleChange}
-          /><br />
-      <select type="text" name="category" value={input.category} onChange={handleChange}>
+            />
+      
+      <div className="formLabel">Category</div>
+      <select className="dropdownInput" type="text" name="category" value={input.category} onChange={handleChange}>
                   <option value="Music">Music</option>
                   <option value="Videos">Video</option>
                   <option value="Gaming">Gaming</option>
@@ -103,17 +102,30 @@ export default function EditPlaylist(props) {
                   <option value="Entertainment">Entertainment</option>
                   <option value="Family">Family</option>
             </select>
+          <button className="hideShowBtn" onClick={handleSubmit} type="submit">Update playlist</button>
           </form>
-      <button onClick={handleSubmit} type="submit">Update playlist</button>
-      {playlist.links?.map((link, index) => {
+            </div>
+        <div className="newPlaylistContainer">
+        <div className="inputTitle">{playlist?.title}</div>
+        <img className="playlistIMG" src={playlist?.imgURL} alt={playlist?.title} />
+        <div className="playlistCat">{playlist?.category}</div>
+        <div className="playlistDesc">{playlist?.description}</div>
+        </div>
+        </section>
+
+        <div className="newLinksAdded">
+        <div className="createPlaylistItems">Playlist Links</div>
+        {playlist.links?.map((link, index) => {
         return (
-          <>
-          <div key={index}> {link.title}---{link.artist}---{link.linkURL}</div>
-          <button onClick={() => handleDelete(link._id)}>Delete Link</button>
-          </>
+          <div className="listVidsContainer">
+          <div className="listVids" key={index}> {link.title}---{link.artist}---{link.linkURL}</div>
+          <button className="commSubmitBtn" onClick={() => handleDelete(link._id)}>DELETE</button>
+          </div>
         )
-      })}
+        })}
+        </div>
       <CreateLink setToggle={setToggle} newlist={newlist} />
+      </section>
     </Layout>
   )
 }

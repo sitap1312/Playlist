@@ -1,1 +1,170 @@
-/* comments section */
+.viewPageContainer {
+  /* background-color: #354152; */
+  /* background-color: #363537; */
+  background-color: #121212;
+  /* color: #7edbb0; */
+  /* color: #7e8ba3; */
+  color: white;
+  text-align: center;
+}
+
+/* #181818 for the cards
+#282828 for the hover */
+
+.playlistInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.viewPlayTitle {
+  font-size: 40px;
+  font-weight: bolder;
+  color: #7edbb0;
+  padding: 10px;
+  max-width: 400px;
+}
+
+.viewPlayCat {
+  font-size: 20px;
+  color: #7edbb0;
+  text-decoration: none;
+  border-style: none;
+}
+
+.belowPlayer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.descBox {
+  max-height: 150px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.viewPlayDesc {
+  margin: 10px;
+  max-height: 200px;
+  overflow: hidden;
+  white-space: wrap;
+}
+
+.PlayerBtn {
+  padding: 7px 15px;
+  background: linear-gradient(90deg, #7edbb0 15%, teal 100%);
+  color: #121212;
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.PlayerBtn:hover {
+  background: #282828;
+  border-color: #7edbb0;
+  color: white;
+}
+
+.hideShowBtn {
+  width: 150px;
+  padding: 3px 10px;
+  background-color: #354152;
+  color: #7edbb0;
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.hideShowBtn:hover {
+  background-color: #282828;
+  border-color: #7edbb0;
+  color: white;
+}
+
+.viewLabels {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.playlistHeader {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #7edbb0;
+}
+
+.listVids {
+  font-weight: bold;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+.listVids:hover {
+  color: #7edbb0;
+}
+
+.commentBox {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  text-align: left;
+  padding-left: 10px;
+  padding-bottom: 50px;
+}
+
+.commentUser {
+  font-size: 16px;
+  font-weight: bolder;
+  padding-top: 5px;
+  color: #7edbb0;
+}
+
+.commentContent {
+  min-height: 30px;
+  margin-bottom: 5px;
+}
+
+.commButtons {
+  text-align: right;
+}
+
+.CommBtn {
+  width: 80px;
+  padding: 3px 10px;
+  background-color: #354152;
+  color: #7edbb0;
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.CommBtn:hover {
+  background-color: #282828;
+  border-color: #7edbb0;
+  color: white;
+}
+
+#editBox {
+  display: none;
+}
