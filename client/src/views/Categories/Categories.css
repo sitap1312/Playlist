@@ -15,3 +15,11 @@
   padding: 10px;
   text-align: center;
 }
+
+.categoryPlaylistName {
+  font-size: 40px;
+  font-weight: bolder;
+  color: #7edbb0;
+  padding: 10px;
+  text-align: center;
+}
