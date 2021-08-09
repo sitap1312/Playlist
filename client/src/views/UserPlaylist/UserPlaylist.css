@@ -1,0 +1,56 @@
+.userNamePlaylist {
+    font-size: 40px;
+    font-weight: bolder;
+    color: #7edbb0;
+    padding: 10px;
+    text-align: center;
+}
+
+.userPlaylist {
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: space-between;
+  flex-basis: 33%;
+  max-width: 1480px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.deletePlaylistBtn {
+  padding: 7px 15px;
+  background: linear-gradient(90deg, #7edbb0 15%, teal 100%);
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: -20px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.deletePlaylistBtn:hover {
+  background: rgb(207, 91, 83);
+}
+
+.editPlaylistBtn {
+  padding: 7px 15px;
+  background: linear-gradient(90deg, #7edbb0 15%, teal 100%);
+  color: #121212;
+  text-align: center;
+  align-items: center;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.editPlaylistBtn:hover {
+  background-color: #5A9C7D;
+}

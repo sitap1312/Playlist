@@ -3,6 +3,8 @@ import Layout from "../../components/Layout/Layout";
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getAllPlaylist } from "../../services/playlists.js"
+import PlaylistCard from '../PlaylistCard/PlaylistCard';
+import "./Categories.css"
 
 export default function AllPlaylist(props) {
   const [playlist, setPlaylist] = useState([])
@@ -19,11 +21,11 @@ export default function AllPlaylist(props) {
 
   return (
     <Layout user={props.user} setUser={props.setUser}>
-      <h2>Discover</h2>
+      <h2 className="playlistCategory">Discover</h2>
       <div className="allPlaylist">
       {playlist.map((playlist, index) => {
         return (
-          <Link key={index} to="/preview/:id"><img src={playlist?.imgURL} alt={playlist.name} /></Link>
+          <PlaylistCard key={index} playlist={playlist} />
         )
       })}
       </div>
