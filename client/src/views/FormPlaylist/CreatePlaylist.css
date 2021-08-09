@@ -122,3 +122,13 @@
   color: #7edbb0;
   font-size: 20px;
 }
+
+@media screen and (max-width: 650px) {
+  .footer {
+    font-size: small;
+  }
+
+  .footer a {
+    font-size: small;
+  }
+}
