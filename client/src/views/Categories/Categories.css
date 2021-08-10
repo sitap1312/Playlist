@@ -1,15 +1,15 @@
-.allPlaylist{
+.allPlaylist {
   display: flex;
-  flex-flow:row wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
   flex-basis: 33%;
   max-width: 1480px;
   padding: 20px;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-.playlistCategory{
+.playlistCategory {
   font-size: 40px;
   font-weight: bolder;
   color: #7edbb0;
@@ -26,18 +26,17 @@
 }
 
 @media screen and (max-width: 375px) {
-
-  .allPlaylist{
+  .allPlaylist {
     display: flex;
     justify-content: center;
     flex-flow: column nowrap;
     margin: 0 auto;
     padding: 0;
   }
-  .playlistCategory{
+  .playlistCategory {
     font-size: 25px;
   }
-  .categoryPlaylistName{
+  .categoryPlaylistName {
     font-size: 25px;
   }
 }
