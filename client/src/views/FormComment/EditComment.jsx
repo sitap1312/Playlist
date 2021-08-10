@@ -50,6 +50,7 @@ export default function EditComment(props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+      <div className="commFormContainer">
       <div className="commFormHeader">
         <div className="commFormLabel">Edit Comment</div>
         <div className="commFormUser">{props?.user?.username}</div>
@@ -60,7 +61,8 @@ export default function EditComment(props) {
         <button className="commSubmitBtn" onClick={props.switchBox0}>CANCEL</button>
         <button className="commSubmitBtn" type="submit">SUBMIT</button>
         </div>
-        </div>
+          </div>
+          </div>
       </form>
     </div>
   )
