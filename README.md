@@ -39,7 +39,7 @@ https://docs.google.com/document/d/1usB3FPzxP9AYy3LVok_fQy4C9ttfAyAEXWSlZwC2sFs/
 |Aug 7| CSS / MVP / PostMVP | Complete
 |Aug 8| PostMVP | Partial
 |Aug 9| Debugging / Deployment | Complete
-|Aug 10| Presentations | Incomplete
+|Aug 10| Presentations | Complete
 
 # Timeframes
 
