@@ -1,4 +1,5 @@
 # Playlistify
+** https://playlistify4real.netlify.app/
 
 # Overview 
 
@@ -7,9 +8,9 @@ The purpose of this app is to have users make a playlist. The features of the we
 Team Memebers:
 Shahroze
 Divine
+Sita
 Stephen
 Elijah 
-Sita
 
 # Whimsical Diagrams
 
